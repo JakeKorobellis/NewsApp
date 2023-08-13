@@ -1,5 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/home";
 
 function App() {
   return (
@@ -21,8 +23,14 @@ function App() {
             </div>
             <div className="fifityvw"> yo</div>
           </div>
-          <div class="sidebar"> </div>
-          <div class="data"> </div>
+          <div class="sidebar"></div>
+          <div class="data">
+            <BrowserRouter>
+              <Routes>
+                <Route index element={<Home />} />
+              </Routes>
+            </BrowserRouter>
+          </div>
         </div>
       </header>
     </div>
