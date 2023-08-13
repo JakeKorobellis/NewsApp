@@ -12,13 +12,10 @@ function App() {
             <div className="fifityvw ">
               <div className="header-title-format">
                 <div className="title-font-large">
-                  <span className="neon-blue">N</span>ews
-                  <span className="neon-blue">R</span>oom
+                  <span className="neon-blue">N</span>
+                  <span className="neon-blue">R</span>
+                  <span className="smaller-title">.com</span>
                 </div>
-                <span className="header-font-small">
-                  The latest in <span className="neon-blue">Equities</span> &{" "}
-                  <span className="neon-blue">Crypto</span>{" "}
-                </span>
               </div>
             </div>
             <div className="fifityvw"> yo</div>
