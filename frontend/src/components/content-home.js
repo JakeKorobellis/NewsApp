@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
+import Side from "./sidebar";
 
 function ConetentHome() {
   return (
@@ -18,7 +19,9 @@ function ConetentHome() {
             </div>
             <div className="fifityvw"> yo</div>
           </div>
-          <div class="sidebar"></div>
+          <div class="sidebar">
+            <Side curr={1} />
+          </div>
           <div class="data stream-all">
             <div className="title-all">News - All</div>
             <div className="stream-hold-all">
