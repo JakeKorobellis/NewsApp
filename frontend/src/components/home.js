@@ -11,7 +11,7 @@ function Home() {
       <div className="has-account">
         <div className="black">Do you have an account?</div>
         <div className="buttons-home">
-          <a href="/content" className="home-button-link-yes">
+          <a href="/login" className="home-button-link-yes">
             Yes
           </a>
           <a href="/has-account/true" className="home-button-link-no">
