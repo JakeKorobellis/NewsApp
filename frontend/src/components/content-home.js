@@ -19,7 +19,12 @@ function ConetentHome() {
             <div className="fifityvw"> yo</div>
           </div>
           <div class="sidebar"></div>
-          <div class="data"></div>
+          <div class="data stream-all">
+            <div className="title-all">News - All</div>
+            <div className="stream-hold-all">
+              Will hold the news via a stream
+            </div>
+          </div>
         </div>
       </header>
     </div>

@@ -187,3 +187,21 @@ a{
 .footer-login-page{
   font-size: 1vw;
 }
+.stream-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-all{
+  font-size: 3vw;
+  height: 6vw;
+  
+}
+.stream-hold-all{
+ height: 80%;
+ background: grey;
+ width: 75%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
