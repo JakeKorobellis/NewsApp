@@ -207,6 +207,7 @@ a{
 }
 .current-side{
   color: #2272FF;
+  font-size: 1.25vw;
 }
 .notcurrent-side{
   color: white;
