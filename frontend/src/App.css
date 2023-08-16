@@ -286,3 +286,34 @@ gap: 10px;
   padding: 3%;
 
 }
+.split-button-hold{
+  width: 85%;
+  height: 7%;
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+.splity-fifty{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-split{
+  text-decoration: none;
+  outline: none;
+  padding: 1%;
+  border-radius: 5px;
+  width: 6vw;
+  font-size: .75vw;
+  background-color: white;
+  font-family: 'Anton', sans-serif;
+  color: black;
+  border: none;  
+  cursor: pointer;
+}
+.button-split:hover{
+  background: rgb(194, 193, 193);
+}

@@ -5,6 +5,8 @@ import Side from "./sidebar";
 function Split() {
   const api_route = process.env.REACT_APP_API_ROUTE;
   const api_fi = process.env.REACT_APP_API_FI;
+  const crypto_first = process.env.REACT_APP_CRYPTO_FIRST;
+  const crypto_second = process.env.REACT_APP_CRYPTO_SECOND;
   const [news, setNews] = React.useState([]); //Crypto news State
   const [fi, setFi] = React.useState([]);
 
@@ -58,6 +60,14 @@ function Split() {
     });
   }
 
+  function crypto_selection(choice) {
+    fetch(crypto_first + choice + crypto_second)
+      .then((res) => res.json())
+      .then((res) => setNews(res.news));
+
+    console.log(choice);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -86,6 +96,41 @@ function Split() {
               <div className="stocks-hold">
                 {fi !== [] ? reuse_finance(fi) : "Loading"}
               </div>
+            </div>
+            <div className="split-button-hold">
+              <div className="splity-fifty">
+                <button
+                  onClick={() => crypto_selection("trending")}
+                  className="button-split"
+                >
+                  Trending
+                </button>
+                <button
+                  onClick={() => crypto_selection("handpicked")}
+                  className="button-split"
+                >
+                  Hand Picked
+                </button>
+                <button
+                  onClick={() => crypto_selection("latest")}
+                  className="button-split"
+                >
+                  Latest
+                </button>
+                <button
+                  onClick={() => crypto_selection("bullish")}
+                  className="button-split"
+                >
+                  Bullish
+                </button>
+                <button
+                  onClick={() => crypto_selection("bearish")}
+                  className="button-split"
+                >
+                  Bearish
+                </button>
+              </div>
+              <div className="splity-fifty"></div>
             </div>
           </div>
         </div>
