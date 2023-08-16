@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Source+Sans+3:wght@700&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 a{
   text-decoration: none;
   font-style: none;
@@ -62,6 +67,7 @@ a{
     padding-right: 1vw;
     background: black;   
     padding-bottom: .5vw; 
+    height: 10vh;
     
   }
   .sidebar { grid-area: 2 / 1 / 3 / 2;
@@ -73,6 +79,8 @@ a{
   border-top-left-radius: 10px;
     display: flex;
     font-family: 'Anton', sans-serif;
+    width: 100%;
+    height: 90vh;
 
 }
   .header-font-small{
@@ -191,6 +199,8 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90vh;
+  
 }
 .title-all{
   font-size: 3vw;
@@ -198,7 +208,7 @@ a{
   
 }
 .stream-hold-all{
- height: 80%;
+ height: 70vh;
  background: grey;
  width: 75%;
  display: flex;
@@ -221,19 +231,23 @@ a{
   margin-left: 3vw;
 }
 .wider-hold-all{
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   background: #2272FF;
-
+  height: 70vh;
+  
 }
 .crypto-hold{
-background: green;
-height: 100%;
+height: 70vh;
 width: 40%;
+overflow-y: auto;
+padding: 1%;
 display: flex;
-justify-content: center;
-align-items: center;
+flex-direction: column;
+gap: 10px;
+
+
 
 }
 
@@ -244,4 +258,28 @@ align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hold-crypto-news{
+  display: flex;
+  font-size: 1vw;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  padding: 1%;
+  
+}
+.hold-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+  align-items: center;
+}
+
+.fifty-five{
+  width: 55%;
+  display: flex;
+  padding: 3%;
+
 }

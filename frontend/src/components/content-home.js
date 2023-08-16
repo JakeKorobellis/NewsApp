@@ -23,7 +23,7 @@ function ConetentHome() {
             <Side curr={1} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">News - All</div>
+            <div className="title-all">Live</div>
             <div className="stream-hold-all">
               Will hold the news via a stream
             </div>

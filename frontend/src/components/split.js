@@ -3,6 +3,32 @@ import React from "react";
 import Side from "./sidebar";
 
 function Split() {
+  const api_route = process.env.REACT_APP_API_ROUTE;
+  const [news, setNews] = React.useState([]); //Crypto news State
+
+  console.log(news);
+
+  React.useEffect(() => {
+    fetch(api_route) //Crypto News Route
+      .then((res) => res.json())
+      .then((res) => setNews(res.news));
+  }, []);
+
+  const renderNews = news.map((curr) => {
+    return (
+      <div className="hold-crypto-news">
+        <div className="fifty-five">{curr.title}</div>
+        <div className="hold-right">
+          <div className="">{curr.source}</div>
+          <div className="">
+            <a href={curr.link}>View</a>
+          </div>
+          <div className="">{curr.feedDate}</div>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,9 +49,11 @@ function Split() {
             <Side curr={2} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">News - Split</div>
+            <div className="title-all">Split</div>
             <div className="stream-hold-all wider-hold-all">
-              <div className="crypto-hold">Crypto</div>
+              <div className="crypto-hold">
+                {news !== [] ? renderNews : "Loading"}
+              </div>
               <div className="stocks-hold">Stocks</div>
             </div>
           </div>

@@ -10,7 +10,7 @@ function Side(curr) {
           href="/content"
           className={current == 1 ? "current-side" : "notcurrent-side"}
         >
-          All
+          Live
         </a>
       </span>
       <span>
@@ -21,6 +21,7 @@ function Side(curr) {
           Split
         </a>
       </span>
+
       <span>
         <a
           href="/content"
