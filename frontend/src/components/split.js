@@ -23,9 +23,10 @@ function Split() {
             <Side curr={2} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">News - All</div>
-            <div className="stream-hold-all">
-              Will hold the news via a stream
+            <div className="title-all">News - Split</div>
+            <div className="stream-hold-all wider-hold-all">
+              <div className="crypto-hold">Crypto</div>
+              <div className="stocks-hold">Stocks</div>
             </div>
           </div>
         </div>

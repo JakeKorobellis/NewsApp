@@ -219,3 +219,28 @@ a{
   justify-content: space-evenly;
   margin-left: 3vw;
 }
+.wider-hold-all{
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  background: #2272FF;
+
+}
+.crypto-hold{
+background: green;
+height: 100%;
+width: 40%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.stocks-hold{
+  background: orange;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
