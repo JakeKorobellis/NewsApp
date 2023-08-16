@@ -15,7 +15,7 @@ function Side(curr) {
       </span>
       <span>
         <a
-          href="/content"
+          href="/content/split"
           className={current == 2 ? "current-side" : "notcurrent-side"}
         >
           Split
