@@ -8,7 +8,7 @@ function Split() {
   const [news, setNews] = React.useState([]); //Crypto news State
   const [fi, setFi] = React.useState([]);
 
-  console.log();
+  console.log(fi);
 
   React.useEffect(() => {
     fetch(api_route) //Crypto News Route
@@ -17,7 +17,7 @@ function Split() {
 
     fetch(api_fi)
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => setFi(res.feed));
   }, []);
 
   const renderNews = news.map((curr) => {
@@ -27,9 +27,28 @@ function Split() {
         <div className="hold-right">
           <div className="">{curr.source}</div>
           <div className="">
-            <a href={curr.link}>View</a>
+            <a href={curr.link} target="_blank">
+              View
+            </a>
           </div>
           <div className="">{curr.feedDate}</div>
+        </div>
+      </div>
+    );
+  });
+
+  const renderFi = fi.map((curr) => {
+    return (
+      <div className="hold-crypto-news">
+        <div className="fifty-five">{curr.title}</div>
+        <div className="hold-right">
+          <div className="">{curr.source}</div>
+          <div className="">
+            <a href={curr.url} target="_blank">
+              View
+            </a>
+          </div>
+          <div className="">{curr.time_published}</div>
         </div>
       </div>
     );
@@ -60,7 +79,9 @@ function Split() {
               <div className="crypto-hold">
                 {news !== [] ? renderNews : "Loading"}
               </div>
-              <div className="stocks-hold">Stocks</div>
+              <div className="stocks-hold">
+                {fi !== [] ? renderFi : "Loading"}
+              </div>
             </div>
           </div>
         </div>
