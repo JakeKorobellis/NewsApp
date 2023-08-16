@@ -11,8 +11,9 @@ function Split() {
 
   //States
   const [news, setNews] = React.useState([]); //Crypto news State
-  const [fi, setFi] = React.useState([]);
-
+  const [fi, setFi] = React.useState([]); //Stocks news State
+  const [curr_crypto, set_curr_crpyto] = React.useState("Latest");
+  const [curr_fi, set_curr_fi] = React.useState("Latest");
   //Intital Render
   React.useEffect(() => {
     fetch(api_route) //Crypto News Route
@@ -93,6 +94,10 @@ function Split() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Split</div>
+            <div className="selection-split-hold">
+              <div className="fifty-selection">{curr_crypto}</div>
+              <div className="fifty-selection">{curr_fi}</div>
+            </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
                 {news !== [] ? reuse_crpyto(news) : "Loading"}
@@ -104,31 +109,47 @@ function Split() {
             <div className="split-button-hold">
               <div className="splity-fifty">
                 <button
-                  onClick={() => crypto_selection("trending")}
-                  className="button-split"
-                >
-                  Trending
-                </button>
-                <button
-                  onClick={() => crypto_selection("handpicked")}
-                  className="button-split"
-                >
-                  Hand Picked
-                </button>
-                <button
-                  onClick={() => crypto_selection("latest")}
+                  onClick={() => {
+                    crypto_selection("latest");
+                    set_curr_crpyto("Latest");
+                  }}
                   className="button-split"
                 >
                   Latest
                 </button>
                 <button
-                  onClick={() => crypto_selection("bullish")}
+                  onClick={() => {
+                    crypto_selection("trending");
+                    set_curr_crpyto("Trending");
+                  }}
+                  className="button-split"
+                >
+                  Trending
+                </button>
+                <button
+                  onClick={() => {
+                    crypto_selection("handpicked");
+                    set_curr_crpyto("Hand Picked");
+                  }}
+                  className="button-split"
+                >
+                  Hand Picked
+                </button>
+
+                <button
+                  onClick={() => {
+                    crypto_selection("bullish");
+                    set_curr_crpyto("Bullish");
+                  }}
                   className="button-split"
                 >
                   Bullish
                 </button>
                 <button
-                  onClick={() => crypto_selection("bearish")}
+                  onClick={() => {
+                    crypto_selection("bearish");
+                    set_curr_crpyto("Bearish");
+                  }}
                   className="button-split"
                 >
                   Bearish
