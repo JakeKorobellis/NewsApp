@@ -4,14 +4,20 @@ import Side from "./sidebar";
 
 function Split() {
   const api_route = process.env.REACT_APP_API_ROUTE;
+  const api_fi = process.env.REACT_APP_API_FI;
   const [news, setNews] = React.useState([]); //Crypto news State
+  const [fi, setFi] = React.useState([]);
 
-  console.log(news);
+  console.log();
 
   React.useEffect(() => {
     fetch(api_route) //Crypto News Route
       .then((res) => res.json())
       .then((res) => setNews(res.news));
+
+    fetch(api_fi)
+      .then((res) => res.json())
+      .then((res) => console.log(res));
   }, []);
 
   const renderNews = news.map((curr) => {
