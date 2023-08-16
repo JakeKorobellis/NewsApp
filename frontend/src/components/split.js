@@ -3,15 +3,17 @@ import React from "react";
 import Side from "./sidebar";
 
 function Split() {
+  //Protected Variables
   const api_route = process.env.REACT_APP_API_ROUTE;
   const api_fi = process.env.REACT_APP_API_FI;
   const crypto_first = process.env.REACT_APP_CRYPTO_FIRST;
   const crypto_second = process.env.REACT_APP_CRYPTO_SECOND;
+
+  //States
   const [news, setNews] = React.useState([]); //Crypto news State
   const [fi, setFi] = React.useState([]);
 
-  console.log(fi);
-
+  //Intital Render
   React.useEffect(() => {
     fetch(api_route) //Crypto News Route
       .then((res) => res.json())
@@ -22,6 +24,7 @@ function Split() {
       .then((res) => setFi(res.feed));
   }, []);
 
+  //Reusable crypto render
   function reuse_crpyto(news) {
     return news.map((curr) => {
       return (
@@ -40,7 +43,7 @@ function Split() {
       );
     });
   }
-
+  //Reusable finance render
   function reuse_finance(fi) {
     return fi.map((curr) => {
       return (
@@ -60,6 +63,7 @@ function Split() {
     });
   }
 
+  //Reusable selection - crypto
   function crypto_selection(choice) {
     fetch(crypto_first + choice + crypto_second)
       .then((res) => res.json())
