@@ -15,44 +15,48 @@ function Split() {
       .then((res) => res.json())
       .then((res) => setNews(res.news));
 
-    fetch(api_fi)
+    fetch(api_fi) //Securities API -- SPY/QQQ
       .then((res) => res.json())
       .then((res) => setFi(res.feed));
   }, []);
 
-  const renderNews = news.map((curr) => {
-    return (
-      <div className="hold-crypto-news">
-        <div className="fifty-five">{curr.title}</div>
-        <div className="hold-right">
-          <div className="">{curr.source}</div>
-          <div className="">
-            <a href={curr.link} target="_blank">
-              View
-            </a>
+  function reuse_crpyto(news) {
+    return news.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.title}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.link} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="">{curr.feedDate}</div>
           </div>
-          <div className="">{curr.feedDate}</div>
         </div>
-      </div>
-    );
-  });
+      );
+    });
+  }
 
-  const renderFi = fi.map((curr) => {
-    return (
-      <div className="hold-crypto-news">
-        <div className="fifty-five">{curr.title}</div>
-        <div className="hold-right">
-          <div className="">{curr.source}</div>
-          <div className="">
-            <a href={curr.url} target="_blank">
-              View
-            </a>
+  function reuse_finance(fi) {
+    return fi.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.title}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.url} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="">{curr.time_published}</div>
           </div>
-          <div className="">{curr.time_published}</div>
         </div>
-      </div>
-    );
-  });
+      );
+    });
+  }
 
   return (
     <div className="App">
@@ -77,10 +81,10 @@ function Split() {
             <div className="title-all">Split</div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
-                {news !== [] ? renderNews : "Loading"}
+                {news !== [] ? reuse_crpyto(news) : "Loading"}
               </div>
               <div className="stocks-hold">
-                {fi !== [] ? renderFi : "Loading"}
+                {fi !== [] ? reuse_finance(fi) : "Loading"}
               </div>
             </div>
           </div>
