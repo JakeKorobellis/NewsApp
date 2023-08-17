@@ -40,7 +40,6 @@ function Split() {
       });
   }, []);
 
-  console.log(fi);
   //Reusable crypto render
   function reuse_crpyto(news) {
     return news.map((curr) => {
