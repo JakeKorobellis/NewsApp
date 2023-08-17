@@ -10,7 +10,7 @@ function Split() {
 
   //States
   const [news, setNews] = React.useState([]); //Crypto news State
-
+  const [fi, setFi] = React.useState([]);
   const [curr_crypto, set_curr_crpyto] = React.useState("Latest");
 
   //Intital Render
@@ -18,10 +18,51 @@ function Split() {
     fetch(api_route) //Crypto News Route
       .then((res) => res.json())
       .then((res) => setNews(res.news));
+
+    const key = process.env.REACT_APP_KEY;
+    const secret = process.env.REACT_APP_SECRET;
+    const url = process.env.REACT_APP_URL20;
+
+    fetch(url, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the response data here
+        setFi(data.news);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+      });
   }, []);
 
+  console.log(fi);
   //Reusable crypto render
   function reuse_crpyto(news) {
+    return news.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.title}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.link} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="">{curr.feedDate}</div>
+          </div>
+        </div>
+      );
+    });
+  }
+
+  //Reusable FI
+  function reuse_fi(news) {
     return news.map((curr) => {
       return (
         <div className="hold-crypto-news">
@@ -45,8 +86,6 @@ function Split() {
     fetch(crypto_first + choice + crypto_second)
       .then((res) => res.json())
       .then((res) => setNews(res.news));
-
-    console.log(choice);
   }
 
   return (
