@@ -66,15 +66,15 @@ function Split() {
     return news.map((curr) => {
       return (
         <div className="hold-crypto-news">
-          <div className="fifty-five">{curr.title}</div>
+          <div className="fifty-five">{curr.headline}</div>
           <div className="hold-right">
             <div className="">{curr.source}</div>
             <div className="">
-              <a href={curr.link} target="_blank">
+              <a href={curr.url} target="_blank">
                 View
               </a>
             </div>
-            <div className="">{curr.feedDate}</div>
+            <div className="">{curr.updated_at}</div>
           </div>
         </div>
       );
@@ -118,7 +118,9 @@ function Split() {
               <div className="crypto-hold">
                 {news !== [] ? reuse_crpyto(news) : "Loading"}
               </div>
-              <div className="stocks-hold"></div>
+              <div className="stocks-hold">
+                {fi !== [] ? reuse_fi(fi) : "Loading"}
+              </div>
             </div>
             <div className="split-button-hold">
               <div className="splity-fifty">
