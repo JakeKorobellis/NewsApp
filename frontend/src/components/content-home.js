@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Side from "./sidebar";
+import News from "./get_news_latest";
 
 function ConetentHome() {
+  News();
+
   return (
     <div className="App">
       <header className="App-header">
