@@ -7,21 +7,22 @@ function Split() {
   const api_route = process.env.REACT_APP_API_ROUTE;
   const crypto_first = process.env.REACT_APP_CRYPTO_FIRST;
   const crypto_second = process.env.REACT_APP_CRYPTO_SECOND;
-
+  const url1 = process.env.REACT_APP_URL1;
+  const url2 = process.env.REACT_APP_URL2;
+  const key = process.env.REACT_APP_KEY;
+  const secret = process.env.REACT_APP_SECRET;
+  const url = process.env.REACT_APP_URL20;
   //States
   const [news, setNews] = React.useState([]); //Crypto news State
   const [fi, setFi] = React.useState([]);
   const [curr_crypto, set_curr_crpyto] = React.useState("Latest");
+  const [curr_fi, set_curr_fi] = React.useState("Latest");
 
   //Intital Render
   React.useEffect(() => {
     fetch(api_route) //Crypto News Route
       .then((res) => res.json())
       .then((res) => setNews(res.news));
-
-    const key = process.env.REACT_APP_KEY;
-    const secret = process.env.REACT_APP_SECRET;
-    const url = process.env.REACT_APP_URL20;
 
     fetch(url, {
       headers: {
@@ -87,6 +88,43 @@ function Split() {
       .then((res) => setNews(res.news));
   }
 
+  //Reusable selection - fi
+  function fi_selection(choice) {
+    if (choice == "latest") {
+      fetch(url, {
+        headers: {
+          "APCA-API-KEY-ID": key,
+          "APCA-API-SECRET-KEY": secret,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Process the response data here
+          setFi(data.news);
+        })
+        .catch((error) => {
+          // Handle errors here
+          console.error("Error:", error);
+        });
+    } else {
+      fetch(url1 + choice + url2, {
+        headers: {
+          "APCA-API-KEY-ID": key,
+          "APCA-API-SECRET-KEY": secret,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Process the response data here
+          setFi(data.news);
+        })
+        .catch((error) => {
+          // Handle errors here
+          console.error("Error:", error);
+        });
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -111,7 +149,7 @@ function Split() {
             <div className="selection-split-hold">
               <div className="fifty-selection">{curr_crypto}</div>
 
-              <div className="fifty-selection">Stocks</div>
+              <div className="fifty-selection">{curr_fi}</div>
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
@@ -168,6 +206,56 @@ function Split() {
                   className="button-split"
                 >
                   Bearish
+                </button>
+              </div>
+              <div className="splity-fifty">
+                <button
+                  onClick={() => {
+                    fi_selection("latest");
+                    set_curr_fi("Latest");
+                  }}
+                  className="button-split"
+                >
+                  Latest
+                </button>
+                <button
+                  onClick={() => {
+                    fi_selection("META,AAPL,AMZN,NFLX,GOOGL");
+                    set_curr_fi("MAANG");
+                  }}
+                  className="button-split"
+                >
+                  MAANG
+                </button>
+                <button
+                  onClick={() => {
+                    fi_selection(
+                      "MSFT,GOOGL,NVDA,AMD,AAPL,AMZN,META,CSCO,NFLX,IBM,TTD,ON,TSM,ORCL,ASML,RBLX"
+                    );
+                    set_curr_fi("Tech");
+                  }}
+                  className="button-split"
+                >
+                  Tech
+                </button>
+
+                <button
+                  onClick={() => {
+                    fi_selection("JPM,BAC,WFC,MS,RY,GS,SCHW,C,USB,PNC,IBKR");
+                    set_curr_fi("Banks");
+                  }}
+                  className="button-split"
+                >
+                  Banks
+                </button>
+                <button
+                  onClick={() => {
+                    fi_selection("PLD,AMT,EQIX,PSA,O,WELL,VICI,PSA,EQIX,CSGP");
+                    set_curr_fi("Real Estate");
+                  }}
+                  className="button-split"
+                >
+                  Real Estate
                 </button>
               </div>
             </div>
