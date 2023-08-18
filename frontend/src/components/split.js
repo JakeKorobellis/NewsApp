@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Side from "./sidebar";
+import convertTimestampToDate from "./time_convert";
+import convertISOToFormattedDateTime from "./time_convert-2";
 
 function Split() {
   //Protected Variables
@@ -54,7 +56,9 @@ function Split() {
                 View
               </a>
             </div>
-            <div className="">{curr.feedDate}</div>
+            <div className="small-text-date">
+              {convertTimestampToDate(curr.feedDate)}
+            </div>
           </div>
         </div>
       );
@@ -74,7 +78,9 @@ function Split() {
                 View
               </a>
             </div>
-            <div className="">{curr.updated_at}</div>
+            <div className="small-text-date">
+              {convertISOToFormattedDateTime(curr.updated_at)}
+            </div>
           </div>
         </div>
       );
