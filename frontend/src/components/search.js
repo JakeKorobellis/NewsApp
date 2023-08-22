@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Side from "./sidebar";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
@@ -13,26 +12,11 @@ function Search() {
     console.log(string, results);
   };
 
-  const handleOnHover = (result) => {
-    // the item hovered
-    console.log(result);
-  };
-
-  const handleOnSelect = (item) => {
-    // the item selected
-    console.log(item);
-  };
-
-  const handleOnFocus = () => {
-    console.log("Focused");
-  };
-
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: "block", textAlign: "left" }}>
-          name: {item.name}
-        </span>
+        <span style={{ display: "block", textAlign: "left" }}>{item.name}</span>
+        <span style={{ display: "block", textAlign: "left" }}>{item.id}</span>
       </>
     );
   };
@@ -58,19 +42,14 @@ function Search() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Search by Name</div>
-            <div className="stream-hold-all-2">
-              <div className="App">
-                <header className="App-header">
-                  <div style={{ width: 400 }}>
-                    <ReactSearchAutocomplete
-                      items={items}
-                      onSearch={handleOnSearch}
-                      formatResult={formatResult}
-                    />
-                  </div>
-                </header>
-              </div>
+            <div style={{ width: "30vw" }}>
+              <ReactSearchAutocomplete
+                items={items}
+                onSearch={handleOnSearch}
+                formatResult={formatResult}
+              />
             </div>
+            <div className="stream-hold-all-2"></div>
           </div>
         </div>
       </header>
