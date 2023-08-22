@@ -15,8 +15,26 @@ function Search() {
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: "block", textAlign: "left" }}>{item.name}</span>
-        <span style={{ display: "block", textAlign: "left" }}>{item.id}</span>
+        <span
+          style={{
+            display: "block",
+            textAlign: "left",
+            padding: "none",
+            fontSize: ".75vw",
+          }}
+        >
+          {item.name}
+        </span>
+        <span
+          style={{
+            display: "block",
+            textAlign: "left",
+            padding: "none",
+            fontSize: ".75vw",
+          }}
+        >
+          {item.id}
+        </span>
       </>
     );
   };
@@ -42,7 +60,11 @@ function Search() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Search by Name</div>
-            <div style={{ width: "30vw" }}>
+            <div
+              style={{
+                width: "30vw",
+              }}
+            >
               <ReactSearchAutocomplete
                 items={items}
                 onSearch={handleOnSearch}
