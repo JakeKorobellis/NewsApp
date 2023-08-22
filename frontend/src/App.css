@@ -257,6 +257,16 @@ a{
  justify-content: center;
  align-items: center;
 }
+
+.stream-hold-all-2{
+  height: 70vh;
+ background: grey;
+ width: 90%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
 .current-side{
   color: #2272FF;
   font-size: 1.25vw;

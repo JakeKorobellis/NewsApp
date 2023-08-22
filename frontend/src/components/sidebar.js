@@ -24,7 +24,7 @@ function Side(curr) {
 
       <span>
         <a
-          href="/content"
+          href="/content/search"
           className={current == 3 ? "current-side" : "notcurrent-side"}
         >
           Search
