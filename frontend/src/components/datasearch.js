@@ -662,6 +662,46 @@ const data = [
     name: "Injective Protocol",
     id: "INJ",
   },
+  {
+    name: "SPDR S&P 500 ETF Trust",
+    id: "SPY",
+  },
+  {
+    name: "Invesco QQQ Trust",
+    id: "QQQ",
+  },
+  {
+    name: "iShares Russell 2000 ETF",
+    id: "IWM",
+  },
+  {
+    name: "Vanguard Total Stock Market ETF",
+    id: "VTI",
+  },
+  {
+    name: "Vanguard Total Bond Market ETF",
+    id: "BND",
+  },
+  {
+    name: "iShares MSCI Emerging Markets ETF",
+    id: "EEM",
+  },
+  {
+    name: "iShares iBoxx $ Investment Grade Corporate Bond ETF",
+    id: "LQD",
+  },
+  {
+    name: "SPDR Gold Trust",
+    id: "GLD",
+  },
+  {
+    name: "Vanguard FTSE Developed Markets ETF",
+    id: "VEA",
+  },
+  {
+    name: "Vanguard Real Estate ETF",
+    id: "VNQ",
+  },
 ];
 
 export default data;
