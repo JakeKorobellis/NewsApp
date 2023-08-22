@@ -1,27 +1,41 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Side from "./sidebar";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import data from "./datasearch";
 
 function Search() {
-  const stock_route = process.env.REACT_APP_STOCK;
-  const crypto_route = process.env.REACT_APP_CRYPTO;
+  const items = data;
 
-  const [stocks, setStock] = React.useState([]);
-  const [crypto, setCrypto] = React.useState([]);
+  const handleOnSearch = (string, results) => {
+    // onSearch will have as the first callback parameter
+    // the string searched and for the second the results.
+    console.log(string, results);
+  };
 
-  React.useEffect(() => {
-    fetch(stock_route)
-      .then((res) => res.json())
-      .then((res) => setStock(res));
+  const handleOnHover = (result) => {
+    // the item hovered
+    console.log(result);
+  };
 
-    fetch(crypto_route)
-      .then((res) => res.json())
-      .then((res) => setCrypto(res));
-  }, []);
+  const handleOnSelect = (item) => {
+    // the item selected
+    console.log(item);
+  };
 
-  const all = [...stocks, ...crypto.data];
+  const handleOnFocus = () => {
+    console.log("Focused");
+  };
 
-  console.log(all);
+  const formatResult = (item) => {
+    return (
+      <>
+        <span style={{ display: "block", textAlign: "left" }}>
+          name: {item.name}
+        </span>
+      </>
+    );
+  };
 
   return (
     <div className="App">
@@ -44,7 +58,19 @@ function Search() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Search by Name</div>
-            <div className="stream-hold-all-2">ready</div>
+            <div className="stream-hold-all-2">
+              <div className="App">
+                <header className="App-header">
+                  <div style={{ width: 400 }}>
+                    <ReactSearchAutocomplete
+                      items={items}
+                      onSearch={handleOnSearch}
+                      formatResult={formatResult}
+                    />
+                  </div>
+                </header>
+              </div>
+            </div>
           </div>
         </div>
       </header>
