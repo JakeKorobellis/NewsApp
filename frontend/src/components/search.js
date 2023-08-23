@@ -9,9 +9,14 @@ function Search() {
   const url1 = process.env.REACT_APP_URL1;
   const url2 = process.env.REACT_APP_URL2;
   const url3 = process.env.REACT_APP_URL3;
+  const url4 = process.env.REACT_APP_URL4;
+  const url5 = process.env.REACT_APP_URL5;
+  const url6 = process.env.REACT_APP_URL6;
+
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
+  const [chartData, setChartData] = React.useState([]);
   const [current, setCurrent] = React.useState([]);
   const [placeholder1, setPlaceholder] = React.useState(
     "SPDR S&P 500 ETF Trust"
@@ -33,7 +38,24 @@ function Search() {
         // Handle errors here
         console.error("Error:", error);
       });
+    fetch(url6, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the response data here
+        setChartData(data.bars);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+      });
   }, []);
+
+  console.log(chartData);
 
   const items = data;
   const handleOnSelect = (item) => {
@@ -54,6 +76,26 @@ function Search() {
       });
 
     setPlaceholder(item.name);
+
+    if (item.type) {
+      setChartData(["crypto not implemented"]);
+    } else {
+      fetch(url4 + item.id + url5, {
+        headers: {
+          "APCA-API-KEY-ID": key,
+          "APCA-API-SECRET-KEY": secret,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Process the response data here
+          setChartData(data.bars);
+        })
+        .catch((error) => {
+          // Handle errors here
+          console.error("Error:", error);
+        });
+    }
 
     console.log(item);
   };
