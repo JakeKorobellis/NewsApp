@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "./datasearch";
 import convertISOToFormattedDateTime from "./time_convert-2";
+import convert_data from "./chartdata_convert";
 
 function Search() {
   //Protected Variables
@@ -49,7 +50,9 @@ function Search() {
       .then((response) => response.json())
       .then((data) => {
         // Process the response data here
-        setChartData(data.bars);
+        //Converting data to correct format
+
+        setChartData(convert_data(data.bars));
       })
       .catch((error) => {
         // Handle errors here
