@@ -281,12 +281,10 @@ a{
 .top-movers{
   width: 45%;
   height: 100%;
-  background: blueviolet;
   overflow-y: auto;
 }
 .title-hold{
   height: 10%;
-  background: orange;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -451,12 +449,28 @@ gap: 10px;
   overflow-y: auto;
   align-items: center;
   padding: 3%;
-
 }
+.data-hold-active2{
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  overflow-y: auto;
+  align-items: center;
+  padding: 3%;
+}
+
 .data-active-flex{
   display: flex;
   width: 100%;
   justify-content: space-between;
   width: 50%;
   font-size: 2vw;
+}
+.button-render{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5%;
+height: 10%;
 }

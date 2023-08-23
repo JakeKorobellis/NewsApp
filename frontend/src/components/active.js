@@ -8,10 +8,15 @@ function Active() {
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
   const url9 = process.env.REACT_APP_URL9;
+  const url10 = process.env.REACT_APP_URL10;
 
-  const [currentState, setCurrentState] = React.useState("Stocks");
+  const [currentState, setCurrentState] = React.useState("Gainers");
   const [mostActive, setMostActive] = React.useState([]);
   const [lastUpdateActive, setLastUpdateActive] = React.useState("");
+  const [gainers, setGainers] = React.useState([]);
+  const [losers, setLosers] = React.useState([]);
+  const [lastUpdatedMovers, setLastUpdateMovers] = React.useState("");
+  const [defaultMover, setDefaultMovers] = React.useState([]);
 
   React.useEffect(() => {
     fetch(url9, {
@@ -32,9 +37,31 @@ function Active() {
         // Handle errors here
         console.error("Error:", error);
       });
+
+    fetch(url10, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the response data here
+        setDefaultMovers(data.gainers);
+
+        setGainers(data.gainers);
+        setLosers(data.losers);
+        setLastUpdateMovers(
+          `Last Updated: ${convertISOToFormattedDateTime(data.last_updated)}`
+        );
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+      });
   }, []);
 
-  console.log(mostActive);
+  console.log(gainers);
 
   function renederActive(data) {
     return data.map((curr) => {
@@ -45,6 +72,23 @@ function Active() {
         </div>
       );
     });
+  }
+
+  function renederMovers(data) {
+    return data.map((curr) => {
+      return (
+        <div className="data-active-flex">
+          <div>${curr.symbol}</div>
+          <div>{curr.percent_change}%</div>
+        </div>
+      );
+    });
+  }
+
+  function changeStateMovers(data, curr) {
+    console.log(data);
+    setCurrentState(curr);
+    setDefaultMovers(data);
   }
 
   return (
@@ -81,7 +125,32 @@ function Active() {
                 </div>
               </div>
               <div className="top-movers">
-                <div className="title-hold">Top Movers: {currentState}</div>
+                <div className="title-hold">
+                  Top Movers: {currentState}
+                  <div className="last-updated">
+                    {lastUpdatedMovers ? lastUpdatedMovers : ""}
+                  </div>
+                </div>
+                <div className="data-hold-active2">
+                  {gainers && losers
+                    ? renederMovers(defaultMover)
+                    : "Loading..."}
+                </div>
+                <div className="button-render">
+                  <button
+                    className="button-split"
+                    onClick={() => changeStateMovers(gainers, "Gainers")}
+                  >
+                    Gainers
+                  </button>
+
+                  <button
+                    className="button-split"
+                    onClick={() => changeStateMovers(losers, "Losers")}
+                  >
+                    Losers
+                  </button>
+                </div>
               </div>
             </div>
           </div>
