@@ -265,6 +265,7 @@ a{
  display: flex;
  justify-content: center;
  align-items: center;
+ justify-content: space-evenly;
 }
 
 .current-side{
@@ -391,4 +392,16 @@ gap: 10px;
 }
 .small-text-date{
   font-size: .75vw;
+}
+.news-search{
+  width: 45%;
+  background: orange;
+  height: 95%;
+  display: flex;
+}
+.chart-search{
+  width: 45%;
+  background: green;
+  height: 95%;
+  display: flex;
 }

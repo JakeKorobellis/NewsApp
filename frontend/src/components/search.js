@@ -4,8 +4,36 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "./datasearch";
 
 function Search() {
-  const items = data;
+  //Protected Variables
+  const url1 = process.env.REACT_APP_URL1;
+  const url2 = process.env.REACT_APP_URL2;
+  const url3 = process.env.REACT_APP_URL3;
+  const key = process.env.REACT_APP_KEY;
+  const secret = process.env.REACT_APP_SECRET;
 
+  const [current, setCurrent] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(url3, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the response data here
+        setCurrent(data.news);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+      });
+  }, []);
+
+  console.log(current);
+
+  const items = data;
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
@@ -69,9 +97,13 @@ function Search() {
                 items={items}
                 onSearch={handleOnSearch}
                 formatResult={formatResult}
+                placeholder="SPDR S&P 500 ETF Trust"
               />
             </div>
-            <div className="stream-hold-all-2"></div>
+            <div className="stream-hold-all-2">
+              <div className="news-search"></div>
+              <div className="chart-search"></div>
+            </div>
           </div>
         </div>
       </header>
