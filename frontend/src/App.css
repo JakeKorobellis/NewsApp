@@ -266,6 +266,15 @@ a{
  align-items: center;
  justify-content: space-evenly;
 }
+.stream-hold-all-3{
+  height: 70vh;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background: grey;
+}
 
 .current-side{
   color: #2272FF;

@@ -7,6 +7,8 @@ import Test from "./components/test";
 import Login from "./components/login";
 import Split from "./components/split";
 import Search from "./components/search";
+import Active from "./components/active";
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,7 @@ function App() {
             <Route path="/content" element={<ConetentHome />}></Route>
             <Route path="/content/split" element={<Split />} />
             <Route path="/content/search" element={<Search />} />
+            <Route path="/content/active" element={<Active />} />
           </Routes>
         </BrowserRouter>
       </header>

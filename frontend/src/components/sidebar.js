@@ -32,10 +32,10 @@ function Side(curr) {
       </span>
       <span>
         <a
-          href="/content"
+          href="/content/active"
           className={current == 4 ? "current-side" : "notcurrent-side"}
         >
-          Charts
+          Active
         </a>
       </span>
       <span>
