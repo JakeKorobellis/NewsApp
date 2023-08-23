@@ -89,7 +89,9 @@ function Search() {
       };
       fetch(url7 + item.id + url8, options)
         .then((response) => response.json())
-        .then((response) => setChartData(response.bars[`${item.id}/USD`]))
+        .then((response) =>
+          setChartData(convert_data(response.bars[`${item.id}/USD`]))
+        )
         .catch((err) => console.error(err));
     } else {
       //If a Stock
@@ -101,7 +103,7 @@ function Search() {
       })
         .then((response) => response.json())
         .then((data) => {
-          setChartData(data.bars);
+          setChartData(convert_data(data.bars));
         })
         .catch((error) => {
           console.error("Error:", error);
