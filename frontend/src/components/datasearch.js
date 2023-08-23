@@ -277,384 +277,79 @@ const data = [
   {
     name: "Bitcoin",
     id: "BTC",
+    type: "Coin",
   },
   {
     name: "Ethereum",
     id: "ETH",
-  },
-  {
-    name: "Binance Coin",
-    id: "BNB",
-  },
-  {
-    name: "Cardano",
-    id: "ADA",
-  },
-  {
-    name: "Solana",
-    id: "SOL",
-  },
-  {
-    name: "XRP",
-    id: "XRP",
+    type: "Coin",
   },
 
   {
     name: "USD Coin",
     id: "USDC",
+    type: "Coin",
   },
   {
-    name: "Terra",
-    id: "LUNA",
+    name: "Tether",
+    id: "USDT",
+    type: "Coin",
   },
   {
     name: "Avalanche",
     id: "AVAX",
+    type: "Coin",
   },
   {
     name: "Chainlink",
     id: "LINK",
+    type: "Coin",
   },
   {
     name: "Litecoin",
     id: "LTC",
-  },
-  {
-    name: "Polygon",
-    id: "MATIC",
-  },
-  {
-    name: "Stellar",
-    id: "XLM",
-  },
-  {
-    name: "VeChain",
-    id: "VET",
-  },
-  {
-    name: "Crypto.com Coin",
-    id: "CRO",
-  },
-  {
-    name: "Theta",
-    id: "THETA",
-  },
-  {
-    name: "Filecoin",
-    id: "FIL",
+    type: "Coin",
   },
   {
     name: "Uniswap",
     id: "UNI",
+    type: "Coin",
   },
   {
     name: "Tezos",
     id: "XTZ",
   },
   {
-    name: "Cosmos",
-    id: "ATOM",
-  },
-  {
-    name: "Tron",
-    id: "TRX",
-  },
-  {
-    name: "IOTA",
-    id: "MIOTA",
-  },
-  {
     name: "Aave",
     id: "AAVE",
+    type: "Coin",
   },
   {
     name: "Bitcoin Cash",
     id: "BCH",
   },
-  {
-    name: "Monero",
-    id: "XMR",
-  },
-  {
-    name: "EOS",
-    id: "EOS",
-  },
+
   {
     name: "Maker",
     id: "MKR",
-  },
-  {
-    name: "Algorand",
-    id: "ALGO",
-  },
-  {
-    name: "Compound",
-    id: "COMP",
-  },
-  {
-    name: "Dash",
-    id: "DASH",
-  },
-  {
-    name: "NEO",
-    id: "NEO",
-  },
-  {
-    name: "Huobi Token",
-    id: "HT",
-  },
-  {
-    name: "PancakeSwap",
-    id: "CAKE",
-  },
-  {
-    name: "Polymath",
-    id: "POLY",
-  },
-  {
-    name: "BitTorrent",
-    id: "BTT",
-  },
-  {
-    name: "FTX Token",
-    id: "FTT",
-  },
-  {
-    name: "Zcash",
-    id: "ZEC",
-  },
-  {
-    name: "Decred",
-    id: "DCR",
-  },
-  {
-    name: "Synthetix",
-    id: "SNX",
-  },
-  {
-    name: "Ravencoin",
-    id: "RVN",
-  },
-  {
-    name: "Holo",
-    id: "HOT",
-  },
-  {
-    name: "NEM",
-    id: "XEM",
-  },
-  {
-    name: "Celo",
-    id: "CELO",
-  },
-  {
-    name: "SushiSwap",
-    id: "SUSHI",
-  },
-  {
-    name: "Kusama",
-    id: "KSM",
-  },
-  {
-    name: "Yearn.finance",
-    id: "YFI",
-  },
-  {
-    name: "Elrond",
-    id: "EGLD",
-  },
-  {
-    name: "Ontology",
-    id: "ONT",
-  },
-  {
-    name: "IOST",
-    id: "IOST",
-  },
-  {
-    name: "Hedera Hashgraph",
-    id: "HBAR",
-  },
-  {
-    name: "1inch",
-    id: "1INCH",
-  },
-  {
-    name: "Ren",
-    id: "REN",
-  },
-  {
-    name: "ICON",
-    id: "ICX",
-  },
-  {
-    name: "Bitcoin SV",
-    id: "BSV",
-  },
-  {
-    name: "DigiByte",
-    id: "DGB",
-  },
-  {
-    name: "KuCoin Token",
-    id: "KCS",
-  },
-  {
-    name: "Qtum",
-    id: "QTUM",
-  },
-  {
-    name: "Curve DAO Token",
-    id: "CRV",
-  },
-  {
-    name: "Synthetix",
-    id: "SNX",
-  },
-  {
-    name: "Decentraland",
-    id: "MANA",
-  },
-  {
-    name: "Enjin Coin",
-    id: "ENJ",
-  },
-  {
-    name: "Nexo",
-    id: "NEXO",
-  },
-  {
-    name: "Reserve Rights",
-    id: "RSR",
-  },
-  {
-    name: "Siacoins",
-    id: "SC",
-  },
-  {
-    name: "SwissBorg",
-    id: "CHSB",
-  },
-  {
-    name: "Zilliqa",
-    id: "ZIL",
+    type: "Coin",
   },
   {
     name: "Basic Attention Token",
     id: "BAT",
-  },
-  {
-    name: "Band Protocol",
-    id: "BAND",
-  },
-  {
-    name: "VeThor Token",
-    id: "VTHO",
-  },
-  {
-    name: "Celsius Network",
-    id: "CEL",
-  },
-  {
-    name: "OMG Network",
-    id: "OMG",
-  },
-  {
-    name: "Flow",
-    id: "FLOW",
+    type: "Coin",
   },
   {
     name: "Curve DAO Token",
     id: "CRV",
-  },
-  {
-    name: "Ampleforth",
-    id: "AMPL",
-  },
-  {
-    name: "Siacoin",
-    id: "SC",
-  },
-  {
-    name: "Augur",
-    id: "REP",
+    type: "Coin",
   },
   {
     name: "The Graph",
     id: "GRT",
+    type: "Coin",
   },
-  {
-    name: "Ocean Protocol",
-    id: "OCEAN",
-  },
-  {
-    name: "Horizen",
-    id: "ZEN",
-  },
-  {
-    name: "Bancor",
-    id: "BNT",
-  },
-  {
-    name: "Serum",
-    id: "SRM",
-  },
-  {
-    name: "Keep Network",
-    id: "KEEP",
-  },
-  {
-    name: "Kava",
-    id: "KAVA",
-  },
-  {
-    name: "Fetch.ai",
-    id: "FET",
-  },
-  {
-    name: "Arweave",
-    id: "AR",
-  },
-  {
-    name: "Balancer",
-    id: "BAL",
-  },
-  {
-    name: "Status",
-    id: "SNT",
-  },
-  {
-    name: "Origin Protocol",
-    id: "OGN",
-  },
-  {
-    name: "Secret",
-    id: "SCRT",
-  },
-  {
-    name: "Ankr",
-    id: "ANKR",
-  },
-  {
-    name: "Numeraire",
-    id: "NMR",
-  },
-  {
-    name: "Venus",
-    id: "XVS",
-  },
-  {
-    name: "Anchor Protocol",
-    id: "ANC",
-  },
-  {
-    name: "TomoChain",
-    id: "TOMO",
-  },
-  {
-    name: "Injective Protocol",
-    id: "INJ",
-  },
+
   {
     name: "SPDR S&P 500 ETF Trust",
     id: "SPY",

@@ -13,6 +13,9 @@ function Search() {
   const secret = process.env.REACT_APP_SECRET;
 
   const [current, setCurrent] = React.useState([]);
+  const [placeholder1, setPlaceholder] = React.useState(
+    "SPDR S&P 500 ETF Trust"
+  );
 
   React.useEffect(() => {
     fetch(url3, {
@@ -49,6 +52,8 @@ function Search() {
         // Handle errors here
         console.error("Error:", error);
       });
+
+    setPlaceholder(item.name);
 
     console.log(item);
   };
@@ -131,7 +136,7 @@ function Search() {
                 items={items}
                 onSelect={handleOnSelect}
                 formatResult={formatResult}
-                placeholder="SPDR S&P 500 ETF Trust"
+                placeholder={placeholder1}
               />
             </div>
             <div className="stream-hold-all-2">
