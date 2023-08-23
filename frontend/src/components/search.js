@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Side from "./sidebar";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "./datasearch";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import convert_data from "./chartdata_convert";
+import Chart from "./chartDisplay";
 
 function Search() {
   //Protected Variables
@@ -59,8 +60,6 @@ function Search() {
         console.error("Error:", error);
       });
   }, []);
-
-  console.log(chartData);
 
   const items = data;
   const handleOnSelect = (item) => {
@@ -197,7 +196,13 @@ function Search() {
               <div className="news-search">
                 {current ? formatData(current) : "Loading"}
               </div>
-              <div className="chart-search"></div>
+              <div className="chart-search">
+                {chartData.length > 0 ? (
+                  <Chart priceData={chartData} />
+                ) : (
+                  "Loading"
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -260,7 +260,6 @@ a{
 
 .stream-hold-all-2{
   height: 70vh;
- background: grey;
  width: 90%;
  display: flex;
  justify-content: center;
@@ -405,7 +404,8 @@ gap: 10px;
 }
 .chart-search{
   width: 45%;
-  background: green;
   height: 95%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }

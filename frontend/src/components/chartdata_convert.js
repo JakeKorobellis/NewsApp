@@ -1,8 +1,10 @@
 //Time helper function
 function convertToReadableDate(time) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  const readableDate = new Date(time).toLocaleString("en-US", options);
-  return readableDate;
+  const date = new Date(time);
+  const formattedDate = `${date.getFullYear()}-${String(
+    date.getMonth() + 1
+  ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  return formattedDate;
 }
 
 function convert_data(bars) {
@@ -11,7 +13,7 @@ function convert_data(bars) {
     high: curr.h,
     low: curr.l,
     close: curr.c,
-    time: convertToReadableDate(curr.t),
+    time: Date.parse(curr.t) / 1000,
   }));
 }
 
