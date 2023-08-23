@@ -181,7 +181,7 @@ function Search() {
             <Side curr={3} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">Search by Name</div>
+            <div className="title-all ">Search by Name</div>
             <div
               style={{
                 width: "30vw",
@@ -199,11 +199,7 @@ function Search() {
                 {current ? formatData(current) : "Loading"}
               </div>
               <div className="chart-search">
-                {chartData.length > 0 ? (
-                  <Chart priceData={chartData} />
-                ) : (
-                  "Loading"
-                )}
+                <Chart priceData={chartData} />
               </div>
             </div>
           </div>
