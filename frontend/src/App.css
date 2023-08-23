@@ -275,6 +275,34 @@ a{
   justify-content: space-evenly;
   background: grey;
 }
+.most-active{
+  width: 45%;
+  height: 100%;
+  background: green;
+  overflow-y: auto;
+}
+.top-movers{
+  width: 45%;
+  height: 100%;
+  background: blueviolet;
+  overflow-y: auto;
+}
+.title-hold{
+  height: 10%;
+  background: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2.5vw;
+}
+
+.last-updated{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
+}
 
 .current-side{
   color: #2272FF;
