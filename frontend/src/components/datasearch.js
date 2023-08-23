@@ -165,14 +165,7 @@ const data = [
     name: "Merck & Co. Inc.",
     id: "MRK",
   },
-  {
-    name: "Disney Inc.",
-    id: "DIS",
-  },
-  {
-    name: "UnitedHealth Group Inc.",
-    id: "UNH",
-  },
+
   {
     name: "Adobe Inc.",
     id: "ADBE",
@@ -185,15 +178,7 @@ const data = [
     name: "Microsoft Corporation",
     id: "MSFT",
   },
-  {
-    name: "Alphabet Inc.",
-    id: "GOOGL",
-  },
 
-  {
-    name: "Netflix Inc.",
-    id: "NFLX",
-  },
   {
     name: "PayPal Holdings Inc.",
     id: "PYPL",
