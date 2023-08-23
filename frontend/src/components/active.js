@@ -36,6 +36,17 @@ function Active() {
 
   console.log(mostActive);
 
+  function renederActive(data) {
+    return data.map((curr) => {
+      return (
+        <div className="data-active-flex">
+          <div>${curr.symbol}</div>
+          <div>{curr.volume}</div>
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -65,7 +76,9 @@ function Active() {
                     {lastUpdateActive ? lastUpdateActive : ""}
                   </div>
                 </div>
-                <div className="data-hold-active"></div>
+                <div className="data-hold-active">
+                  {mostActive ? renederActive(mostActive) : "Loading..."}
+                </div>
               </div>
               <div className="top-movers">
                 <div className="title-hold">Top Movers: {currentState}</div>

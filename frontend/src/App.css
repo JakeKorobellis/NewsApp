@@ -273,13 +273,10 @@ a{
   justify-content: center;
   align-items: center;
   justify-content: space-evenly;
-  background: grey;
 }
 .most-active{
   width: 45%;
   height: 100%;
-  background: green;
-  overflow-y: auto;
 }
 .top-movers{
   width: 45%;
@@ -335,9 +332,6 @@ padding: 1%;
 display: flex;
 flex-direction: column;
 gap: 10px;
-
-
-
 }
 
 .stocks-hold{
@@ -348,8 +342,6 @@ gap: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
-  
 }
 .hold-crypto-news{
   display: flex;
@@ -451,4 +443,20 @@ gap: 10px;
   width: 100%;
   display: flex;
   width: 10vw;
+}
+.data-hold-active{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  overflow-y: auto;
+  align-items: center;
+  padding: 3%;
+
+}
+.data-active-flex{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 2vw;
 }
