@@ -298,14 +298,7 @@ const data = [
     name: "XRP",
     id: "XRP",
   },
-  {
-    name: "Polkadot",
-    id: "DOT",
-  },
-  {
-    name: "Dogecoin",
-    id: "DOGE",
-  },
+
   {
     name: "USD Coin",
     id: "USDC",

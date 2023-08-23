@@ -32,13 +32,25 @@ function Search() {
       });
   }, []);
 
-  console.log(current);
-
   const items = data;
-  const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    console.log(string, results);
+  const handleOnSelect = (item) => {
+    fetch(url1 + item.id + url2, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the response data here
+        setCurrent(data.news);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error:", error);
+      });
+
+    console.log(item);
   };
 
   const formatResult = (item) => {
@@ -117,7 +129,7 @@ function Search() {
             >
               <ReactSearchAutocomplete
                 items={items}
-                onSearch={handleOnSearch}
+                onSelect={handleOnSelect}
                 formatResult={formatResult}
                 placeholder="SPDR S&P 500 ETF Trust"
               />
