@@ -395,9 +395,13 @@ gap: 10px;
 }
 .news-search{
   width: 45%;
-  background: orange;
   height: 95%;
   display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 1vw;
+  padding: 1vw;
+
 }
 .chart-search{
   width: 45%;

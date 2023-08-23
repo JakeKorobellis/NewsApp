@@ -2,6 +2,7 @@ import React from "react";
 import Side from "./sidebar";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "./datasearch";
+import convertISOToFormattedDateTime from "./time_convert-2";
 
 function Search() {
   //Protected Variables
@@ -67,6 +68,27 @@ function Search() {
     );
   };
 
+  function formatData(news) {
+    return news.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.headline}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.url} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="small-text-date">
+              {convertISOToFormattedDateTime(curr.updated_at)}
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -101,7 +123,9 @@ function Search() {
               />
             </div>
             <div className="stream-hold-all-2">
-              <div className="news-search"></div>
+              <div className="news-search">
+                {current ? formatData(current) : "Loading"}
+              </div>
               <div className="chart-search"></div>
             </div>
           </div>
