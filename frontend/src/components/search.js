@@ -12,6 +12,8 @@ function Search() {
   const url4 = process.env.REACT_APP_URL4;
   const url5 = process.env.REACT_APP_URL5;
   const url6 = process.env.REACT_APP_URL6;
+  const url7 = process.env.REACT_APP_URL7;
+  const url8 = process.env.REACT_APP_URL8;
 
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
@@ -78,8 +80,17 @@ function Search() {
     setPlaceholder(item.name);
 
     if (item.type) {
-      setChartData(["crypto not implemented"]);
+      //If a crypto currency
+      const options = {
+        method: "GET",
+        headers: { accept: "application/json" },
+      };
+      fetch(url7 + item.id + url8, options)
+        .then((response) => response.json())
+        .then((response) => setChartData(response.bars[`${item.id}/USD`]))
+        .catch((err) => console.error(err));
     } else {
+      //If a Stock
       fetch(url4 + item.id + url5, {
         headers: {
           "APCA-API-KEY-ID": key,
@@ -88,11 +99,9 @@ function Search() {
       })
         .then((response) => response.json())
         .then((data) => {
-          // Process the response data here
           setChartData(data.bars);
         })
         .catch((error) => {
-          // Handle errors here
           console.error("Error:", error);
         });
     }
