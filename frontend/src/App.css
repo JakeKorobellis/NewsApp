@@ -257,6 +257,15 @@ a{
  justify-content: center;
  align-items: center;
 }
+.stream-hold-all4{
+  height: 70vh;
+  background: grey;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .stream-hold-all-2{
   height: 70vh;
@@ -473,4 +482,14 @@ gap: 10px;
   align-items: flex-end;
   gap: 5%;
 height: 10%;
+}
+.inshorthold{
+  height: 90%;
+  width: 100%;
+  background: green;
+}
+.selector-hold{
+  height: 10%;
+  width: 100%;
+  background: orange;
 }
