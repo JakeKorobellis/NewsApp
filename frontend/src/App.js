@@ -8,6 +8,7 @@ import Login from "./components/login";
 import Split from "./components/split";
 import Search from "./components/search";
 import Active from "./components/active";
+import Dividen from "./components/dividen";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/content/split" element={<Split />} />
             <Route path="/content/search" element={<Search />} />
             <Route path="/content/active" element={<Active />} />
+            <Route path="/content/dividen" element={<Dividen />} />
           </Routes>
         </BrowserRouter>
       </header>

@@ -40,10 +40,10 @@ function Side(curr) {
       </span>
       <span>
         <a
-          href="/content"
+          href="/content/dividen"
           className={current == 5 ? "current-side" : "notcurrent-side"}
         >
-          Favorites
+          Dividens
         </a>
       </span>
     </div>
