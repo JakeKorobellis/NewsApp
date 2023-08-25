@@ -48,7 +48,7 @@ function Side(curr) {
       </span>
       <span>
         <a
-          href="/content"
+          href="/content/MandA"
           className={current == 6 ? "current-side" : "notcurrent-side"}
         >
           Mergers
