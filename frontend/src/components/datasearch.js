@@ -13,6 +13,14 @@ const data = [
     id: "GOOGL",
   },
   {
+    name: "AMC Entertainment Holdings Inc",
+    id: "AMC",
+  },
+  {
+    name: "GameStop Corp",
+    id: "GME",
+  },
+  {
     name: "Facebook Inc.",
     id: "FB",
   },

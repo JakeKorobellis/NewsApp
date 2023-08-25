@@ -1,13 +1,11 @@
 import React from "react";
 import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
-import get90Prior from "./dates/get90Prior";
+import get30Prior from "./dates/get30Prior";
 
 function Dividen() {
   const curr = getCurrentYYYYMMDD();
-  const prior = get90Prior(curr);
-  console.log(curr);
-  console.log(prior);
+  const prior = get30Prior(curr);
 
   const url11 = process.env.REACT_APP_URL11;
   const url12 = process.env.REACT_APP_URL12;
@@ -15,18 +13,36 @@ function Dividen() {
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
-  console.log(curr, get90Prior(curr));
+  const [ready, setReady] = React.useState(false);
+  const [data, setData] = React.useState([]);
+  console.log(data);
 
   React.useEffect(() => {
-    fetch(`${url11}Split${url12}${prior}${url13}${curr}`, {
+    fetch(`${url11}Dividend${url12}${prior}${url13}${curr}`, {
       headers: {
         "APCA-API-KEY-ID": key,
         "APCA-API-SECRET-KEY": secret,
       },
     })
       .then((res) => res.json())
-      .then((res) => console.log(res.reverse()));
+      .then((res) => setData(res.reverse()));
+
+    setReady(true);
   }, []);
+
+  function renderData(data) {
+    return data.map((curr) => {
+      return (
+        <div className="data-hold-div">
+          <div className="twentyfive test">{curr.target_symbol}</div>
+          <div className="twentyfive">${curr.cash}</div>
+          <div className="twentyfive">{curr.declaration_date}</div>
+          <div className="twentyfive">{curr.record_date}</div>
+          <div className="twentyfive">{curr.payable_date}</div>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="App">
@@ -48,9 +64,26 @@ function Dividen() {
             <Side curr={5} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">Live</div>
-            <div className="stream-hold-all">
-              Will hold the news via a stream
+            <div className="title-all">Dividen Payouts</div>
+            <div className="stream-hold-all4">
+              {ready && data ? (
+                <>
+                  <div className="titles-div">
+                    <div className="twentyfive2 black-text">Symbol</div>
+                    <div className="twentyfive2 black-text">Amount</div>
+                    <div className="twentyfive2 black-text">
+                      Declaration Date
+                    </div>
+                    <div className="twentyfive2 black-text">Record Date</div>
+                    <div className="twentyfive2 black-text">Payable Date</div>
+                  </div>
+                  <div className="stream-hold-all5">
+                    <div>{renderData(data)}</div>
+                  </div>
+                </>
+              ) : (
+                "Loading..."
+              )}
             </div>
           </div>
         </div>

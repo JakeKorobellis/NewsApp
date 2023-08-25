@@ -150,11 +150,11 @@ function Split() {
             <Side curr={2} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">Split</div>
+            <div className="title-all">Split News</div>
             <div className="selection-split-hold">
-              <div className="fifty-selection">{curr_crypto}</div>
+              <div className="fifty-selection black-text">{curr_crypto}</div>
 
-              <div className="fifty-selection">{curr_fi}</div>
+              <div className="fifty-selection black-text">{curr_fi}</div>
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">

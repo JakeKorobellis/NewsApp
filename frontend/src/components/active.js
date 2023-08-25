@@ -114,7 +114,7 @@ function Active() {
             <div className="title-all">What's Hot</div>
             <div className="stream-hold-all-3">
               <div className="most-active">
-                <div className="title-hold">
+                <div className="title-hold black-text">
                   Most Active
                   <div className="last-updated">
                     {lastUpdateActive ? lastUpdateActive : ""}
@@ -125,7 +125,7 @@ function Active() {
                 </div>
               </div>
               <div className="top-movers">
-                <div className="title-hold">
+                <div className="title-hold black-text">
                   Top Movers: {currentState}
                   <div className="last-updated">
                     {lastUpdatedMovers ? lastUpdatedMovers : ""}
