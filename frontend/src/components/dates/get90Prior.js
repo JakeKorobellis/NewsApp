@@ -1,6 +1,6 @@
 function getDateBefore(inputDate) {
   const input = new Date(inputDate);
-  input.setDate(input.getDate() - 90);
+  input.setDate(input.getDate() - 89);
 
   const year = input.getFullYear();
   const month = String(input.getMonth() + 1).padStart(2, "0");

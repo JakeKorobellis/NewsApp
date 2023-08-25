@@ -5,9 +5,28 @@ import get90Prior from "./dates/get90Prior";
 
 function Dividen() {
   const curr = getCurrentYYYYMMDD();
-  get90Prior(curr);
+  const prior = get90Prior(curr);
+  console.log(curr);
+  console.log(prior);
+
+  const url11 = process.env.REACT_APP_URL11;
+  const url12 = process.env.REACT_APP_URL12;
+  const url13 = process.env.REACT_APP_URL13;
+  const key = process.env.REACT_APP_KEY;
+  const secret = process.env.REACT_APP_SECRET;
 
   console.log(curr, get90Prior(curr));
+
+  React.useEffect(() => {
+    fetch(`${url11}Split${url12}${prior}${url13}${curr}`, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res.reverse()));
+  }, []);
 
   return (
     <div className="App">
