@@ -10,7 +10,7 @@ function Side(curr) {
           href="/content"
           className={current == 1 ? "current-side" : "notcurrent-side"}
         >
-          Live
+          Live News
         </a>
       </span>
       <span>
@@ -18,7 +18,7 @@ function Side(curr) {
           href="/content/split"
           className={current == 2 ? "current-side" : "notcurrent-side"}
         >
-          Split
+          Split News
         </a>
       </span>
 
@@ -27,7 +27,7 @@ function Side(curr) {
           href="/content/search"
           className={current == 3 ? "current-side" : "notcurrent-side"}
         >
-          Search
+          Asset Search
         </a>
       </span>
       <span>
@@ -35,7 +35,7 @@ function Side(curr) {
           href="/content/active"
           className={current == 4 ? "current-side" : "notcurrent-side"}
         >
-          Active
+          Active Stocks
         </a>
       </span>
       <span>
@@ -43,7 +43,7 @@ function Side(curr) {
           href="/content/dividen"
           className={current == 5 ? "current-side" : "notcurrent-side"}
         >
-          Dividens
+          Dividen Payout
         </a>
       </span>
       <span>
@@ -51,7 +51,7 @@ function Side(curr) {
           href="/content/MandA"
           className={current == 6 ? "current-side" : "notcurrent-side"}
         >
-          Mergers
+          Stock Mergers
         </a>
       </span>
       <span>
@@ -59,7 +59,7 @@ function Side(curr) {
           href="/content/StockSplits"
           className={current == 7 ? "current-side" : "notcurrent-side"}
         >
-          Splits
+          Stock Splits
         </a>
       </span>
     </div>
