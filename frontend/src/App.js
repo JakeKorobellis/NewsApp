@@ -10,6 +10,7 @@ import Search from "./components/search";
 import Active from "./components/active";
 import Dividen from "./components/dividen";
 import MandA from "./components/mergers";
+import StockSplits from "./components/stocksplits";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/content/active" element={<Active />} />
             <Route path="/content/dividen" element={<Dividen />} />
             <Route path="/content/MandA" element={<MandA />} />
+            <Route path="/content/StockSplits" element={<StockSplits />} />
           </Routes>
         </BrowserRouter>
       </header>
