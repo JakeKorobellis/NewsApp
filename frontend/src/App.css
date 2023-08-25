@@ -378,7 +378,7 @@ a{
   display: flex;
   flex-direction: column;
   font-size: 1.5vw;
-  height: 50%;
+  height: 100%;
   justify-content: space-evenly;
   margin-left: 3vw;
 }

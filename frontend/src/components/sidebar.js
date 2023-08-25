@@ -46,6 +46,22 @@ function Side(curr) {
           Dividens
         </a>
       </span>
+      <span>
+        <a
+          href="/content"
+          className={current == 6 ? "current-side" : "notcurrent-side"}
+        >
+          Mergers
+        </a>
+      </span>
+      <span>
+        <a
+          href="/content"
+          className={current == 7 ? "current-side" : "notcurrent-side"}
+        >
+          Splits
+        </a>
+      </span>
     </div>
   );
 }
