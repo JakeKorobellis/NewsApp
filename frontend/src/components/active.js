@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
@@ -110,50 +109,62 @@ function Active() {
           <div class="sidebar">
             <Side curr={4} />
           </div>
-          <div class="data stream-all">
-            <div className="title-all">What's Hot</div>
-            <div className="stream-hold-all-3">
-              <div className="most-active">
-                <div className="title-hold black-text">
-                  Most Active
-                  <div className="last-updated">
-                    {lastUpdateActive ? lastUpdateActive : ""}
-                  </div>
-                </div>
-                <div className="data-hold-active">
-                  {mostActive ? renederActive(mostActive) : "Loading..."}
-                </div>
-              </div>
-              <div className="top-movers">
-                <div className="title-hold black-text">
-                  Top Movers: {currentState}
-                  <div className="last-updated">
-                    {lastUpdatedMovers ? lastUpdatedMovers : ""}
-                  </div>
-                </div>
-                <div className="data-hold-active2">
-                  {gainers && losers
-                    ? renederMovers(defaultMover)
-                    : "Loading..."}
-                </div>
-                <div className="button-render">
-                  <button
-                    className="button-split"
-                    onClick={() => changeStateMovers(gainers, "Gainers")}
-                  >
-                    Gainers
-                  </button>
 
-                  <button
-                    className="button-split"
-                    onClick={() => changeStateMovers(losers, "Losers")}
-                  >
-                    Losers
-                  </button>
+          {gainers.length > 1 && losers.length > 1 ? (
+            <div class="data stream-all">
+              <div className="title-all">What's Hot</div>
+              <div className="stream-hold-all-3">
+                <div className="most-active">
+                  <div className="title-hold black-text">
+                    Most Active
+                    <div className="last-updated">
+                      {lastUpdateActive ? lastUpdateActive : ""}
+                    </div>
+                  </div>
+                  <div className="data-hold-active">
+                    {mostActive ? renederActive(mostActive) : "Loading..."}
+                  </div>
+                </div>
+                <div className="top-movers">
+                  <div className="title-hold black-text">
+                    Top Movers: {currentState}
+                    <div className="last-updated">
+                      {lastUpdatedMovers ? lastUpdatedMovers : ""}
+                    </div>
+                  </div>
+                  <div className="data-hold-active2">
+                    {gainers && losers
+                      ? renederMovers(defaultMover)
+                      : "Loading..."}
+                  </div>
+                  {gainers && losers ? (
+                    <div className="button-render">
+                      <button
+                        className="button-split"
+                        onClick={() => changeStateMovers(gainers, "Gainers")}
+                      >
+                        Gainers
+                      </button>
+
+                      <button
+                        className="button-split"
+                        onClick={() => changeStateMovers(losers, "Losers")}
+                      >
+                        Losers
+                      </button>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div class="data stream-all">
+              <div className="title-all">What's Hot</div>
+              <div className="stream-hold-all-3"> Market is Closed </div>
+            </div>
+          )}
         </div>
       </header>
     </div>
