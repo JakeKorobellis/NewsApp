@@ -312,10 +312,14 @@ a{
   width: 25%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
-
+.twentyfive3{
+  width: 19.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
 
 .titles-div{
   display: flex;
