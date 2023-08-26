@@ -32,7 +32,7 @@ function StockSplits() {
     return data.map((curr) => {
       return (
         <div className="data-hold-div">
-          <div className="twentyfive test">{curr.target_symbol}</div>
+          <div className="twentyfive test">${curr.target_symbol}</div>
           <div className="twentyfive">
             {curr.effective_date ? curr.effective_date : "N/A"}
           </div>
