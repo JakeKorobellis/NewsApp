@@ -45,8 +45,8 @@ function MandA() {
   return (
     <div className="App">
       <header className="App-header">
-        <div class="parent">
-          <div class="header">
+        <div className="parent">
+          <div className="header">
             <div className="fifityvw ">
               <div className="header-title-format">
                 <div className="title-font-large">
@@ -58,10 +58,10 @@ function MandA() {
             </div>
             <div className="fifityvw"> yo</div>
           </div>
-          <div class="sidebar">
+          <div className="sidebar">
             <Side curr={6} />
           </div>
-          <div class="data stream-all">
+          <div className="data stream-all">
             <div className="title-all">Mergers and Acquisitions</div>
             <div className="stream-hold-all4">
               {ready && data ? (
