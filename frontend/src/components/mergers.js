@@ -29,8 +29,6 @@ function MandA() {
     setReady(true);
   }, []);
 
-  console.log(data);
-
   function renderData(data) {
     return data.map((curr) => {
       return (
