@@ -14,6 +14,7 @@ function MandA() {
   const secret = process.env.REACT_APP_SECRET;
 
   const [data, setData] = React.useState([]);
+  const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
     fetch(`${url11}Merger${url12}${prior}${url13}${curr}`, {
@@ -24,9 +25,24 @@ function MandA() {
     })
       .then((res) => res.json())
       .then((res) => setData(DataCleanMerge(res.reverse())));
+
+    setReady(true);
   }, []);
 
   console.log(data);
+
+  function renderData(data) {
+    return data.map((curr) => {
+      return (
+        <div className="data-hold-div">
+          <div className="twentyfive test">{curr.effective_date}</div>
+          <div className="twentyfive">${curr.initiating_symbol}</div>
+          <div className="twentyfive">Acquired</div>
+          <div className="twentyfive">${curr.target_symbol}</div>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="App">
@@ -49,8 +65,24 @@ function MandA() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Mergers and Acquisitions</div>
-            <div className="stream-hold-all">
-              Will hold the news via a stream
+            <div className="stream-hold-all4">
+              {ready && data ? (
+                <>
+                  <div className="titles-div">
+                    <div className="twentyfive black-text">Date</div>
+                    <div className="twentyfive black-text">
+                      Initiating Symbol
+                    </div>
+                    <div className="twentyfive black-text">Merger Action</div>
+                    <div className="twentyfive black-text">Target Symbol</div>
+                  </div>
+                  <div className="stream-hold-all5">
+                    <div>{renderData(data)}</div>
+                  </div>
+                </>
+              ) : (
+                "Loading..."
+              )}
             </div>
           </div>
         </div>
