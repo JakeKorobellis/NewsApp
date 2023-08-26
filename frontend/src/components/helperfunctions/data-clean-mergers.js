@@ -1,3 +1,5 @@
+//O(n)
+//Loops to make sure both symbols are present
 export default function DataCleanMerge(data) {
   let arr = [];
   for (let i = 0; i < data.length; i++) {
