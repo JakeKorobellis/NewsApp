@@ -346,6 +346,17 @@ a{
   align-items: center;
   justify-content: space-evenly;
 }
+
+.stream-hold-all-6{
+  height: 70vh;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  flex-direction: column;
+}
+
 .most-active{
   width: 45%;
   height: 100%;

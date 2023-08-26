@@ -162,7 +162,11 @@ function Active() {
           ) : (
             <div class="data stream-all">
               <div className="title-all">What's Hot</div>
-              <div className="stream-hold-all-3"> Market is Closed </div>
+              <div className="stream-hold-all-6">
+                {" "}
+                <div>Market is Closed</div>
+                <div>Come back when it is open!</div>{" "}
+              </div>
             </div>
           )}
         </div>
