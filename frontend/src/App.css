@@ -357,6 +357,15 @@ a{
   flex-direction: column;
 }
 
+.stream-hold-all9{
+  height: 80vh;
+  width: 70%;
+  display: flex;
+  gap: 1vw;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
 .most-active{
   width: 45%;
   height: 100%;

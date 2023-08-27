@@ -1,5 +1,6 @@
 import React from "react";
 import Side from "./sidebar";
+import convertISOToFormattedDateTime from "./time_convert-2";
 
 function ConetentHome() {
   const key = process.env.REACT_APP_KEY;
@@ -25,7 +26,27 @@ function ConetentHome() {
       });
   }, []);
 
-  console.log(prev);
+  //Reusable FI
+  function reuse(news) {
+    return news.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.headline}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.url} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="small-text-date">
+              {convertISOToFormattedDateTime(curr.updated_at)}
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="App">
@@ -48,8 +69,8 @@ function ConetentHome() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Live</div>
-            <div className="stream-hold-all">
-              Will hold the news via a stream
+            <div className="stream-hold-all9">
+              {prev ? reuse(prev) : "loading"}
             </div>
           </div>
         </div>
