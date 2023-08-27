@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanMerge from "./helperfunctions/data-clean-mergers";
+import user from "./pictures/user.png";
 
 function MandA() {
   const curr = getCurrentYYYYMMDD();
@@ -56,7 +57,12 @@ function MandA() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>{" "}
           </div>
           <div className="sidebar">
             <Side curr={6} />

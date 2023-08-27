@@ -1,6 +1,7 @@
 import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
+import user from "./pictures/user.png";
 
 function ConetentHome() {
   const key = process.env.REACT_APP_KEY;
@@ -62,13 +63,18 @@ function ConetentHome() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>
           </div>
           <div class="sidebar">
             <Side curr={1} />
           </div>
           <div class="data stream-all">
-            <div className="title-all">Live</div>
+            <div className="title-all">Live News</div>
             <div className="stream-hold-all9">
               {prev ? reuse(prev) : "loading"}
             </div>

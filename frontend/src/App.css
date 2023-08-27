@@ -107,6 +107,15 @@ a{
     width: 50vw;
     height: 100%;
   }
+  .fifityvw2{
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 1%;
+    padding-right: 1.5%;
+  }
   .display-flex{
     display: flex;
   }
@@ -566,4 +575,8 @@ gap: 10px;
   align-items: flex-end;
   gap: 5%;
 height: 10%;
+}
+.resize-icon{
+  width: 3vw;
+
 }

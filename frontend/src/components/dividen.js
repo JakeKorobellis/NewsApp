@@ -2,6 +2,7 @@ import React from "react";
 import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get30Prior from "./dates/get30Prior";
+import user from "./pictures/user.png";
 
 function Dividen() {
   const curr = getCurrentYYYYMMDD();
@@ -58,7 +59,12 @@ function Dividen() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>{" "}
           </div>
           <div class="sidebar">
             <Side curr={5} />

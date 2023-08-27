@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanSplit from "./helperfunctions/data-clean-splits";
+import user from "./pictures/user.png";
 
 function StockSplits() {
   const curr = getCurrentYYYYMMDD();
@@ -60,7 +61,12 @@ function StockSplits() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>{" "}
           </div>
           <div class="sidebar">
             <Side curr={7} />

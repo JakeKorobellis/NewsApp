@@ -1,6 +1,7 @@
 import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
+import user from "./pictures/user.png";
 
 function Active() {
   //Protected Variables
@@ -104,7 +105,12 @@ function Active() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>{" "}
           </div>
           <div class="sidebar">
             <Side curr={4} />

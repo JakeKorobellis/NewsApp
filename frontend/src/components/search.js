@@ -5,6 +5,7 @@ import data from "./datasearch";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import convert_data from "./chartdata_convert";
 import Chart from "./chartDisplay";
+import user from "./pictures/user.png";
 
 function Search() {
   //Protected Variables
@@ -175,7 +176,12 @@ function Search() {
                 </div>
               </div>
             </div>
-            <div className="fifityvw"> yo</div>
+            <div className="fifityvw2">
+              {" "}
+              <a href="/content/split">
+                <img src={user} className="resize-icon" />
+              </a>
+            </div>{" "}
           </div>
           <div class="sidebar">
             <Side curr={3} />
