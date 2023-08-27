@@ -43,12 +43,12 @@ function Login() {
       </div>
       <div className="footer-login-page black">
         Dont have an account?{" "}
-        <a href="/" className="white">
+        <a href="/signup" className="white">
           Sign up!
         </a>
       </div>
-      <a href="/content" className="supersmall">
-        Temp Bypass
+      <a href="/content" className="supersmall bypass">
+        LOGIN BYPASS
       </a>
     </div>
   );

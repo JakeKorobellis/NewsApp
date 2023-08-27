@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import ConetentHome from "./components/content-home";
-import Test from "./components/test";
 import Login from "./components/login";
 import Split from "./components/split";
 import Search from "./components/search";
@@ -11,6 +10,7 @@ import Active from "./components/active";
 import Dividen from "./components/dividen";
 import MandA from "./components/mergers";
 import StockSplits from "./components/stocksplits";
+import Signup from "./components/signup";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
             <Route path="/content/dividen" element={<Dividen />} />
             <Route path="/content/MandA" element={<MandA />} />
             <Route path="/content/StockSplits" element={<StockSplits />} />
+            <Route path="signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
       </header>
