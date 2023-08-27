@@ -164,10 +164,32 @@ function Split() {
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
-                {news !== [] ? reuse_crpyto(news) : "Loading"}
+                {news !== [] ? (
+                  reuse_crpyto(news)
+                ) : (
+                  <div className="holder-loader">
+                    <div class="lds-ring">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="stocks-hold">
-                {fi !== [] ? reuse_fi(fi) : "Loading"}
+                {fi !== [] ? (
+                  reuse_fi(fi)
+                ) : (
+                  <div className="holder-loader">
+                    <div class="lds-ring">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="split-button-hold">
@@ -249,7 +271,6 @@ function Split() {
                 >
                   Tech
                 </button>
-
                 <button
                   onClick={() => {
                     fi_selection("JPM,BAC,WFC,MS,RY,GS,SCHW,C,USB,PNC,IBKR");

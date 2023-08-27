@@ -202,7 +202,18 @@ function Search() {
             </div>
             <div className="stream-hold-all-2">
               <div className="news-search">
-                {current ? formatData(current) : "Loading"}
+                {current ? (
+                  formatData(current)
+                ) : (
+                  <div className="holder-loader">
+                    <div class="lds-ring">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="chart-search">
                 <Chart priceData={chartData} />

@@ -88,7 +88,14 @@ function Dividen() {
                   </div>
                 </>
               ) : (
-                "Loading..."
+                <div className="holder-loader">
+                  <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
               )}
             </div>
           </div>

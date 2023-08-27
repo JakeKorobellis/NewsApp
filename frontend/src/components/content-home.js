@@ -8,6 +8,7 @@ function ConetentHome() {
   const secret = process.env.REACT_APP_SECRET;
   const url = process.env.REACT_APP_URL14;
   const [prev, setPrev] = React.useState([]);
+  const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
     fetch(url, {
@@ -25,6 +26,8 @@ function ConetentHome() {
         // Handle errors here
         console.error("Error:", error);
       });
+
+    setReady(true);
   }, []);
 
   //Reusable FI
@@ -76,7 +79,18 @@ function ConetentHome() {
           <div class="data stream-all">
             <div className="title-all">Live News</div>
             <div className="stream-hold-all9">
-              {prev ? reuse(prev) : "loading"}
+              {prev && ready ? (
+                reuse(prev)
+              ) : (
+                <div className="holder-loader">
+                  <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

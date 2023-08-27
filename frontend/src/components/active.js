@@ -160,7 +160,14 @@ function Active() {
                       </button>
                     </div>
                   ) : (
-                    ""
+                    <div className="holder-loader">
+                      <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
