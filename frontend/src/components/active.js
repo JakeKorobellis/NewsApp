@@ -61,8 +61,6 @@ function Active() {
       });
   }, []);
 
-  console.log(gainers);
-
   function renederActive(data) {
     return data.map((curr) => {
       return (
@@ -86,7 +84,6 @@ function Active() {
   }
 
   function changeStateMovers(data, curr) {
-    console.log(data);
     setCurrentState(curr);
     setDefaultMovers(data);
   }

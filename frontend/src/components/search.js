@@ -110,8 +110,6 @@ function Search() {
           console.error("Error:", error);
         });
     }
-
-    console.log(item);
   };
 
   const formatResult = (item) => {

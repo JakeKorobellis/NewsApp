@@ -16,7 +16,6 @@ function Dividen() {
 
   const [ready, setReady] = React.useState(false);
   const [data, setData] = React.useState([]);
-  console.log(data);
 
   React.useEffect(() => {
     fetch(`${url11}Dividend${url12}${prior}${url13}${curr}`, {
