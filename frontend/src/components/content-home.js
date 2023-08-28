@@ -2,6 +2,7 @@ import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
+import useWebSocket from "react-use-websocket";
 
 function ConetentHome() {
   const key = process.env.REACT_APP_KEY;
@@ -26,6 +27,33 @@ function ConetentHome() {
         // Handle errors here
         console.error("Error:", error);
       });
+
+    const urlo = "wss://stream.data.alpaca.markets/v1beta1/news";
+    const socket = new WebSocket(urlo);
+    const authDetails = {
+      action: "auth",
+      key: key,
+      secret: secret,
+    };
+
+    const subData = { action: "subscribe", news: ["*"] };
+
+    socket.onmessage = (event) => {
+      const checkConnection = JSON.parse(event.data);
+      console.log(checkConnection);
+      const dataMsg = checkConnection[0]["msg"];
+      console.log(checkConnection[0]);
+      //Attempt connection
+      if (dataMsg == "connected") {
+        console.log("Authenticating...");
+        socket.send(JSON.stringify(authDetails));
+      }
+      //Check connection && Subscribe to Data
+      if (dataMsg == "authenticated") {
+        console.log("Authenticated!, getting data.");
+        socket.send(JSON.stringify(subData));
+      }
+    };
 
     setReady(true);
   }, []);
