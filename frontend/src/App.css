@@ -600,7 +600,10 @@ gap: 10px;
 height: 10%;
 }
 .resize-icon{
-  width: 3vw;
+  width: 2vw;
+}
+.resize-icon2{
+  width: 1.75vw;
 }
 .lds-ring {
   display: inline-block;

@@ -11,6 +11,7 @@ import Dividen from "./components/dividen";
 import MandA from "./components/mergers";
 import StockSplits from "./components/stocksplits";
 import Signup from "./components/signup";
+import UserEdit from "./components/profile";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/content/MandA" element={<MandA />} />
             <Route path="/content/StockSplits" element={<StockSplits />} />
             <Route path="signup" element={<Signup />} />
+            <Route path="/useredit" element={<UserEdit />} />
           </Routes>
         </BrowserRouter>
       </header>
