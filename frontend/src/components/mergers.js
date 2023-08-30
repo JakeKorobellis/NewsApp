@@ -59,7 +59,7 @@ function MandA() {
             </div>
             <div className="fifityvw2">
               {" "}
-              <a href="/content/split">
+              <a href="/useredit">
                 <img src={user} className="resize-icon" />
               </a>
             </div>{" "}
