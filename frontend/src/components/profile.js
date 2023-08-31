@@ -19,11 +19,13 @@ function UserEdit() {
           <div class="header">
             <div className="fifityvw ">
               <div className="header-title-format">
-                <div className="title-font-large">
-                  <span className="neon-blue">N</span>ews
-                  <span className="neon-blue">R</span>oom
-                  <span className="smaller-title">.com</span>
-                </div>
+                <a href="/" className="default-title">
+                  <div className="title-font-large">
+                    <span className="neon-blue">N</span>ews
+                    <span className="neon-blue">R</span>oom
+                    <span className="smaller-title">.com</span>
+                  </div>
+                </a>
               </div>
             </div>
             <div className="fifityvw2">
