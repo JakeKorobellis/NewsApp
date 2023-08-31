@@ -28,7 +28,7 @@ function UserEdit() {
             </div>
             <div className="fifityvw2">
               {" "}
-              <a href="/content/split">
+              <a href="/content">
                 <img src={user} className="resize-icon2" />
               </a>
             </div>
