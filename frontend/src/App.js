@@ -12,6 +12,7 @@ import MandA from "./components/mergers";
 import StockSplits from "./components/stocksplits";
 import Signup from "./components/signup";
 import UserEdit from "./components/profile";
+import PasswordEdit from "./components/passwordedit";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/content/StockSplits" element={<StockSplits />} />
             <Route path="signup" element={<Signup />} />
             <Route path="/useredit" element={<UserEdit />} />
+            <Route path="/useredit/password" element={<PasswordEdit />} />
           </Routes>
         </BrowserRouter>
       </header>
