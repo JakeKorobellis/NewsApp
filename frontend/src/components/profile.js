@@ -85,13 +85,17 @@ function UserEdit() {
                     <a href="/useredit/password" className="login-btn center">
                       Update password
                     </a>
-
+                  </form>
+                </div>
+                <div className="form margin-top">
+                  {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
+                  <a href="/success" className="form">
                     <input
                       type="submit"
                       value="Submit Profile Changes"
                       className="login-btn"
                     />
-                  </form>
+                  </a>
                 </div>
               </div>
             </div>

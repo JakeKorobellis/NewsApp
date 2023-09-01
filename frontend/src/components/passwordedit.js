@@ -10,8 +10,6 @@ function PasswordEdit() {
     password: "JohnDoe123",
   });
 
-  //Use effect to set the current user when loaded
-
   return (
     <div className="App">
       <header className="App-header">
@@ -85,14 +83,17 @@ function PasswordEdit() {
                         required
                       />
                     </div>
-
+                  </form>
+                </div>
+                <div className="form margin-top">
+                  {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
+                  <a href="/success" className="form">
                     <input
                       type="submit"
                       value="Submit Password Changes"
                       className="login-btn"
-                      href="/"
                     />
-                  </form>
+                  </a>
                 </div>
               </div>
             </div>
