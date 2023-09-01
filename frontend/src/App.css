@@ -327,6 +327,33 @@ a{
  justify-content: center;
  align-items: center;
 }
+.stream-hold-all11{
+  height: 70vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.success-hold{
+  display: flex;
+  gap: 5vw;
+}
+.success{
+  font-size: 10vw;
+  color: rgb(255, 255, 255);
+}
+.success-btn{
+color: black;  font-size: 1.5vw;
+  padding: .5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  background: white;
+  border-radius: 10px;
+}
+.success-btn:hover{
+  background: rgb(199, 199, 199);
+}
 .stream-hold-all4{
   height: 75vh;
  width: 75%;

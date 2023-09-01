@@ -13,6 +13,7 @@ import StockSplits from "./components/stocksplits";
 import Signup from "./components/signup";
 import UserEdit from "./components/profile";
 import PasswordEdit from "./components/passwordedit";
+import Success from "./components/success";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="signup" element={<Signup />} />
             <Route path="/useredit" element={<UserEdit />} />
             <Route path="/useredit/password" element={<PasswordEdit />} />
+            <Route path="/success" element={<Success />} />
           </Routes>
         </BrowserRouter>
       </header>
