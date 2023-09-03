@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
@@ -19,23 +18,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="/content" element={<ConetentHome />}></Route>
-            <Route path="/content/split" element={<Split />} />
-            <Route path="/content/search" element={<Search />} />
-            <Route path="/content/active" element={<Active />} />
-            <Route path="/content/dividen" element={<Dividen />} />
-            <Route path="/content/MandA" element={<MandA />} />
-            <Route path="/content/StockSplits" element={<StockSplits />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="/useredit" element={<UserEdit />} />
-            <Route path="/useredit/password" element={<PasswordEdit />} />
-            <Route path="/success" element={<Success />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="/content" element={<ConetentHome />}></Route>
+          <Route path="/content/split" element={<Split />} />
+          <Route path="/content/search" element={<Search />} />
+          <Route path="/content/active" element={<Active />} />
+          <Route path="/content/dividen" element={<Dividen />} />
+          <Route path="/content/MandA" element={<MandA />} />
+          <Route path="/content/StockSplits" element={<StockSplits />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="/useredit" element={<UserEdit />} />
+          <Route path="/useredit/password" element={<PasswordEdit />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
       </header>
     </div>
   );

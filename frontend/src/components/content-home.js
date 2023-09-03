@@ -42,16 +42,16 @@ function ConetentHome() {
     socket.onmessage = (event) => {
       const checkConnection = JSON.parse(event.data);
       const dataMsg = checkConnection[0]["msg"];
-      if (checkConnection[0].T == "n") {
+      if (checkConnection[0].T === "n") {
         setPrev((prev) => [checkConnection[0], ...prev]);
       }
 
       //Attempt connection
-      if (dataMsg == "connected") {
+      if (dataMsg === "connected") {
         socket.send(JSON.stringify(authDetails));
       }
       //Check connection && Subscribe to Data
-      if (dataMsg == "authenticated") {
+      if (dataMsg === "authenticated") {
         socket.send(JSON.stringify(subData));
       }
     };
