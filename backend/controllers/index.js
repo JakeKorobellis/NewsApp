@@ -17,11 +17,17 @@ exports.user = asynchandler(async (req, res) => {
 });
 
 exports.testPost = (req, res) => {
+  console.log(req.body);
+
+  /* Need to encrypt the password
+  before entering into the DB
+  */
+
   const newUser = new User({
-    fname: "jake",
-    lname: "koro",
-    email: "jdoe@newsroom.com",
-    password: "12345678910",
+    fname: req.body.fname,
+    lname: req.body.lname,
+    email: req.body.email,
+    password: req.body.password,
   });
 
   const saveUser = newUser.save();
