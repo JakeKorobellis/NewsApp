@@ -16,7 +16,6 @@ exports.user = asynchandler(async (req, res) => {
   res.json({ test: true, user: true });
 });
 
-/*
 exports.testPost = (req, res) => {
   const newUser = new User({
     fname: "jake",
@@ -29,4 +28,3 @@ exports.testPost = (req, res) => {
   console.log("Sucess");
   res.json({ status: 200, text: "User Added" });
 };
-*/

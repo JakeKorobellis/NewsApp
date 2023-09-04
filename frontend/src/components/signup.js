@@ -1,5 +1,38 @@
 import React from "react";
 function Signup() {
+  const route = process.env.REACT_APP_USER_SIGNUP;
+
+  //State to record user data
+  const [user, setUser] = React.useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    console.log(user);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    fetch(route, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      //      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
+
   return (
     <div className="home2">
       <div className="login-page-split login-title2">
@@ -13,7 +46,12 @@ function Signup() {
 
       <div className="signup-page-split">
         <div className="form">
-          <form action="/signup" method="post" className="form">
+          <form
+            action="/signup"
+            method="post"
+            className="form"
+            onSubmit={handleSubmit}
+          >
             <div className="form-inputs">
               <label className="resize">First Name:</label>
               <input
@@ -22,6 +60,7 @@ function Signup() {
                 name="fname"
                 placeholder="John"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>
@@ -34,6 +73,7 @@ function Signup() {
                 name="lname"
                 placeholder="Doe"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>
@@ -46,6 +86,7 @@ function Signup() {
                 name="email"
                 placeholder="jdoe@newsroom.com"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>
@@ -61,6 +102,7 @@ function Signup() {
                 name="password"
                 placeholder="********"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>
