@@ -23,14 +23,18 @@ exports.testPost = (req, res) => {
   before entering into the DB
   */
 
-  const newUser = new User({
-    fname: req.body.fname,
-    lname: req.body.lname,
-    email: req.body.email,
-    password: req.body.password,
-  });
+  try {
+    const newUser = new User({
+      fname: req.body.fname,
+      lname: req.body.lname,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
-  const saveUser = newUser.save();
-  console.log("Sucess");
-  res.json({ status: 200, text: "User Added" });
+    const saveUser = newUser.save();
+    console.log("Sucess");
+    res.json({ status: 200, text: "User Added" });
+  } catch (err) {
+    res.json({ status: 400, text: "User Signup Failed", error: err });
+  }
 };
