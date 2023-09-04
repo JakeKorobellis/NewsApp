@@ -6,4 +6,6 @@ router.get("/", controller.test);
 router.get("/user", controller.user);
 router.get("/news", controller.data);
 
+// router.post("/user/create", controller.testPost);
+
 module.exports = router;

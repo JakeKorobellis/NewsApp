@@ -10,3 +10,5 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
   fav_news: { type: ObjectId, required: false },
 });
+
+module.exports = mongoose.model("User", UserSchema);
