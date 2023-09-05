@@ -1,5 +1,44 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+  const route = process.env.REACT_APP_USER_LOGIN;
+  const navigate = useNavigate();
+
+  const [login, setLogin] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setLogin((login) => ({
+      ...login,
+      [name]: value,
+    }));
+    console.log(login);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //fetch on Route
+    fetch(route, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(login),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.account == true) {
+          navigate("/content");
+        } else {
+          alert("Invalid Username or Password");
+        }
+      });
+  };
+
   return (
     <div className="home">
       <div className="login-page-split login-title">
@@ -10,7 +49,12 @@ function Login() {
 
       <div className="login-page-split">
         <div className="form">
-          <form action="/login" method="post" className="form">
+          <form
+            action="/login"
+            method="post"
+            className="form"
+            onSubmit={handleSubmit}
+          >
             <div className="form-inputs">
               <label className="resize">Email:</label>
               <input
@@ -19,6 +63,7 @@ function Login() {
                 name="email"
                 placeholder="jdoe@newsroom.com"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>
@@ -34,6 +79,7 @@ function Login() {
                 name="password"
                 placeholder="********"
                 className="inputs-form"
+                onChange={handleChange}
                 required
               />
             </div>

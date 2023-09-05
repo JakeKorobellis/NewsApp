@@ -16,6 +16,7 @@ exports.user = asynchandler(async (req, res) => {
   res.json({ test: true, user: true });
 });
 
+//Signup post (Need to update name)
 exports.testPost = (req, res) => {
   console.log(req.body);
 
@@ -35,6 +36,17 @@ exports.testPost = (req, res) => {
     console.log("Sucess");
     res.json({ status: 200, text: "User Added" });
   } catch (err) {
-    res.json({ status: 400, text: "User Signup Failed", error: err });
+    res.json({ status: 500, text: "User Signup Failed", error: err });
   }
 };
+//Login Post
+exports.loginPost = asynchandler(async (req, res) => {
+  const hasAccount = await User.findOne({ email: req.body.email });
+  if (hasAccount == null) {
+    res.json({ status: 500, account: false });
+  } else {
+    //Need more conditionals for decrypting and comparing passwords
+    console.log(hasAccount);
+    res.json({ status: 200, account: true, user: hasAccount });
+  }
+});
