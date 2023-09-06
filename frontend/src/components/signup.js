@@ -1,5 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 function Signup() {
+  const navigate = useNavigate();
   const route = process.env.REACT_APP_USER_SIGNUP;
 
   //State to record user data
@@ -30,7 +33,11 @@ function Signup() {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/login");
+        }
+      });
   };
 
   return (
