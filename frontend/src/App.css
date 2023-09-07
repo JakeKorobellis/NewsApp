@@ -707,3 +707,18 @@ height: 10%;
 .margin-top{
   margin-top: 1vw;
 }
+.faviortie-btn{
+  width: 5vw;
+  padding: .25vw;
+  outline: none;
+  font-size: .75vw;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px ; 
+  cursor: pointer;
+  background: #fff;
+  border: 1.5px solid black;
+}
+.faviortie-btn:hover{
+  background: rgb(241, 240, 240);
+}

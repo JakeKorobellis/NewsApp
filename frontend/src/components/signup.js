@@ -19,7 +19,6 @@ function Signup() {
       ...prevData,
       [name]: value,
     }));
-    console.log(user);
   };
 
   const handleSubmit = (event) => {

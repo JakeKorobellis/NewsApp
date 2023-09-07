@@ -81,6 +81,9 @@ function Split() {
             <div className="small-text-date">
               {convertISOToFormattedDateTime(curr.updated_at)}
             </div>
+            <div>
+              <button className="faviortie-btn">Favorite</button>
+            </div>
           </div>
         </div>
       );
