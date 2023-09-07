@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import convertTimestampToDate from "./time_convert";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
+import fav from "./helperfunctions/favs";
 
 function Split() {
   //Protected Variables
@@ -150,18 +151,6 @@ function Split() {
         });
     }
   }
-
-  // Handle favorite click, will move to helper functions tab after working
-  const fav = (h, s, u, t) => {
-    const data = {
-      headline: h,
-      source: s,
-      url: u,
-      time: t,
-    };
-
-    console.log(data);
-  };
 
   return (
     <div className="App">
