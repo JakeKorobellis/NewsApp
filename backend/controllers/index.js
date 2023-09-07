@@ -58,6 +58,7 @@ exports.addFav = asynchandler(async (req, res) => {
   //Check if its in the users favs
   //if it is return
   //else add
+  //---------------
   //else - add to db
   //Check if its in the users favs
   //if it is return
