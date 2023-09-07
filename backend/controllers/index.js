@@ -51,8 +51,17 @@ exports.loginPost = asynchandler(async (req, res) => {
   }
 });
 exports.addFav = asynchandler(async (req, res) => {
-  //Search for the news article in the current users FAV selection to ensure it is not being added twice
-  //if it is present return a status and alert
-  //else add to the users fav in DB
+  // Get the current user
+  //Ensure the article is not already stored in the DB
+
+  //if it is in the DB
+  //Check if its in the users favs
+  //if it is return
+  //else add
+  //else - add to db
+  //Check if its in the users favs
+  //if it is return
+  //else add
+
   console.log(req.body);
 });
