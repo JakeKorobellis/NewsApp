@@ -59,6 +59,16 @@ function Split() {
             <div className="small-text-date">
               {convertTimestampToDate(curr.feedDate)}
             </div>
+            <div>
+              <button
+                className="faviortie-btn"
+                onClick={() =>
+                  fav(curr.headline, curr.source, curr.url, curr.time)
+                }
+              >
+                Favorite
+              </button>
+            </div>
           </div>
         </div>
       );
@@ -82,7 +92,14 @@ function Split() {
               {convertISOToFormattedDateTime(curr.updated_at)}
             </div>
             <div>
-              <button className="faviortie-btn">Favorite</button>
+              <button
+                className="faviortie-btn"
+                onClick={() =>
+                  fav(curr.headline, curr.source, curr.url, curr.time)
+                }
+              >
+                Favorite
+              </button>
             </div>
           </div>
         </div>
@@ -133,6 +150,18 @@ function Split() {
         });
     }
   }
+
+  // Handle favorite click, will move to helper functions tab after working
+  const fav = (h, s, u, t) => {
+    const data = {
+      headline: h,
+      source: s,
+      url: u,
+      time: t,
+    };
+
+    console.log(data);
+  };
 
   return (
     <div className="App">
