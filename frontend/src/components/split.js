@@ -1,9 +1,6 @@
 import React from "react";
 import Side from "./sidebar";
-import convertTimestampToDate from "./time_convert";
-import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
-import fav from "./helperfunctions/favs";
 import reuse_crpyto from "./helperfunctions/reuse_crypto";
 import reuse_fi from "./helperfunctions/reuse_fi";
 
