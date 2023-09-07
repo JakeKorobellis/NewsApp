@@ -4,6 +4,7 @@ import convertTimestampToDate from "./time_convert";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
 import fav from "./helperfunctions/favs";
+import reuse_crpyto from "./helperfunctions/reuse_crypto";
 
 function Split() {
   //Protected Variables
@@ -28,6 +29,7 @@ function Split() {
       .then((res) => setNews(res.news));
 
     fetch(url, {
+      //stock news
       headers: {
         "APCA-API-KEY-ID": key,
         "APCA-API-SECRET-KEY": secret,
@@ -43,38 +45,6 @@ function Split() {
         console.error("Error:", error);
       });
   }, []);
-
-  //Reusable crypto render
-  function reuse_crpyto(news) {
-    return news.map((curr) => {
-      return (
-        <div className="hold-crypto-news">
-          <div className="fifty-five">{curr.title}</div>
-          <div className="hold-right">
-            <div className="">{curr.source}</div>
-            <div className="">
-              <a href={curr.link} target="_blank">
-                View
-              </a>
-            </div>
-            <div className="small-text-date">
-              {convertTimestampToDate(curr.feedDate)}
-            </div>
-            <div>
-              <button
-                className="faviortie-btn"
-                onClick={() =>
-                  fav(curr.headline, curr.source, curr.url, curr.time)
-                }
-              >
-                Favorite
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  }
 
   //Reusable FI
   function reuse_fi(news) {
