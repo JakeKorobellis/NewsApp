@@ -5,6 +5,7 @@ import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
 import fav from "./helperfunctions/favs";
 import reuse_crpyto from "./helperfunctions/reuse_crypto";
+import reuse_fi from "./helperfunctions/reuse_fi";
 
 function Split() {
   //Protected Variables
@@ -46,46 +47,14 @@ function Split() {
       });
   }, []);
 
-  //Reusable FI
-  function reuse_fi(news) {
-    return news.map((curr) => {
-      return (
-        <div className="hold-crypto-news">
-          <div className="fifty-five">{curr.headline}</div>
-          <div className="hold-right">
-            <div className="">{curr.source}</div>
-            <div className="">
-              <a href={curr.url} target="_blank">
-                View
-              </a>
-            </div>
-            <div className="small-text-date">
-              {convertISOToFormattedDateTime(curr.updated_at)}
-            </div>
-            <div>
-              <button
-                className="faviortie-btn"
-                onClick={() =>
-                  fav(curr.headline, curr.source, curr.url, curr.time)
-                }
-              >
-                Favorite
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  }
-
-  //Reusable selection - crypto
+  //Crypto category selection
   function crypto_selection(choice) {
     fetch(crypto_first + choice + crypto_second)
       .then((res) => res.json())
       .then((res) => setNews(res.news));
   }
 
-  //Reusable selection - fi
+  //Finance category selection
   function fi_selection(choice) {
     if (choice == "latest") {
       fetch(url, {
