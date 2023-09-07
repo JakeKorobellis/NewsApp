@@ -11,5 +11,7 @@ router.get("/news", controller.data);
 router.post("/user/create", controller.testPost);
 //Login
 router.post("/login/auth", controller.loginPost);
+//Process fav
+router.post("/add/fav", controller.addFav);
 
 module.exports = router;

@@ -1,3 +1,5 @@
+const url = process.env.REACT_APP_USER_FAV;
+
 export default function fav(h, s, u, t) {
   const data = {
     headline: h,
@@ -8,6 +10,15 @@ export default function fav(h, s, u, t) {
   console.log(data);
 
   //handle by sending to the backend
-
-  return data;
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      alert("Sucess", res);
+    });
 }

@@ -21,7 +21,12 @@ export default function reuse_crpyto(news) {
             <button
               className="faviortie-btn"
               onClick={() =>
-                fav(curr.headline, curr.source, curr.url, curr.time)
+                fav(
+                  curr.title,
+                  curr.source,
+                  curr.link,
+                  convertTimestampToDate(curr.feedDate)
+                )
               }
             >
               Favorite

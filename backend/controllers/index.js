@@ -50,3 +50,9 @@ exports.loginPost = asynchandler(async (req, res) => {
     res.json({ status: 200, account: true, user: hasAccount });
   }
 });
+exports.addFav = asynchandler(async (req, res) => {
+  //Search for the news article in the current users FAV selection to ensure it is not being added twice
+  //if it is present return a status and alert
+  //else add to the users fav in DB
+  console.log(req.body);
+});
