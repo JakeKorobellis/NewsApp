@@ -20,7 +20,12 @@ export default function reuse_fi(news) {
             <button
               className="faviortie-btn"
               onClick={() =>
-                fav(curr.headline, curr.source, curr.url, curr.time)
+                fav(
+                  curr.headline,
+                  curr.source,
+                  curr.url,
+                  convertISOToFormattedDateTime(curr.updated_at)
+                )
               }
             >
               Favorite
