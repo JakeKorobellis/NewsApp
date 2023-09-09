@@ -19,6 +19,6 @@ export default function fav(h, s, u, t) {
   })
     .then((res) => res.json())
     .then((res) => {
-      alert("Sucess", res);
+      alert(res.action);
     });
 }

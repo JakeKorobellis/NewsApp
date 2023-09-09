@@ -62,19 +62,18 @@ exports.addFav = asynchandler(async (req, res) => {
     for (let i = 0; i < current_user.fav_news.length; i++) {
       if (current_user.fav_news[i].headline == req.body.headline) {
         res.json({ status: 200, action: "Already added" });
-
         return;
       }
     }
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
-    res.json({ staus: 200, action: "Added to Faviorites" });
+    res.json({ status: 200, action: "Added to Faviorites" });
     return;
   } else {
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
-    res.json({ staus: 200, action: "Added to Faviorites" });
+    res.json({ status: 200, action: "Added to Faviorites" });
   }
 });
