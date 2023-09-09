@@ -28,7 +28,7 @@ export default function reuse_fi(news) {
                 )
               }
             >
-              Favorite
+              Save
             </button>
           </div>
         </div>

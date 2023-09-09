@@ -29,7 +29,7 @@ export default function reuse_crpyto(news) {
                 )
               }
             >
-              Favorite
+              Save
             </button>
           </div>
         </div>
