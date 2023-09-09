@@ -8,7 +8,7 @@ const UserSchema = new Schema({
   lname: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  fav_news: { type: ObjectId, required: false },
+  fav_news: { type: Array, required: true },
 });
 
 module.exports = mongoose.model("User", UserSchema);

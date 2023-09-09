@@ -51,18 +51,28 @@ exports.loginPost = asynchandler(async (req, res) => {
   }
 });
 exports.addFav = asynchandler(async (req, res) => {
-  // Get the current user
-  //Ensure the article is not already stored in the DB
-
-  //if it is in the DB
-  //Check if its in the users favs
-  //if it is return
-  //else add
-  //---------------
-  //else - add to db
-  //Check if its in the users favs
-  //if it is return
-  //else add
-
   console.log(req.body);
+  // Get the current user
+  const current_user = await User.findOne({ fname: "Admin" });
+
+  //Validate Request
+  if (current_user.fav_news.length > 0) {
+    for (let i = 0; i < current_user.fav_news.length; i++) {
+      if (current_user.fav_news[i].headline == req.body.headline) {
+        res.json({ status: 200, action: "Already added" });
+
+        return;
+      }
+    }
+    current_user
+      .updateOne({ fav_news: [...current_user.fav_news, req.body] })
+      .exec();
+    res.json({ staus: 200, action: "Added to Faviorites" });
+    return;
+  } else {
+    current_user
+      .updateOne({ fav_news: [...current_user.fav_news, req.body] })
+      .exec();
+    res.json({ staus: 200, action: "Added to Faviorites" });
+  }
 });
