@@ -1,7 +1,8 @@
-import fav from "./favs";
+import Fav from "./favs";
+
 import convertISOToFormattedDateTime from "../time_convert-2";
 
-export default function reuse_fi(news) {
+export default function reuse_fi(news, callback) {
   return news.map((curr) => {
     return (
       <div className="hold-crypto-news">
@@ -20,11 +21,12 @@ export default function reuse_fi(news) {
             <button
               className="faviortie-btn"
               onClick={() =>
-                fav(
+                Fav(
                   curr.headline,
                   curr.source,
                   curr.url,
-                  convertISOToFormattedDateTime(curr.updated_at)
+                  convertISOToFormattedDateTime(curr.updated_at),
+                  callback
                 )
               }
             >

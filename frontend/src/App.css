@@ -723,11 +723,11 @@ height: 10%;
   background: rgb(241, 240, 240);
 }
 .confrimation{
-  background: rgb(228, 227, 227);
-  color: black;
+  background: black;
+  color: white;
   position: absolute;
   width: 30vw;
-  height: 20vw;
+  height: 7vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -737,7 +737,7 @@ height: 10%;
 }
 .test1{
   width: 100%;
-  height: 2vw;
+  height: 40%;
   font-size: 2vw;
   display: flex;
   justify-content: flex-end;
@@ -746,22 +746,13 @@ height: 10%;
 }
 .test2{
   width: 100%;
+  height: 90%;
 display: flex;
 justify-content: center;
 font-size: 1.5vw;
+align-items: flex-start;
 }
-.test3{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 1vw; 
-}
-.test4{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 1.5vw;
-}
+
 .button-hold-conf{
   width: 2vw;
   height: 2vw;
@@ -770,4 +761,8 @@ font-size: 1.5vw;
   border: none;
   cursor: pointer;
   font-weight: 700;
+  color: white;
+}
+.button-hold-conf:hover{
+  color: red;
 }

@@ -1,13 +1,12 @@
 const url = process.env.REACT_APP_USER_FAV;
 
-export default function Fav(h, s, u, t) {
+export default function Fav(h, s, u, t, callback) {
   const data = {
     headline: h,
     source: s,
     url: u,
     time: t,
   };
-  console.log(data);
 
   //handle by sending to the backend
   fetch(url, {
@@ -19,6 +18,6 @@ export default function Fav(h, s, u, t) {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res.action);
+      callback(res);
     });
 }

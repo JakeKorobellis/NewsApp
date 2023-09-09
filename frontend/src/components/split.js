@@ -19,8 +19,13 @@ function Split() {
   const [fi, setFi] = React.useState([]);
   const [curr_crypto, set_curr_crpyto] = React.useState("Latest");
   const [curr_fi, set_curr_fi] = React.useState("Latest");
-  const [pop_up, setPop_Up] = React.useState(true);
+  const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
+
+  function handleFavAction(action) {
+    setResponseAdd(action);
+    setPop_Up(true);
+  }
 
   //Intital Render
   React.useEffect(() => {
@@ -91,6 +96,7 @@ function Split() {
   }
 
   function popup(data) {
+    console.log(data);
     return (
       <div className="confrimation">
         <div className="test1">
@@ -98,9 +104,9 @@ function Split() {
             X
           </button>
         </div>
-        <div className="test2">You have added</div>
-        <div className="test3">{data}</div>
-        <div className="test4">to your saved news articles.</div>
+        <div className="test2">
+          <div>You have sucessfully saved this article</div>
+        </div>
       </div>
     );
   }
@@ -145,7 +151,7 @@ function Split() {
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
                 {news !== [] ? (
-                  reuse_crpyto(news)
+                  reuse_crpyto(news, handleFavAction)
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">
@@ -158,13 +164,13 @@ function Split() {
                 )}
               </div>
               {pop_up ? (
-                <div className="confrimation">{popup("Tests Reponse")}</div>
+                <div className="confrimation">{popup(response_add)}</div>
               ) : (
                 ""
               )}
               <div className="stocks-hold">
                 {fi !== [] ? (
-                  reuse_fi(fi)
+                  reuse_fi(fi, handleFavAction)
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">

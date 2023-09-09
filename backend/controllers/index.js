@@ -76,8 +76,7 @@ exports.addFav = asynchandler(async (req, res) => {
       .exec();
     res.json({
       status: 200,
-      action: "Added to Faviorites",
-      headline: req.body.headline,
+      action: req.body.headline,
     });
     return;
   } else {
@@ -86,8 +85,7 @@ exports.addFav = asynchandler(async (req, res) => {
       .exec();
     res.json({
       status: 200,
-      action: "Added to Faviorites",
-      headline: req.body.headline,
+      action: req.body.headline,
     });
   }
 });

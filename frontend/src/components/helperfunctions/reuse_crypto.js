@@ -1,8 +1,8 @@
-import fav from "./favs";
+import Fav from "./favs";
 import convertTimestampToDate from "../time_convert";
 
 //Reusable crypto render
-export default function reuse_crpyto(news) {
+export default function reuse_crpyto(news, callback) {
   return news.map((curr) => {
     return (
       <div className="hold-crypto-news">
@@ -21,11 +21,12 @@ export default function reuse_crpyto(news) {
             <button
               className="faviortie-btn"
               onClick={() =>
-                fav(
+                Fav(
                   curr.title,
                   curr.source,
                   curr.link,
-                  convertTimestampToDate(curr.feedDate)
+                  convertTimestampToDate(curr.feedDate),
+                  callback
                 )
               }
             >
