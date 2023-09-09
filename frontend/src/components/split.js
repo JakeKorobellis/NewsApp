@@ -96,7 +96,7 @@ function Split() {
   }
 
   function popup(data) {
-    console.log(data);
+    console.log(data, 1111);
     return (
       <div className="confrimation">
         <div className="test1">
@@ -105,7 +105,7 @@ function Split() {
           </button>
         </div>
         <div className="test2">
-          <div>You have sucessfully saved this article</div>
+          <div>{data.action}</div>
         </div>
       </div>
     );

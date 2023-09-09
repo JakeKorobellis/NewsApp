@@ -65,7 +65,7 @@ exports.addFav = asynchandler(async (req, res) => {
       if (current_user.fav_news[i].headline == req.body.headline) {
         res.json({
           status: 200,
-          action: "Already added",
+          action: "You have already saved this article",
           headline: "You have already saved this article",
         });
         return;
@@ -76,7 +76,7 @@ exports.addFav = asynchandler(async (req, res) => {
       .exec();
     res.json({
       status: 200,
-      action: req.body.headline,
+      action: "Succes! Article Saved",
     });
     return;
   } else {
@@ -85,7 +85,7 @@ exports.addFav = asynchandler(async (req, res) => {
       .exec();
     res.json({
       status: 200,
-      action: req.body.headline,
+      action: "Succes! Article Saved",
     });
   }
 });
