@@ -51,6 +51,8 @@ exports.loginPost = asynchandler(async (req, res) => {
   }
 });
 exports.addFav = asynchandler(async (req, res) => {
+  //Losing Data?
+
   console.log(req.body);
   // Get the current user
   const current_user = await User.findOne({ fname: "Admin" });
