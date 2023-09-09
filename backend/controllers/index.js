@@ -59,6 +59,8 @@ exports.addFav = asynchandler(async (req, res) => {
 
   //Validate Request
   if (current_user.fav_news.length > 0) {
+    //Comparing what is already stored to prevent duplicates
+    //O(n), faster way? -- need to look into
     for (let i = 0; i < current_user.fav_news.length; i++) {
       if (current_user.fav_news[i].headline == req.body.headline) {
         res.json({ status: 200, action: "Already added" });
