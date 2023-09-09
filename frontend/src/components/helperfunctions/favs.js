@@ -1,6 +1,6 @@
 const url = process.env.REACT_APP_USER_FAV;
 
-export default function fav(h, s, u, t) {
+export default function Fav(h, s, u, t) {
   const data = {
     headline: h,
     source: s,
@@ -19,6 +19,6 @@ export default function fav(h, s, u, t) {
   })
     .then((res) => res.json())
     .then((res) => {
-      alert(res.action);
+      console.log(res.action);
     });
 }

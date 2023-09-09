@@ -63,19 +63,31 @@ exports.addFav = asynchandler(async (req, res) => {
     //O(n), faster way? -- need to look into
     for (let i = 0; i < current_user.fav_news.length; i++) {
       if (current_user.fav_news[i].headline == req.body.headline) {
-        res.json({ status: 200, action: "Already added" });
+        res.json({
+          status: 200,
+          action: "Already added",
+          headline: "You have already saved this article",
+        });
         return;
       }
     }
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
-    res.json({ status: 200, action: "Added to Faviorites" });
+    res.json({
+      status: 200,
+      action: "Added to Faviorites",
+      headline: req.body.headline,
+    });
     return;
   } else {
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
-    res.json({ status: 200, action: "Added to Faviorites" });
+    res.json({
+      status: 200,
+      action: "Added to Faviorites",
+      headline: req.body.headline,
+    });
   }
 });

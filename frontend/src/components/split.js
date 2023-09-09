@@ -19,6 +19,8 @@ function Split() {
   const [fi, setFi] = React.useState([]);
   const [curr_crypto, set_curr_crpyto] = React.useState("Latest");
   const [curr_fi, set_curr_fi] = React.useState("Latest");
+  const [pop_up, setPop_Up] = React.useState(true);
+  const [response_add, setResponseAdd] = React.useState("");
 
   //Intital Render
   React.useEffect(() => {
@@ -88,6 +90,25 @@ function Split() {
     }
   }
 
+  function popup(data) {
+    return (
+      <div className="confrimation">
+        <div className="test1">
+          <button className="button-hold-conf" onClick={handleConfirmation}>
+            X
+          </button>
+        </div>
+        <div className="test2">You have added</div>
+        <div className="test3">{data}</div>
+        <div className="test4">to your saved news articles.</div>
+      </div>
+    );
+  }
+
+  function handleConfirmation() {
+    setPop_Up(false);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -136,6 +157,11 @@ function Split() {
                   </div>
                 )}
               </div>
+              {pop_up ? (
+                <div className="confrimation">{popup("Tests Reponse")}</div>
+              ) : (
+                ""
+              )}
               <div className="stocks-hold">
                 {fi !== [] ? (
                   reuse_fi(fi)
