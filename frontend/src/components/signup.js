@@ -122,9 +122,11 @@ function Signup() {
           Login!
         </a>
       </div>
-      <a href="/content" className="supersmall bypass">
+      {/** 
+       <a href="/content" className="supersmall bypass">
         SIGNUP BYPASS
       </a>
+      */}
     </div>
   );
 }

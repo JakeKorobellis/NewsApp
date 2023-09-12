@@ -93,9 +93,12 @@ function Login() {
           Sign up!
         </a>
       </div>
+
+      {/**
       <a href="/content" className="supersmall bypass">
         LOGIN BYPASS
       </a>
+       */}
     </div>
   );
 }
