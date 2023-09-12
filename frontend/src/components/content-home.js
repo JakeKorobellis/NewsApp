@@ -11,6 +11,13 @@ function ConetentHome() {
   const stream = process.env.REACT_APP_STREAM;
   const [prev, setPrev] = React.useState([]);
   const [ready, setReady] = React.useState(false);
+  const [pop_up, setPop_Up] = React.useState(false);
+  const [response_add, setResponseAdd] = React.useState("");
+
+  function handleFavAction(action) {
+    setResponseAdd(action);
+    setPop_Up(true);
+  }
 
   React.useEffect(() => {
     fetch(url, {
@@ -59,6 +66,26 @@ function ConetentHome() {
     setReady(true);
   }, []);
 
+  function popup(data) {
+    console.log(data, 1111);
+    return (
+      <div className="confrimation">
+        <div className="test1">
+          <button className="button-hold-conf" onClick={handleConfirmation}>
+            X
+          </button>
+        </div>
+        <div className="test2">
+          <div>{data.action}</div>
+        </div>
+      </div>
+    );
+  }
+
+  function handleConfirmation() {
+    setPop_Up(false);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -89,7 +116,7 @@ function ConetentHome() {
             <div className="title-all">Live News</div>
             <div className="stream-hold-all9">
               {prev && ready ? (
-                reuse(prev)
+                reuse(prev, handleFavAction)
               ) : (
                 <div className="holder-loader">
                   <div class="lds-ring">
@@ -99,6 +126,11 @@ function ConetentHome() {
                     <div></div>
                   </div>
                 </div>
+              )}
+              {pop_up ? (
+                <div className="confrimation">{popup(response_add)}</div>
+              ) : (
+                ""
               )}
             </div>
           </div>
