@@ -128,7 +128,7 @@ function ConetentHome() {
                 </div>
               )}
               {pop_up ? (
-                <div className="confrimation">{popup(response_add)}</div>
+                <div className="confrimation2">{popup(response_add)}</div>
               ) : (
                 ""
               )}

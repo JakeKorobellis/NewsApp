@@ -446,6 +446,8 @@ color: black;  font-size: 1.5vw;
   gap: 1vw;
   flex-direction: column;
   overflow-y: auto;
+  
+  align-items: center;
 }
 
 .most-active{
@@ -732,7 +734,17 @@ height: 10%;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-
+}
+.confrimation2{
+  color: white;
+  position: absolute;
+  width: 30vw;
+  height: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
 }
 .test1{
   width: 100%;
