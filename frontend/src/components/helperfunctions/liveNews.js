@@ -17,6 +17,22 @@ export default function reuse(news, callback) {
           <div className="small-text-date">
             {convertISOToFormattedDateTime(curr.updated_at)}
           </div>
+          <div>
+            <button
+              className="faviortie-btn"
+              onClick={() =>
+                Fav(
+                  curr.headline,
+                  curr.source,
+                  curr.url,
+                  convertISOToFormattedDateTime(curr.updated_at),
+                  callback
+                )
+              }
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     );
