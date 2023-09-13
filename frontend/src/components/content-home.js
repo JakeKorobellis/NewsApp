@@ -13,6 +13,7 @@ function ConetentHome() {
   const [ready, setReady] = React.useState(false);
   const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
+  const token = localStorage.getItem("token");
 
   function handleFavAction(action) {
     setResponseAdd(action);
