@@ -78,7 +78,9 @@ function ConetentHome() {
       }
     };
 
-    setReady(true);
+    setTimeout(() => {
+      setReady(true);
+    }, "500");
   }, []);
 
   console.log(userData);
@@ -155,17 +157,23 @@ function ConetentHome() {
           </div>
         </header>
       ) : (
-        <div className="holder-auth">
-          <div className="large-auth">Hold on!</div>
-          <div className="short-auth">Do you have an account?</div>
-          <div className="auth-link-hold">
-            <a href="/login" className="auth-link">
-              Login
-            </a>
-            <a href="/signup" className="auth-link">
-              Signup
-            </a>
-          </div>
+        <div>
+          {ready ? (
+            <div className="holder-auth">
+              <div className="large-auth">Hold on!</div>
+              <div className="short-auth">Do you have an account?</div>
+              <div className="auth-link-hold">
+                <a href="/login" className="auth-link">
+                  Login
+                </a>
+                <a href="/signup" className="auth-link">
+                  Signup
+                </a>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>
