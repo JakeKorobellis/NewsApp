@@ -16,7 +16,6 @@ function Login() {
       ...login,
       [name]: value,
     }));
-    console.log(login);
   };
 
   const handleSubmit = (event) => {
@@ -32,6 +31,8 @@ function Login() {
       .then((res) => res.json())
       .then((res) => {
         if (res.account == true) {
+          console.log(res, 111111111111);
+          localStorage.setItem("token", res.token);
           navigate("/content");
         } else {
           alert("Invalid Username or Password");

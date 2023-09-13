@@ -2,6 +2,10 @@ const asynchandler = require("express-async-handler");
 require("dotenv").config();
 const User = require("../models/user");
 const News = require("../models/news");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { token } = require("morgan");
+
 //Require Models
 
 exports.test = asynchandler(async (req, res) => {
@@ -17,19 +21,18 @@ exports.user = asynchandler(async (req, res) => {
 });
 
 //Signup post (Need to update name)
-exports.testPost = (req, res) => {
+exports.testPost = asynchandler(async (req, res) => {
   console.log(req.body);
-
-  /* Need to encrypt the password
-  before entering into the DB
-  */
-
   try {
+    //Hashing the users password
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
+
     const newUser = new User({
       fname: req.body.fname,
       lname: req.body.lname,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
     });
 
     const saveUser = newUser.save();
@@ -38,16 +41,30 @@ exports.testPost = (req, res) => {
   } catch (err) {
     res.json({ status: 500, text: "User Signup Failed", error: err });
   }
-};
+});
 //Login Post
 exports.loginPost = asynchandler(async (req, res) => {
   const hasAccount = await User.findOne({ email: req.body.email });
   if (hasAccount == null) {
     res.json({ status: 500, account: false });
   } else {
-    //Need more conditionals for decrypting and comparing passwords
-    console.log(hasAccount);
-    res.json({ status: 200, account: true, user: hasAccount });
+    bcrypt.compare(req.body.password, hasAccount.password, (err, result) => {
+      if (result) {
+        //if the result is valid
+        jwt.sign({ user: hasAccount }, process.env.JWTKEY, (err, token) => {
+          if (err) {
+            return res.json({ status: 500, account: false, user: null });
+          } else {
+            return res.json({
+              token: token,
+              account: true,
+            });
+          }
+        });
+      } else {
+        return res.json({ status: 500, account: false, user: null });
+      }
+    });
   }
 });
 exports.addFav = asynchandler(async (req, res) => {
