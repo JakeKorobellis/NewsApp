@@ -779,3 +779,33 @@ color: white;
 .button-hold-conf:hover{
   color: red;
 }
+.holder-auth{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.large-auth{
+  font-size: 9vw;
+}
+.short-auth{
+  font-size: 3vw;
+}
+.auth-link-hold{
+width: 30vw;
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-top: 2vw;
+}
+.auth-link{
+  background: white;
+  font-size: 2vw;
+  width: 8vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}

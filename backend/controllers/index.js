@@ -4,8 +4,7 @@ const User = require("../models/user");
 const News = require("../models/news");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { token } = require("morgan");
-
+const tokenVerify = require("../middlewear/jwtVerify");
 //Require Models
 
 exports.test = asynchandler(async (req, res) => {
@@ -105,4 +104,18 @@ exports.addFav = asynchandler(async (req, res) => {
       action: "Succes! Article Saved",
     });
   }
+});
+//Home
+exports.home = asynchandler(async (req, res) => {
+  jwt.verify(req.token, process.env.JWTKEY, (err, authData) => {
+    if (err) {
+      res.json({ status: 403, account: false });
+    } else {
+      res.json({
+        status: 200,
+        authData: authData,
+        account: true,
+      });
+    }
+  });
 });
