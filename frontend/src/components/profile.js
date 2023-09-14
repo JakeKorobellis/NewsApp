@@ -5,13 +5,6 @@ import user from "./pictures/user.png";
 function UserEdit() {
   const [userData, setUserData] = React.useState([]);
 
-  const [currUser, setCurrUser] = React.useState({
-    fname: "John",
-    lname: "Doe",
-    email: "jdoe@newsroom.com",
-    password: "JohnDoe123",
-  });
-
   const token = localStorage.getItem("token");
 
   React.useEffect(() => {
