@@ -809,3 +809,7 @@ margin-top: 2vw;
   align-items: center;
   border-radius: 10px;
 }
+.front{
+  position: relative;
+  z-index: 100;
+}

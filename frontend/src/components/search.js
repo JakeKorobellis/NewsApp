@@ -169,6 +169,7 @@ function Search() {
           <div class="data stream-all">
             <div className="title-all ">Search by Name</div>
             <div
+              className="front"
               style={{
                 width: "30vw",
               }}
