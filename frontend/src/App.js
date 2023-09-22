@@ -13,6 +13,7 @@ import Signup from "./components/signup";
 import UserEdit from "./components/profile";
 import PasswordEdit from "./components/passwordedit";
 import Success from "./components/success";
+import Fav from "./components/helperfunctions/favs";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/useredit" element={<UserEdit />} />
           <Route path="/useredit/password" element={<PasswordEdit />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/favs" element={<Fav />} />
         </Routes>
       </header>
     </div>
