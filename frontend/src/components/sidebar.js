@@ -62,6 +62,14 @@ function Side(curr) {
           Stock Splits
         </a>
       </span>
+      <span>
+        <a
+          href="/content/favs"
+          className={current == 8 ? "current-side" : "notcurrent-side"}
+        >
+          Favorites
+        </a>
+      </span>
     </div>
   );
 }
