@@ -1,7 +1,9 @@
 import React from "react";
 import Side from "./sidebar";
 import user from "./pictures/user.png";
-
+// Need to dynamically render users fav news articles
+// Obtain user data thru JWT
+// Render
 function Fav() {
   return (
     <div className="App">

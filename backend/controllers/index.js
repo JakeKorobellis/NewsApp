@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const tokenVerify = require("../middlewear/jwtVerify");
 //Require Models
-
+// Need to render user favs for favs page
 exports.test = asynchandler(async (req, res) => {
   res.json({ test: true, success: true });
 });
