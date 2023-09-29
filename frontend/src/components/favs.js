@@ -4,6 +4,7 @@ import user from "./pictures/user.png";
 // Need to dynamically render users fav news articles
 // Obtain user data thru JWT
 // Render
+//Display default text if the user does not have any favs
 function Fav() {
   return (
     <div className="App">
@@ -32,7 +33,10 @@ function Fav() {
             <Side curr={8} />
           </div>
           <div class="data stream-all">
-            <div>Test</div>
+            <div>Favorites</div>
+            <div className="favirote-news">
+              This is where the content will go
+            </div>
           </div>
         </div>
       </header>
