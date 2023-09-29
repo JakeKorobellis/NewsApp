@@ -150,7 +150,7 @@ function Split() {
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
-                {news !== [] ? (
+                {news != [] ? (
                   reuse_crpyto(news, handleFavAction)
                 ) : (
                   <div className="holder-loader">
