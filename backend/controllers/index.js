@@ -31,6 +31,7 @@ exports.testPost = asynchandler(async (req, res) => {
       fname: req.body.fname,
       lname: req.body.lname,
       email: req.body.email,
+      fav_news: [],
       password: hash,
     });
 
@@ -71,12 +72,12 @@ exports.addFav = asynchandler(async (req, res) => {
 
   console.log(req.body);
   // Get the current user
-  const current_user = await User.findOne({ fname: "Admin" });
+  // ****** Current user needs to be dynamically changed ****
+  const current_user = await User.findOne({ email: "jdoe@newsroom.com" });
 
   //Validate Request
   if (current_user.fav_news.length > 0) {
     //Comparing what is already stored to prevent duplicates
-    //O(n), faster way? -- need to look into
     for (let i = 0; i < current_user.fav_news.length; i++) {
       if (current_user.fav_news[i].headline == req.body.headline) {
         res.json({
