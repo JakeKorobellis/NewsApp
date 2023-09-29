@@ -6,6 +6,24 @@ import user from "./pictures/user.png";
 // Render
 //Display default text if the user does not have any favs
 function Fav() {
+  const [userData, setUserData] = React.useState([]); //User Data
+  const token = localStorage.getItem("token"); // Token from local Storage
+
+  React.useEffect(() => {
+    //Fetch current user data
+    fetch("/api/auth", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUserData(data));
+  }, []);
+
+  console.log(userData);
+
   return (
     <div className="App">
       <header className="App-header">
