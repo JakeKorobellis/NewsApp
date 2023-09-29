@@ -169,7 +169,7 @@ function Split() {
                 ""
               )}
               <div className="stocks-hold">
-                {fi !== [] ? (
+                {fi != [] ? (
                   reuse_fi(fi, handleFavAction)
                 ) : (
                   <div className="holder-loader">
