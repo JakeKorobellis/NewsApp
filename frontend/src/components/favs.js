@@ -51,9 +51,17 @@ function Fav() {
             <Side curr={8} />
           </div>
           <div class="data stream-all">
-            <div>Favorites</div>
-            <div className="favirote-news">
-              This is where the content will go
+            <div className="title-all">Favorites</div>
+
+            <div className="stream-hold-all15">
+              <div className="holder-loader">
+                <div class="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

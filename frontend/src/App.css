@@ -308,6 +308,18 @@ a{
  justify-content: center;
  align-items: center;
 }
+.stream-hold-all15{
+  height: 70vh;
+  background: grey;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favirote-news{
+  background: orange;
+  width: 50vw;
+}
 .center{
   display: flex;
   justify-content: center;
