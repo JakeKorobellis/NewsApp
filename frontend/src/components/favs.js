@@ -19,10 +19,38 @@ function Fav() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data));
+      .then((data) => setUserData(data.authData.user.fav_news));
   }, []);
 
   console.log(userData);
+
+  //Render users faviorite news articles
+  function renderFavs(list) {
+    return list.map((curr) => {
+      return (
+        <div className="hold-crypto-news">
+          <div className="fifty-five">{curr.headline}</div>
+          <div className="hold-right">
+            <div className="">{curr.source}</div>
+            <div className="">
+              <a href={curr.url} target="_blank">
+                View
+              </a>
+            </div>
+            <div className="small-text-date">{curr.time}</div>
+            <div>
+              <button
+                className="faviortie-btn"
+                onClick={() => console.log("Remove!")}
+              >
+                remove
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="App">
@@ -54,8 +82,8 @@ function Fav() {
             <div className="title-all">Favorites</div>
 
             <div className="stream-hold-all15">
-              {userData != [] ? (
-                <div>User has data</div>
+              {userData ? (
+                <div>{renderFavs(userData)}</div>
               ) : (
                 <div className="holder-loader">
                   <div class="lds-ring">
