@@ -83,7 +83,7 @@ function Fav() {
 
             <div className="stream-hold-all15">
               {userData ? (
-                <div>{renderFavs(userData)}</div>
+                renderFavs(userData)
               ) : (
                 <div className="holder-loader">
                   <div class="lds-ring">

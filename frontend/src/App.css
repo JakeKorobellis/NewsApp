@@ -311,10 +311,13 @@ a{
 .stream-hold-all15{
   height: 70vh;
   background: grey;
-  width: 75%;
+  width: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 1vw;
 }
 .favirote-news{
   background: orange;
