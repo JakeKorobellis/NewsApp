@@ -43,7 +43,7 @@ function Fav() {
                 className="faviortie-btn"
                 onClick={() => console.log("Remove!")}
               >
-                remove
+                Remove
               </button>
             </div>
           </div>
