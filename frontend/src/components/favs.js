@@ -54,14 +54,18 @@ function Fav() {
             <div className="title-all">Favorites</div>
 
             <div className="stream-hold-all15">
-              <div className="holder-loader">
-                <div class="lds-ring">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+              {userData != [] ? (
+                <div>User has data</div>
+              ) : (
+                <div className="holder-loader">
+                  <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
