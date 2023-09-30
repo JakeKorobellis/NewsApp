@@ -1,9 +1,10 @@
 import React from "react";
 import Side from "./sidebar";
 import user from "./pictures/user.png";
-// Need to dynamically render users fav news articles
-// Obtain user data thru JWT
-// Render
+
+//Current bug - user is required to log out and log back in when adding something to favs
+//Not populating for some reason
+
 //Display default text if the user does not have any favs
 function Fav() {
   const [userData, setUserData] = React.useState([]); //User Data
