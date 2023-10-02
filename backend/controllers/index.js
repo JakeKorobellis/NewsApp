@@ -68,7 +68,7 @@ exports.loginPost = asynchandler(async (req, res) => {
   }
 });
 exports.addFav = asynchandler(async (req, res) => {
-  //Losing Data?
+  //Need to check length of favs... only can return so much
 
   console.log(req.body);
   // Get the current user
