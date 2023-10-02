@@ -2,7 +2,7 @@ import Fav from "./favs";
 
 import convertISOToFormattedDateTime from "../time_convert-2";
 
-export default function reuse_fi(news, callback) {
+export default function reuse_fi(news, callback, user) {
   return news.map((curr) => {
     return (
       <div className="hold-crypto-news">

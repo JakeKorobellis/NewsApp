@@ -1,11 +1,12 @@
 const url = process.env.REACT_APP_USER_FAV;
 
-export default function Fav(h, s, u, t, callback) {
+export default function Fav(h, s, u, t, callback, user) {
   const data = {
     headline: h,
     source: s,
     url: u,
     time: t,
+    id: user,
   };
 
   //handle by sending to the backend

@@ -2,7 +2,8 @@ import Fav from "./favs";
 import convertISOToFormattedDateTime from "../time_convert-2";
 
 //Reusable FI
-export default function reuse(news, callback) {
+export default function reuse(news, callback, user) {
+  console.log(user);
   return news.map((curr) => {
     return (
       <div className="hold-crypto-news">
@@ -26,7 +27,8 @@ export default function reuse(news, callback) {
                   curr.source,
                   curr.url,
                   convertISOToFormattedDateTime(curr.updated_at),
-                  callback
+                  callback,
+                  user
                 )
               }
             >

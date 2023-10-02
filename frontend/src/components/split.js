@@ -21,7 +21,10 @@ function Split() {
   const [curr_fi, set_curr_fi] = React.useState("Latest");
   const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
+  const [userData, setUserData] = React.useState("");
+  const token = localStorage.getItem("token");
 
+  console.log(userData);
   function handleFavAction(action) {
     setResponseAdd(action);
     setPop_Up(true);
@@ -29,6 +32,16 @@ function Split() {
 
   //Intital Render
   React.useEffect(() => {
+    fetch("/api/auth", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUserData(data));
+
     fetch(api_route) //Crypto News Route
       .then((res) => res.json())
       .then((res) => setNews(res.news));
@@ -150,8 +163,12 @@ function Split() {
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
-                {news != [] ? (
-                  reuse_crpyto(news, handleFavAction)
+                {news != [] && userData ? (
+                  reuse_crpyto(
+                    news,
+                    handleFavAction,
+                    userData.authData.user._id
+                  )
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">

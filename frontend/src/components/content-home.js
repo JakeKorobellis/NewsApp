@@ -18,7 +18,7 @@ function ConetentHome() {
   const [response_add, setResponseAdd] = React.useState("");
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
-
+  console.log(userData);
   function handleFavAction(action) {
     setResponseAdd(action);
     setPop_Up(true);
@@ -136,7 +136,7 @@ function ConetentHome() {
               <div className="title-all">Live News</div>
               <div className="stream-hold-all9">
                 {prev && ready ? (
-                  reuse(prev, handleFavAction)
+                  reuse(prev, handleFavAction, userData.authData.user._id)
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">

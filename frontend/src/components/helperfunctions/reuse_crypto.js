@@ -2,7 +2,8 @@ import Fav from "./favs";
 import convertTimestampToDate from "../time_convert";
 
 //Reusable crypto render
-export default function reuse_crpyto(news, callback) {
+export default function reuse_crpyto(news, callback, user) {
+  console.log(user);
   return news.map((curr) => {
     return (
       <div className="hold-crypto-news">
@@ -26,7 +27,8 @@ export default function reuse_crpyto(news, callback) {
                   curr.source,
                   curr.link,
                   convertTimestampToDate(curr.feedDate),
-                  callback
+                  callback,
+                  user
                 )
               }
             >
