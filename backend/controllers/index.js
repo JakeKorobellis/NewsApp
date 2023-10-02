@@ -73,7 +73,7 @@ exports.addFav = asynchandler(async (req, res) => {
   console.log(req.body);
   // Get the current user
   // ****** Current user needs to be dynamically changed ****
-  const current_user = await User.findOne({ email: "jdoe@newsroom.com" });
+  const current_user = await User.findOne({ _id: req.body.id });
 
   //Validate Request
   if (current_user.fav_news.length > 0) {
