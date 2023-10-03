@@ -22,13 +22,28 @@ function Search() {
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
+  const token = localStorage.getItem("token"); // Token from local Storage
+
   const [chartData, setChartData] = React.useState([]);
   const [current, setCurrent] = React.useState([]);
   const [placeholder1, setPlaceholder] = React.useState(
     "SPDR S&P 500 ETF Trust"
   );
+  const [userData, setUserData] = React.useState([]);
+  console.log(userData);
 
   React.useEffect(() => {
+    //Fetch current user data
+    fetch("/api/auth", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUserData(data));
+
     fetch(url3, {
       headers: {
         "APCA-API-KEY-ID": key,
