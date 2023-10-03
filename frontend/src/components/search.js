@@ -30,6 +30,9 @@ function Search() {
     "SPDR S&P 500 ETF Trust"
   );
   const [userData, setUserData] = React.useState([]);
+  const [response_add, setResponseAdd] = React.useState("");
+  const [pop_up, setPop_Up] = React.useState(false);
+
   console.log(userData);
 
   React.useEffect(() => {
@@ -77,6 +80,11 @@ function Search() {
         console.error("Error:", error);
       });
   }, []);
+
+  function handleFavAction(action) {
+    setResponseAdd(action);
+    setPop_Up(true);
+  }
 
   const items = data;
   const handleOnSelect = (item) => {
@@ -155,6 +163,27 @@ function Search() {
     );
   };
 
+  function popup(data) {
+    console.log(data, 1111);
+    return (
+      <div className="confrimation">
+        <div className="test1">
+          <button className="button-hold-conf" onClick={handleConfirmation}>
+            X
+          </button>
+        </div>
+        <div className="test2">
+          <div>{data.action}</div>
+        </div>
+      </div>
+    );
+  }
+
+  function handleConfirmation() {
+    console.log("wjebnfhjwbefhbwe");
+    setPop_Up(false);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -198,8 +227,12 @@ function Search() {
             </div>
             <div className="stream-hold-all-2">
               <div className="news-search">
-                {current ? (
-                  formatData(current)
+                {current && userData.authData ? (
+                  formatData(
+                    current,
+                    handleFavAction,
+                    userData.authData.user._id
+                  )
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">
@@ -211,6 +244,12 @@ function Search() {
                   </div>
                 )}
               </div>
+              {pop_up ? (
+                <div className="confrimation2">{popup(response_add)}</div>
+              ) : (
+                ""
+              )}
+
               <div className="chart-search">
                 <Chart priceData={chartData} />
               </div>
