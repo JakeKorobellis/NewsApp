@@ -10,6 +10,7 @@ function Fav() {
   const [userData, setUserData] = React.useState([]); //User Data
   const token = localStorage.getItem("token"); // Token from local Storage
   const url = process.env.REACT_APP_REMOVE_FAV;
+  const [news, setNews] = React.useState([]);
 
   React.useEffect(() => {
     //Fetch current user data
@@ -21,7 +22,10 @@ function Fav() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data));
+      .then((data) => {
+        setUserData(data);
+        setNews(data.authData.user);
+      });
   }, []);
 
   console.log(userData);
@@ -44,10 +48,7 @@ function Fav() {
     })
       .then((res) => res.json())
       .then((res) => {
-        //Reload page to render changes -- Needs to be condtional
-        //once backend logic is implemented
-        window.location.reload(true);
-        console.log(res);
+        setNews(res.authData);
       });
   };
 
@@ -119,7 +120,7 @@ function Fav() {
 
             <div className="stream-hold-all15">
               {userData.authData ? (
-                renderFavs(userData.authData.user.fav_news)
+                renderFavs(news.fav_news)
               ) : (
                 <div className="holder-loader">
                   <div class="lds-ring">

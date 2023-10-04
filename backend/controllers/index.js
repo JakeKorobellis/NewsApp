@@ -129,9 +129,12 @@ exports.removeFav = asynchandler(async (req, res) => {
       { $pull: { fav_news: { headline: req.body.headline } } }
     );
 
+    const current_user = await User.findOne({ _id: req.body.user });
+
     res.json({
       status: 200,
       action: "Article Removed Sucessfully",
+      authData: current_user,
     });
   } catch (error) {
     res.json({
