@@ -120,3 +120,8 @@ exports.home = asynchandler(async (req, res) => {
     }
   });
 });
+
+//Remove faviorite route
+exports.removeFav = asynchandler(async (req, res) => {
+  console.log(req.body);
+});
