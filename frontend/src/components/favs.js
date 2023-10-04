@@ -20,10 +20,22 @@ function Fav() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data.authData.user.fav_news));
+      .then((data) => setUserData(data));
   }, []);
 
   console.log(userData);
+
+  const handleDelete = (headline, source, url, time, user) => {
+    const data = {
+      headline: headline,
+      source: source,
+      url: url,
+      time: time,
+      user: user,
+    };
+
+    console.log(data);
+  };
 
   //Render users faviorite news articles
   function renderFavs(list) {
@@ -42,7 +54,15 @@ function Fav() {
             <div>
               <button
                 className="faviortie-btn"
-                onClick={() => console.log("Remove!")}
+                onClick={() =>
+                  handleDelete(
+                    curr.headline,
+                    curr.source,
+                    curr.url,
+                    curr.time,
+                    userData.authData.user._id
+                  )
+                }
               >
                 Remove
               </button>
@@ -83,8 +103,8 @@ function Fav() {
             <div className="title-all">Favorites</div>
 
             <div className="stream-hold-all15">
-              {userData ? (
-                renderFavs(userData)
+              {userData.authData ? (
+                renderFavs(userData.authData.user.fav_news)
               ) : (
                 <div className="holder-loader">
                   <div class="lds-ring">
