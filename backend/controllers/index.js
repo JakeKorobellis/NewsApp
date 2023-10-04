@@ -125,7 +125,7 @@ exports.home = asynchandler(async (req, res) => {
 exports.removeFav = asynchandler(async (req, res) => {
   try {
     await User.updateOne(
-      { _id: req.body.user },
+      { _id: req.body.user }, //Filter is the user
       { $pull: { fav_news: { headline: req.body.headline } } }
     );
 
