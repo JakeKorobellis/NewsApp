@@ -11,6 +11,7 @@ function Fav() {
   const token = localStorage.getItem("token"); // Token from local Storage
   const url = process.env.REACT_APP_REMOVE_FAV;
   const [news, setNews] = React.useState([]);
+  const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
     //Fetch current user data
@@ -24,11 +25,23 @@ function Fav() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
-        setNews(data.authData.user);
+        fetch("/api/news", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data.authData.user),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            setNews(res.authData);
+          });
       });
-  }, []);
 
-  console.log(userData);
+    setTimeout(() => {
+      setReady(true);
+    }, "500");
+  }, []);
 
   const handleDelete = (headline, source, url, time, user, url_remove) => {
     const data = {
@@ -91,50 +104,71 @@ function Fav() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div class="parent">
-          <div class="header">
-            <div className="fifityvw ">
-              <div className="header-title-format">
-                <a href="/" className="default-title">
-                  <div className="title-font-large">
-                    <span className="neon-blue">N</span>ews
-                    <span className="neon-blue">R</span>oom
-                    <span className="smaller-title">.com</span>
+      {userData.account ? (
+        <header className="App-header">
+          <div class="parent">
+            <div class="header">
+              <div className="fifityvw ">
+                <div className="header-title-format">
+                  <a href="/" className="default-title">
+                    <div className="title-font-large">
+                      <span className="neon-blue">N</span>ews
+                      <span className="neon-blue">R</span>oom
+                      <span className="smaller-title">.com</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div className="fifityvw2">
+                {" "}
+                <a href="/useredit">
+                  <img src={user} className="resize-icon" />
+                </a>
+              </div>{" "}
+            </div>
+            <div class="sidebar">
+              <Side curr={8} />
+            </div>
+            <div class="data stream-all">
+              <div className="title-all">Favorites</div>
+
+              <div className="stream-hold-all15">
+                {news.fav_news ? (
+                  renderFavs(news.fav_news)
+                ) : (
+                  <div className="holder-loader">
+                    <div class="lds-ring">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
                   </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </header>
+      ) : (
+        <div>
+          {ready ? (
+            <div className="holder-auth">
+              <div className="large-auth">Hold on!</div>
+              <div className="short-auth">Do you have an account?</div>
+              <div className="auth-link-hold">
+                <a href="/login" className="auth-link">
+                  Login
+                </a>
+                <a href="/signup" className="auth-link">
+                  Signup
                 </a>
               </div>
             </div>
-            <div className="fifityvw2">
-              {" "}
-              <a href="/useredit">
-                <img src={user} className="resize-icon" />
-              </a>
-            </div>{" "}
-          </div>
-          <div class="sidebar">
-            <Side curr={8} />
-          </div>
-          <div class="data stream-all">
-            <div className="title-all">Favorites</div>
-
-            <div className="stream-hold-all15">
-              {userData.authData ? (
-                renderFavs(news.fav_news)
-              ) : (
-                <div className="holder-loader">
-                  <div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
-      </header>
+      )}
     </div>
   );
 }

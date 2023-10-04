@@ -106,7 +106,7 @@ exports.addFav = asynchandler(async (req, res) => {
     });
   }
 });
-//Home
+//auth of user
 exports.home = asynchandler(async (req, res) => {
   jwt.verify(req.token, process.env.JWTKEY, (err, authData) => {
     if (err) {
@@ -142,4 +142,12 @@ exports.removeFav = asynchandler(async (req, res) => {
       action: "Internal Error",
     });
   }
+});
+
+exports.getNews = asynchandler(async (req, res) => {
+  const current_user = await User.findOne({ _id: req.body._id });
+  res.json({
+    status: 200,
+    authData: current_user,
+  });
 });

@@ -7,7 +7,7 @@ const verifyToken = require("../middlewear/jwtVerify");
 //Test Routes
 router.get("/", controller.test);
 router.get("/user", controller.user);
-router.get("/news", controller.data);
+router.post("/api/news", controller.getNews);
 router.get("/api/auth", verifyToken, controller.home);
 
 //Signup
