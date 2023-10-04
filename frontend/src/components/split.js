@@ -186,8 +186,8 @@ function Split() {
                 ""
               )}
               <div className="stocks-hold">
-                {fi != [] ? (
-                  reuse_fi(fi, handleFavAction)
+                {fi != [] && userData ? (
+                  reuse_fi(fi, handleFavAction, userData.authData.user._id)
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">

@@ -26,7 +26,8 @@ export default function reuse_fi(news, callback, user) {
                   curr.source,
                   curr.url,
                   convertISOToFormattedDateTime(curr.updated_at),
-                  callback
+                  callback,
+                  user
                 )
               }
             >
