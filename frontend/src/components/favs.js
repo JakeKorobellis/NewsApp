@@ -9,6 +9,7 @@ import user from "./pictures/user.png";
 function Fav() {
   const [userData, setUserData] = React.useState([]); //User Data
   const token = localStorage.getItem("token"); // Token from local Storage
+  const url = process.env.REACT_APP_REMOVE_FAV;
 
   React.useEffect(() => {
     //Fetch current user data
@@ -25,7 +26,7 @@ function Fav() {
 
   console.log(userData);
 
-  const handleDelete = (headline, source, url, time, user) => {
+  const handleDelete = (headline, source, url, time, user, url_remove) => {
     const data = {
       headline: headline,
       source: source,
@@ -34,7 +35,20 @@ function Fav() {
       user: user,
     };
 
-    console.log(data);
+    fetch(url_remove, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        //Reload page to render changes -- Needs to be condtional
+        //once backend logic is implemented
+        window.location.reload(true);
+        console.log(res);
+      });
   };
 
   //Render users faviorite news articles
@@ -60,7 +74,8 @@ function Fav() {
                     curr.source,
                     curr.url,
                     curr.time,
-                    userData.authData.user._id
+                    userData.authData.user._id,
+                    url
                   )
                 }
               >
