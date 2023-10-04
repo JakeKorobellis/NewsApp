@@ -123,9 +123,20 @@ exports.home = asynchandler(async (req, res) => {
 
 //Remove faviorite route
 exports.removeFav = asynchandler(async (req, res) => {
-  console.log(req.body);
-  res.json({
-    status: 200,
-    action: "Article Removed Sucessfully",
-  });
+  try {
+    await User.updateOne(
+      { _id: req.body.user },
+      { $pull: { fav_news: { headline: req.body.headline } } }
+    );
+
+    res.json({
+      status: 200,
+      action: "Article Removed Sucessfully",
+    });
+  } catch (error) {
+    res.json({
+      status: 500,
+      action: "Internal Error",
+    });
+  }
 });
