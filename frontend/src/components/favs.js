@@ -3,7 +3,7 @@ import Side from "./sidebar";
 import user from "./pictures/user.png";
 
 //Current bug - user is required to log out and log back in when adding something to favs
-//Not populating for some reason
+//And when removing from favs
 
 //Display default text if the user does not have any favs
 function Fav() {
