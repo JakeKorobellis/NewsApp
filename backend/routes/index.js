@@ -16,5 +16,7 @@ router.post("/user/create", controller.testPost);
 router.post("/login/auth", controller.loginPost);
 //Process fav
 router.post("/add/fav", controller.addFav);
+//Delete fav
+router.post("/remove/fav", controller.removeFav);
 
 module.exports = router;
