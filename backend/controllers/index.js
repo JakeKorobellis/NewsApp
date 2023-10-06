@@ -125,8 +125,10 @@ exports.addFav = asynchandler(async (req, res) => {
 exports.home = asynchandler(async (req, res) => {
   jwt.verify(req.token, process.env.JWTKEY, (err, authData) => {
     if (err) {
+      //If the user has no account, send a false status
       res.json({ status: 403, account: false });
     } else {
+      //If the user has an account, send their data
       res.json({
         status: 200,
         authData: authData,
@@ -139,19 +141,21 @@ exports.home = asynchandler(async (req, res) => {
 //Remove faviorite route
 exports.removeFav = asynchandler(async (req, res) => {
   try {
+    //Find user, filter for article, and remove
     await User.updateOne(
-      { _id: req.body.user }, //Filter is the user
+      { _id: req.body.user },
       { $pull: { fav_news: { headline: req.body.headline } } }
     );
 
     const current_user = await User.findOne({ _id: req.body.user });
-
+    //Send updated user data
     res.json({
       status: 200,
       action: "Article Removed Sucessfully",
       authData: current_user,
     });
   } catch (error) {
+    //No article found, send error
     res.json({
       status: 500,
       action: "Internal Error",
@@ -159,6 +163,7 @@ exports.removeFav = asynchandler(async (req, res) => {
   }
 });
 
+//Get current users data - when needed
 exports.getNews = asynchandler(async (req, res) => {
   const current_user = await User.findOne({ _id: req.body._id });
   res.json({
