@@ -2,9 +2,6 @@ import React from "react";
 import Side from "./sidebar";
 import user from "./pictures/user.png";
 
-//New BUG
-//When deleting, if you hit refresh they all appear back until user has logged out and logged back in
-
 //Display default text if the user does not have any favs
 function Fav() {
   const [userData, setUserData] = React.useState([]); //User Data
