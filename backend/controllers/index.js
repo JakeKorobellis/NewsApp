@@ -77,12 +77,12 @@ exports.loginPost = asynchandler(async (req, res) => {
     });
   }
 });
-exports.addFav = asynchandler(async (req, res) => {
-  //Need to check length of favs... only can return so much
 
-  console.log(req.body);
+// TO-DO
+// Check the users fav news article length, dont let more than 20
+
+exports.addFav = asynchandler(async (req, res) => {
   // Get the current user
-  // ****** Current user needs to be dynamically changed ****
   const current_user = await User.findOne({ _id: req.body.id });
 
   //Validate Request
@@ -90,6 +90,7 @@ exports.addFav = asynchandler(async (req, res) => {
     //Comparing what is already stored to prevent duplicates
     for (let i = 0; i < current_user.fav_news.length; i++) {
       if (current_user.fav_news[i].headline == req.body.headline) {
+        //If there is a duplicate, alert duplicate
         res.json({
           status: 200,
           action: "You have already saved this article",
@@ -98,6 +99,8 @@ exports.addFav = asynchandler(async (req, res) => {
         return;
       }
     }
+
+    //No duplicate, update the current users favs by appending to the end
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
@@ -107,6 +110,7 @@ exports.addFav = asynchandler(async (req, res) => {
     });
     return;
   } else {
+    //If th euser has no current saved articles, save it
     current_user
       .updateOne({ fav_news: [...current_user.fav_news, req.body] })
       .exec();
@@ -116,7 +120,8 @@ exports.addFav = asynchandler(async (req, res) => {
     });
   }
 });
-//auth of user
+
+// User auth to make sure they are signed in
 exports.home = asynchandler(async (req, res) => {
   jwt.verify(req.token, process.env.JWTKEY, (err, authData) => {
     if (err) {
