@@ -21,12 +21,12 @@ exports.user = asynchandler(async (req, res) => {
 
 //Signup post (Need to update name)
 exports.testPost = asynchandler(async (req, res) => {
-  console.log(req.body);
   try {
     //Hashing the users password
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(req.body.password, salt);
 
+    //Creating new user through User model
     const newUser = new User({
       fname: req.body.fname,
       lname: req.body.lname,
@@ -35,10 +35,13 @@ exports.testPost = asynchandler(async (req, res) => {
       password: hash,
     });
 
+    //Saving user to Database
     const saveUser = newUser.save();
-    console.log("Sucess");
+
+    //Success Status sent back
     res.json({ status: 200, text: "User Added" });
   } catch (err) {
+    //Error Status Sent back
     res.json({ status: 500, text: "User Signup Failed", error: err });
   }
 });
