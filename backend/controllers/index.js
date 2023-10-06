@@ -47,17 +47,23 @@ exports.testPost = asynchandler(async (req, res) => {
 });
 //Login Post
 exports.loginPost = asynchandler(async (req, res) => {
+  //Searching for users account via email
   const hasAccount = await User.findOne({ email: req.body.email });
+
   if (hasAccount == null) {
+    //If no account is found
     res.json({ status: 500, account: false });
   } else {
+    //Compare passwords using bcrypt
     bcrypt.compare(req.body.password, hasAccount.password, (err, result) => {
       if (result) {
-        //if the result is valid
+        //if the result is valid, sign a JWT Token
         jwt.sign({ user: hasAccount }, process.env.JWTKEY, (err, token) => {
           if (err) {
+            //Check for any errors
             return res.json({ status: 500, account: false, user: null });
           } else {
+            //No error, send user info back
             return res.json({
               token: token,
               account: true,
@@ -65,6 +71,7 @@ exports.loginPost = asynchandler(async (req, res) => {
           }
         });
       } else {
+        //Error - send error message
         return res.json({ status: 500, account: false, user: null });
       }
     });
