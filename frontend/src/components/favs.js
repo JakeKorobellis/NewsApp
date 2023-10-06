@@ -1,7 +1,7 @@
 import React from "react";
 import Side from "./sidebar";
 import user from "./pictures/user.png";
-//Test commit
+
 //New BUG
 //When deleting, if you hit refresh they all appear back until user has logged out and logged back in
 
