@@ -98,7 +98,7 @@ function Fav() {
       );
     });
   }
-
+  console.log(news.fav_news);
   return (
     <div className="App">
       {userData.account ? (
@@ -131,7 +131,15 @@ function Fav() {
 
               <div className="stream-hold-all15">
                 {news.fav_news ? (
-                  renderFavs(news.fav_news)
+                  <div className="stream-hold-all15-2">
+                    {news.fav_news.length > 0 ? (
+                      renderFavs(news.fav_news)
+                    ) : (
+                      <div className="center-no-favs">
+                        No News Articles Added to Favorites
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <div className="holder-loader">
                     <div class="lds-ring">
