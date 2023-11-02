@@ -14,6 +14,8 @@ function Split() {
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
   const url = process.env.REACT_APP_URL20;
+  const new_key = process.env.REACT_APP_NEW_KEY;
+
   //States
   const [news, setNews] = React.useState([]); //Crypto news State
   const [fi, setFi] = React.useState([]);
@@ -42,9 +44,17 @@ function Split() {
       .then((res) => res.json())
       .then((data) => setUserData(data));
 
-    fetch(api_route) //Crypto News Route
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": new_key,
+      },
+    };
+
+    fetch(api_route, options) //Crypto News Route
       .then((res) => res.json())
-      .then((res) => setNews(res.news));
+      .then((res) => setNews(res.result));
 
     fetch(url, {
       //stock news
@@ -66,9 +76,17 @@ function Split() {
 
   //Crypto category selection
   function crypto_selection(choice) {
-    fetch(crypto_first + choice + crypto_second)
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": new_key,
+      },
+    };
+
+    fetch(crypto_first + choice, options)
       .then((res) => res.json())
-      .then((res) => setNews(res.news));
+      .then((res) => setNews(res));
   }
 
   //Finance category selection
