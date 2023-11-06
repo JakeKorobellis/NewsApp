@@ -5,12 +5,17 @@ import user from "./pictures/user.png";
 import Header from "./header";
 
 function Active() {
+  /**
+   * Displays active stocks, gainers, losers
+   */
+
   //Protected Variables
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
   const url9 = process.env.REACT_APP_URL9;
   const url10 = process.env.REACT_APP_URL10;
 
+  // States
   const [currentState, setCurrentState] = React.useState("Gainers");
   const [mostActive, setMostActive] = React.useState([]);
   const [lastUpdateActive, setLastUpdateActive] = React.useState("");
@@ -20,6 +25,13 @@ function Active() {
   const [defaultMover, setDefaultMovers] = React.useState([]);
 
   React.useEffect(() => {
+    /**
+     * Inital render
+     * Gets data
+     * Need to implement user verification from backend
+     */
+
+    // Most active
     fetch(url9, {
       headers: {
         "APCA-API-KEY-ID": key,
@@ -39,6 +51,7 @@ function Active() {
         console.error("Error:", error);
       });
 
+    // Gainers and losers
     fetch(url10, {
       headers: {
         "APCA-API-KEY-ID": key,
@@ -47,9 +60,7 @@ function Active() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Process the response data here
-        setDefaultMovers(data.gainers);
-
+        setDefaultMovers(data.gainers); // initial render of gainers
         setGainers(data.gainers);
         setLosers(data.losers);
         setLastUpdateMovers(
@@ -62,6 +73,7 @@ function Active() {
       });
   }, []);
 
+  // Dynamic Render of active most active stocks
   function renederActive(data) {
     return data.map((curr) => {
       return (
@@ -73,6 +85,7 @@ function Active() {
     });
   }
 
+  // Dynaimc render of movers, gainers / losers
   function renederMovers(data) {
     return data.map((curr) => {
       return (
@@ -84,11 +97,13 @@ function Active() {
     });
   }
 
+  // Picks either gainers or losers
   function changeStateMovers(data, curr) {
     setCurrentState(curr);
     setDefaultMovers(data);
   }
 
+  // Displaying
   return (
     <div className="App">
       <header className="App-header">
