@@ -4,6 +4,7 @@ import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanMerge from "./helperfunctions/data-clean-mergers";
 import user from "./pictures/user.png";
+import Header from "./header";
 
 function MandA() {
   const curr = getCurrentYYYYMMDD();
@@ -47,25 +48,7 @@ function MandA() {
     <div className="App">
       <header className="App-header">
         <div className="parent">
-          <div className="header">
-            <div className="fifityvw ">
-              <div className="header-title-format">
-                <a href="/" className="default-title">
-                  <div className="title-font-large">
-                    <span className="neon-blue">N</span>ews
-                    <span className="neon-blue">R</span>oom
-                    <span className="smaller-title">.com</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="fifityvw2">
-              {" "}
-              <a href="/useredit">
-                <img src={user} className="resize-icon" />
-              </a>
-            </div>{" "}
-          </div>
+          <Header />
           <div className="sidebar">
             <Side curr={6} />
           </div>

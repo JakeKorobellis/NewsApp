@@ -4,6 +4,7 @@ import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanSplit from "./helperfunctions/data-clean-splits";
 import user from "./pictures/user.png";
+import Header from "./header";
 
 function StockSplits() {
   const curr = getCurrentYYYYMMDD();
@@ -51,25 +52,7 @@ function StockSplits() {
     <div className="App">
       <header className="App-header">
         <div class="parent">
-          <div class="header">
-            <div className="fifityvw ">
-              <div className="header-title-format">
-                <a href="/" className="default-title">
-                  <div className="title-font-large">
-                    <span className="neon-blue">N</span>ews
-                    <span className="neon-blue">R</span>oom
-                    <span className="smaller-title">.com</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="fifityvw2">
-              {" "}
-              <a href="/useredit">
-                <img src={user} className="resize-icon" />
-              </a>
-            </div>{" "}
-          </div>
+          <Header />
           <div class="sidebar">
             <Side curr={7} />
           </div>
