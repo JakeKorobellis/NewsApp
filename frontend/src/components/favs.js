@@ -1,13 +1,14 @@
 import React from "react";
 import Side from "./sidebar";
-import user from "./pictures/user.png";
 import Header from "./header";
 
-//Display default text if the user does not have any favs
 function Fav() {
-  const [userData, setUserData] = React.useState([]); //User Data
-  const token = localStorage.getItem("token"); // Token from local Storage
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
   const url = process.env.REACT_APP_REMOVE_FAV;
+
+  // Setting data
   const [news, setNews] = React.useState([]);
   const [ready, setReady] = React.useState(false);
 
@@ -23,6 +24,7 @@ function Fav() {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+        //Fetch users favs once authorized
         fetch("/api/news", {
           method: "POST",
           headers: {
@@ -41,6 +43,7 @@ function Fav() {
     }, "500");
   }, []);
 
+  // Deleting data from DB
   const handleDelete = (headline, source, url, time, user, url_remove) => {
     const data = {
       headline: headline,
@@ -50,6 +53,7 @@ function Fav() {
       user: user,
     };
 
+    // Post request to backend
     fetch(url_remove, {
       method: "POST",
       headers: {
@@ -99,7 +103,8 @@ function Fav() {
       );
     });
   }
-  console.log(news.fav_news);
+
+  // Redner data
   return (
     <div className="App">
       {userData.account ? (

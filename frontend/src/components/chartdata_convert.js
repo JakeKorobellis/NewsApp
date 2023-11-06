@@ -1,4 +1,4 @@
-//Time helper function
+// Time Converting helper function
 function convertToReadableDate(time) {
   const date = new Date(time);
   const formattedDate = `${date.getFullYear()}-${String(
@@ -7,6 +7,7 @@ function convertToReadableDate(time) {
   return formattedDate;
 }
 
+// Converting data for trading view chart
 function convert_data(bars) {
   return bars.map((curr) => ({
     open: curr.o,

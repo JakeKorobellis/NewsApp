@@ -3,29 +3,42 @@ import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
 import reuse from "./helperfunctions/liveNews";
-import { useNavigate } from "react-router-dom";
 import Header from "./header";
 
 function ConetentHome() {
-  const navigate = useNavigate();
+  /**
+   * Home page, live news using socket
+   */
 
+  // Protected Variables
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
   const url = process.env.REACT_APP_URL14;
   const stream = process.env.REACT_APP_STREAM;
+
+  // States
   const [prev, setPrev] = React.useState([]);
   const [ready, setReady] = React.useState(false);
   const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
+
+  // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
-  console.log(userData);
+
   function handleFavAction(action) {
+    /**
+     * Adding to users faviorite list
+     */
     setResponseAdd(action);
     setPop_Up(true);
   }
 
   React.useEffect(() => {
+    /**
+     * Inital user auth and fetch request
+     */
+
     fetch("/api/auth", {
       method: "GET",
       headers: {
@@ -55,13 +68,16 @@ function ConetentHome() {
     const urlo = stream;
     const socket = new WebSocket(urlo);
     const authDetails = {
+      // Authorization
       action: "auth",
       key: key,
       secret: secret,
     };
 
+    // subscribe data, all market news
     const subData = { action: "subscribe", news: ["*"] };
 
+    // Socket connection
     socket.onmessage = (event) => {
       const checkConnection = JSON.parse(event.data);
       const dataMsg = checkConnection[0]["msg"];
@@ -79,15 +95,14 @@ function ConetentHome() {
       }
     };
 
+    // Rendering time
     setTimeout(() => {
       setReady(true);
     }, "500");
   }, []);
 
-  console.log(userData);
-
+  // Popup up when saved
   function popup(data) {
-    console.log(data, 1111);
     return (
       <div className="confrimation">
         <div className="test1">
@@ -102,10 +117,12 @@ function ConetentHome() {
     );
   }
 
+  // Removing popup when one occurs
   function handleConfirmation() {
     setPop_Up(false);
   }
 
+  // Render
   return (
     <div className="App">
       {userData.account ? (

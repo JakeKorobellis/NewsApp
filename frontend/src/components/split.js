@@ -1,6 +1,5 @@
 import React from "react";
 import Side from "./sidebar";
-import user from "./pictures/user.png";
 import reuse_crpyto from "./helperfunctions/reuse_crypto";
 import reuse_fi from "./helperfunctions/reuse_fi";
 import Header from "./header";
@@ -27,7 +26,6 @@ function Split() {
   const [userData, setUserData] = React.useState("");
   const token = localStorage.getItem("token");
 
-  console.log(userData);
   function handleFavAction(action) {
     setResponseAdd(action);
     setPop_Up(true);

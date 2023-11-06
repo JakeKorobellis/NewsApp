@@ -4,6 +4,10 @@ function Side(curr) {
   let current = get_current[0].curr;
 
   return (
+    /**
+     * Side bar setup based on what is
+     * selected on sidebar
+     */
     <div className="sidebar-format">
       <span>
         <a

@@ -1,3 +1,4 @@
+// Pre-rendered data
 const data = [
   {
     name: "Apple Inc.",

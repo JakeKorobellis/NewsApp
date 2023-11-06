@@ -1,16 +1,11 @@
 import React from "react";
 import Side from "./sidebar";
-import user from "./pictures/user.png";
 import Header from "./header";
 
 function Success() {
-  const [currUser, setCurrUser] = React.useState({
-    fname: "John",
-    lname: "Doe",
-    email: "jdoe@newsroom.com",
-    password: "JohnDoe123",
-  });
-
+  /**
+   * Success page once user makes edits to profile
+   */
   return (
     <div className="App">
       <header className="App-header">

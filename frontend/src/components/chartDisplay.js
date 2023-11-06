@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { createChart, CrosshairMode } from "lightweight-charts";
 
 export default function Chart({ priceData }) {
-  const chartContainerRef = useRef();
-  const chartWrapperRef = useRef(); // Added wrapper reference
+  /**
+   * Formatting and displayinf chart
+   */
+  const chartContainerRef = useRef(); // container reference
+  const chartWrapperRef = useRef(); // wrapper reference
 
   useEffect(() => {
     if (priceData.length === 0) return; // Don't render if priceData is empty
@@ -16,6 +19,7 @@ export default function Chart({ priceData }) {
     const chart = createChart(chartContainerRef.current, {
       width: chartWrapperRef.current.offsetWidth, // Use wrapper's width
       height: chartWrapperRef.current.offsetHeight, // Use wrapper's height
+      //Styling
       layout: {
         backgroundColor: "black",
         textColor: "rgba(255, 255, 255, 0.9)",
@@ -44,6 +48,7 @@ export default function Chart({ priceData }) {
       },
     });
 
+    // Candle series
     const candleSeries = chart.addCandlestickSeries({
       upColor: "#2272FF",
       downColor: "white",
@@ -56,9 +61,9 @@ export default function Chart({ priceData }) {
     candleSeries.setData(priceData);
   }, [priceData]);
 
+  // Place Holder
   return (
     <div ref={chartWrapperRef} className="chart-wrapper">
-      {/* Placeholder div for the chart */}
       <div ref={chartContainerRef} className="chart-container" />
     </div>
   );

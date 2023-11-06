@@ -2,6 +2,9 @@ import React from "react";
 import user from "./pictures/user.png";
 
 function Header() {
+  /**
+   * header component
+   */
   return (
     <div class="header">
       <div className="fifityvw ">

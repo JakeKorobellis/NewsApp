@@ -1,5 +1,8 @@
 import React from "react";
 function Home() {
+  /**
+   * Account login render
+   */
   return (
     <div className="home">
       <span className="small-sub-head black">NewsRoom</span>

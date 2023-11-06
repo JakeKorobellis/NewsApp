@@ -2,23 +2,32 @@ import React from "react";
 import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get30Prior from "./dates/get30Prior";
-import user from "./pictures/user.png";
 import Header from "./header";
 
 function Dividen() {
-  const curr = getCurrentYYYYMMDD();
-  const prior = get30Prior(curr);
+  /**
+   * Get current date
+   */
 
+  const curr = getCurrentYYYYMMDD(); // Current date
+  const prior = get30Prior(curr); // Previous 30 days
+
+  // Protected Variables
   const url11 = process.env.REACT_APP_URL11;
   const url12 = process.env.REACT_APP_URL12;
   const url13 = process.env.REACT_APP_URL13;
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
+  // Data and readiness
   const [ready, setReady] = React.useState(false);
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
+    /**
+     * Inital fetch of data
+     * Need to add user auth
+     */
     fetch(`${url11}Dividend${url12}${prior}${url13}${curr}`, {
       headers: {
         "APCA-API-KEY-ID": key,
@@ -32,6 +41,9 @@ function Dividen() {
   }, []);
 
   function renderData(data) {
+    /**
+     * Dynamic render of data
+     */
     return data.map((curr) => {
       return (
         <div className="data-hold-div">
@@ -45,6 +57,7 @@ function Dividen() {
     });
   }
 
+  // Render
   return (
     <div className="App">
       <header className="App-header">

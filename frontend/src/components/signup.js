@@ -13,6 +13,7 @@ function Signup() {
     password: "",
   });
 
+  //Updating user on input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser((prevData) => ({
@@ -21,9 +22,11 @@ function Signup() {
     }));
   };
 
+  // Submitting form data
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Sending to backend to add to DB
     fetch(route, {
       method: "POST",
       headers: {
@@ -39,6 +42,7 @@ function Signup() {
       });
   };
 
+  // Render
   return (
     <div className="home2">
       <div className="login-page-split login-title2">

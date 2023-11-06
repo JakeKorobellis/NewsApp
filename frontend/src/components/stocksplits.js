@@ -3,7 +3,6 @@ import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanSplit from "./helperfunctions/data-clean-splits";
-import user from "./pictures/user.png";
 import Header from "./header";
 
 function StockSplits() {

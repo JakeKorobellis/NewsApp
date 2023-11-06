@@ -2,14 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  /**
+   * User login
+   */
+
+  // Route and navigate
   const route = process.env.REACT_APP_USER_LOGIN;
   const navigate = useNavigate();
 
+  // USer login detail state
   const [login, setLogin] = React.useState({
     email: "",
     password: "",
   });
 
+  // Updating on change
   const handleChange = (event) => {
     const { name, value } = event.target;
     setLogin((login) => ({
@@ -18,9 +25,11 @@ function Login() {
     }));
   };
 
+  // Processing login request
   const handleSubmit = (event) => {
     event.preventDefault();
-    //fetch on Route
+
+    // Send to backend & check DB
     fetch(route, {
       method: "POST",
       headers: {
@@ -30,16 +39,21 @@ function Login() {
     })
       .then((res) => res.json())
       .then((res) => {
+        // If account is valid naviaget to home page
         if (res.account == true) {
-          console.log(res, 111111111111);
           localStorage.setItem("token", res.token);
           navigate("/content");
         } else {
+          // Alert in valid user name
+          /**
+           * Want to highlight boxes red instead
+           */
           alert("Invalid Username or Password");
         }
       });
   };
 
+  // Render
   return (
     <div className="home">
       <div className="login-page-split login-title">
@@ -94,12 +108,6 @@ function Login() {
           Sign up!
         </a>
       </div>
-
-      {/**
-      <a href="/content" className="supersmall bypass">
-        LOGIN BYPASS
-      </a>
-       */}
     </div>
   );
 }

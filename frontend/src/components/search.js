@@ -2,10 +2,8 @@ import React, { useEffect, useRef } from "react";
 import Side from "./sidebar";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "./datasearch";
-import convertISOToFormattedDateTime from "./time_convert-2";
 import convert_data from "./chartdata_convert";
 import Chart from "./chartDisplay";
-import user from "./pictures/user.png";
 import formatData from "./helperfunctions/formatData";
 import Header from "./header";
 
@@ -19,25 +17,28 @@ function Search() {
   const url6 = process.env.REACT_APP_URL6;
   const url7 = process.env.REACT_APP_URL7;
   const url8 = process.env.REACT_APP_URL8;
-
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
-  const token = localStorage.getItem("token"); // Token from local Storage
+  // User Auth
+  const token = localStorage.getItem("token");
+  const [userData, setUserData] = React.useState([]);
 
+  // Chart Data State
   const [chartData, setChartData] = React.useState([]);
   const [current, setCurrent] = React.useState([]);
   const [placeholder1, setPlaceholder] = React.useState(
     "SPDR S&P 500 ETF Trust"
   );
-  const [userData, setUserData] = React.useState([]);
+
+  // Adding to faviorties
   const [response_add, setResponseAdd] = React.useState("");
   const [pop_up, setPop_Up] = React.useState(false);
 
-  console.log(userData);
-
   React.useEffect(() => {
-    //Fetch current user data
+    /**
+     * Initial fetch requests
+     */
     fetch("/api/auth", {
       method: "GET",
       headers: {
@@ -82,13 +83,18 @@ function Search() {
       });
   }, []);
 
+  // Adding to faviorite actions
   function handleFavAction(action) {
     setResponseAdd(action);
     setPop_Up(true);
   }
 
+  // Searchable tickers
   const items = data;
+
+  // Handling selection of new stock
   const handleOnSelect = (item) => {
+    // Requesting data
     fetch(url1 + item.id + url2, {
       headers: {
         "APCA-API-KEY-ID": key,
@@ -108,7 +114,7 @@ function Search() {
     setPlaceholder(item.name);
 
     if (item.type) {
-      //If a crypto currency
+      // if type is True, then crypto currency
       const options = {
         method: "GET",
         headers: { accept: "application/json" },
@@ -120,7 +126,7 @@ function Search() {
         )
         .catch((err) => console.error(err));
     } else {
-      //If a Stock
+      //Type is False, stock
       fetch(url4 + item.id + url5, {
         headers: {
           "APCA-API-KEY-ID": key,
@@ -137,6 +143,7 @@ function Search() {
     }
   };
 
+  // Formatting result for auto complete
   const formatResult = (item) => {
     return (
       <>
@@ -165,7 +172,9 @@ function Search() {
   };
 
   function popup(data) {
-    console.log(data, 1111);
+    /**
+     * Popup for adding to favs
+     */
     return (
       <div className="confrimation">
         <div className="test1">
@@ -181,10 +190,11 @@ function Search() {
   }
 
   function handleConfirmation() {
-    console.log("wjebnfhjwbefhbwe");
+    // Handling popup display state
     setPop_Up(false);
   }
 
+  // Render
   return (
     <div className="App">
       <header className="App-header">

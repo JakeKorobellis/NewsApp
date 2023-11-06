@@ -4,11 +4,12 @@ import user from "./pictures/user.png";
 import Header from "./header";
 
 function UserEdit() {
+  // User auth
   const [userData, setUserData] = React.useState([]);
-
   const token = localStorage.getItem("token");
 
   React.useEffect(() => {
+    // Auth
     fetch("/api/auth", {
       method: "GET",
       headers: {
@@ -20,10 +21,12 @@ function UserEdit() {
       .then((data) => setUserData(data.authData.user));
   }, []);
 
-  console.log(userData);
+  /**
+   * Still need to add updating data
+   * Password vonfrimation etc
+   */
 
-  //Use effect to set the current user when loaded
-
+  // Render
   return (
     <div className="App">
       <header className="App-header">
@@ -92,7 +95,6 @@ function UserEdit() {
                     </form>
                   </div>
                   <div className="form margin-top">
-                    {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
                     <a href="/success" className="form">
                       <input
                         type="submit"

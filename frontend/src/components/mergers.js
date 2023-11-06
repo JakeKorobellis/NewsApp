@@ -3,22 +3,31 @@ import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanMerge from "./helperfunctions/data-clean-mergers";
-import user from "./pictures/user.png";
 import Header from "./header";
 
 function MandA() {
-  const curr = getCurrentYYYYMMDD();
-  const prior = get90Prior(curr);
+  /**
+   * Mergers and aquistions
+   */
+
+  const curr = getCurrentYYYYMMDD(); // Get current date
+  const prior = get90Prior(curr); // Get past 90 days
+
+  // Protected variables
   const url11 = process.env.REACT_APP_URL11;
   const url12 = process.env.REACT_APP_URL12;
   const url13 = process.env.REACT_APP_URL13;
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
 
+  // Data holder
   const [data, setData] = React.useState([]);
   const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
+    /**
+     * Need to add user auth
+     */
     fetch(`${url11}Merger${url12}${prior}${url13}${curr}`, {
       headers: {
         "APCA-API-KEY-ID": key,
@@ -32,6 +41,9 @@ function MandA() {
   }, []);
 
   function renderData(data) {
+    /**
+     * Dynamic render of data
+     */
     return data.map((curr) => {
       return (
         <div className="data-hold-div">
@@ -44,6 +56,7 @@ function MandA() {
     });
   }
 
+  // Render
   return (
     <div className="App">
       <header className="App-header">

@@ -1,16 +1,14 @@
 import React from "react";
 import Side from "./sidebar";
-import user from "./pictures/user.png";
 import Header from "./header";
 
 function PasswordEdit() {
-  const [currUser, setCurrUser] = React.useState({
-    fname: "John",
-    lname: "Doe",
-    email: "jdoe@newsroom.com",
-    password: "JohnDoe123",
-  });
+  /**
+   * Need to add user auth
+   * Need to add password changing
+   */
 
+  // Render
   return (
     <div className="App">
       <header className="App-header">

@@ -1,4 +1,7 @@
 function convertISOToFormattedDateTime(isoTimestamp) {
+  /**
+   * Date conversion ISO
+   */
   const date = new Date(isoTimestamp);
   const options = {
     year: "numeric",

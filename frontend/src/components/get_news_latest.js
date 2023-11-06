@@ -1,4 +1,7 @@
 function News() {
+  /**
+   * Getting latest news
+   */
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
   const url = process.env.REACT_APP_URL20;
