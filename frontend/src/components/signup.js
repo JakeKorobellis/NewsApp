@@ -38,6 +38,8 @@ function Signup() {
       .then((res) => {
         if (res.status === 200) {
           navigate("/login");
+        } else {
+          alert("Account already exists!");
         }
       });
   };
