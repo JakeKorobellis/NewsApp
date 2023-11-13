@@ -4,11 +4,14 @@ import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
 import reuse from "./helperfunctions/liveNews";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function ConetentHome() {
   /**
    * Home page, live news using socket
    */
+
+  const navigate = useNavigate();
 
   // Protected Variables
   const key = process.env.REACT_APP_KEY;
@@ -47,7 +50,13 @@ function ConetentHome() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data));
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      });
 
     fetch(url, {
       headers: {

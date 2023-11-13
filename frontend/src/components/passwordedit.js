@@ -8,6 +8,10 @@ function PasswordEdit() {
    * Need to add password changing
    */
 
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
+
   // Render
   return (
     <div className="App">

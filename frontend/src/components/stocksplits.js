@@ -16,6 +16,11 @@ function StockSplits() {
 
   const [data, setData] = React.useState([]);
   const [ready, setReady] = React.useState(false);
+
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
+
   React.useEffect(() => {
     fetch(`${url11}Split${url12}${prior}${url13}${curr}`, {
       headers: {

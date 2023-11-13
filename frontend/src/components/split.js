@@ -24,7 +24,7 @@ function Split() {
   const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
   const [userData, setUserData] = React.useState("");
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token"); // Need to check if authorized
 
   function handleFavAction(action) {
     setResponseAdd(action);

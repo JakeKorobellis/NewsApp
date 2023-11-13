@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
 import user from "./pictures/user.png";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function Active() {
   /**
@@ -15,6 +16,8 @@ function Active() {
   const url9 = process.env.REACT_APP_URL9;
   const url10 = process.env.REACT_APP_URL10;
 
+  const navigate = useNavigate();
+
   // States
   const [currentState, setCurrentState] = React.useState("Gainers");
   const [mostActive, setMostActive] = React.useState([]);
@@ -24,12 +27,32 @@ function Active() {
   const [lastUpdatedMovers, setLastUpdateMovers] = React.useState("");
   const [defaultMover, setDefaultMovers] = React.useState([]);
 
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
+
   React.useEffect(() => {
     /**
      * Inital render
      * Gets data
      * Need to implement user verification from backend
      */
+
+    fetch("/api/auth", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      });
 
     // Most active
     fetch(url9, {
@@ -72,6 +95,8 @@ function Active() {
         console.error("Error:", error);
       });
   }, []);
+
+  console.log(userData);
 
   // Dynamic Render of active most active stocks
   function renederActive(data) {

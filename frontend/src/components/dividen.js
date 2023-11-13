@@ -23,6 +23,10 @@ function Dividen() {
   const [ready, setReady] = React.useState(false);
   const [data, setData] = React.useState([]);
 
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
+
   React.useEffect(() => {
     /**
      * Inital fetch of data

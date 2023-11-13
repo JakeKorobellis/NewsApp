@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+
+#to_do
+# Active and content home updated user auth 
+# Other pages need to be authed as well like this

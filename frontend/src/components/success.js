@@ -6,6 +6,11 @@ function Success() {
   /**
    * Success page once user makes edits to profile
    */
+
+  // User auth
+  const [userData, setUserData] = React.useState([]);
+  const token = localStorage.getItem("token");
+
   return (
     <div className="App">
       <header className="App-header">
