@@ -9,24 +9,30 @@ const tokenVerify = require("../middlewear/jwtVerify");
 //Signup post (Need to update name)
 exports.testPost = asynchandler(async (req, res) => {
   try {
-    //Hashing the users password
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(req.body.password, salt);
+    // See if the account already exists
+    const hasAccount = await User.findOne({ email: req.body.email });
+    if (hasAccount == null) {
+      //Hashing the users password
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(req.body.password, salt);
 
-    //Creating new user through User model
-    const newUser = new User({
-      fname: req.body.fname,
-      lname: req.body.lname,
-      email: req.body.email,
-      fav_news: [],
-      password: hash,
-    });
+      //Creating new user through User model
+      const newUser = new User({
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email: req.body.email,
+        fav_news: [],
+        password: hash,
+      });
 
-    //Saving user to Database
-    const saveUser = newUser.save();
+      //Saving user to Database
+      const saveUser = newUser.save();
 
-    //Success Status sent back
-    res.json({ status: 200, text: "User Added" });
+      //Success Status sent back
+      res.json({ status: 200, text: "User Added" });
+    } else {
+      res.json({ status: 500, text: "Account already exists" });
+    }
   } catch (err) {
     //Error Status Sent back
     res.json({ status: 500, text: "User Signup Failed", error: err });
