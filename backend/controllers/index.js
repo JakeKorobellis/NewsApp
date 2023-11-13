@@ -5,6 +5,7 @@ const News = require("../models/news");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const tokenVerify = require("../middlewear/jwtVerify");
+const Post = require("../models/blog");
 
 //Signup post (Need to update name)
 exports.testPost = asynchandler(async (req, res) => {
@@ -38,6 +39,25 @@ exports.testPost = asynchandler(async (req, res) => {
     res.json({ status: 500, text: "User Signup Failed", error: err });
   }
 });
+// Create a post
+exports.createPost = asynchandler(async (req, res) => {
+  // Find user
+  const hasAccount = await User.findOne({ email: "admin@admin.com" });
+
+  // Parse text
+  // Create new instance of post model
+  const post = new Post({
+    user: hasAccount,
+    title: "Uncertaintiy in the market",
+    post: "This is where the conetent of the post will be held",
+  });
+
+  // Save
+  post.save();
+  // Response
+  res.json({ status: 200, text: "Sucess" });
+});
+
 //Login Post
 exports.loginPost = asynchandler(async (req, res) => {
   //Searching for users account via email

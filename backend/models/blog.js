@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { objectId, Timestamp } = require("mongodb");
 
-//News Model
 const BlogSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   title: { type: String, required: true },
@@ -12,12 +11,12 @@ const BlogSchema = new Schema({
   dislikes: { type: Number, default: 0 },
 });
 
-MessageSchema.methods.like = () => {
+BlogSchema.methods.like = function () {
   this.likes += 1;
-  return this.updateOne({ likes: this.likes }).exec();
+  return this.save();
 };
 
-MessageSchema.methods.dislike = () => {
+BlogSchema.methods.dislike = function () {
   this.dislikes += 1;
   return this.save();
 };
