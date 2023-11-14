@@ -4,8 +4,11 @@ import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanSplit from "./helperfunctions/data-clean-splits";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function StockSplits() {
+  const navigate = useNavigate();
+
   const curr = getCurrentYYYYMMDD();
   const prior = get90Prior(curr);
   const url11 = process.env.REACT_APP_URL11;
@@ -22,16 +25,32 @@ function StockSplits() {
   const token = localStorage.getItem("token");
 
   React.useEffect(() => {
-    fetch(`${url11}Split${url12}${prior}${url13}${curr}`, {
+    fetch("/api/auth", {
+      method: "GET",
       headers: {
-        "APCA-API-KEY-ID": key,
-        "APCA-API-SECRET-KEY": secret,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((res) => setData(DataCleanSplit(res.reverse())));
+      .then((data) => {
+        if (data.status == 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
 
-    setReady(true);
+          fetch(`${url11}Split${url12}${prior}${url13}${curr}`, {
+            headers: {
+              "APCA-API-KEY-ID": key,
+              "APCA-API-SECRET-KEY": secret,
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => setData(DataCleanSplit(res.reverse())));
+
+          setReady(true);
+        }
+      });
   }, []);
 
   function renderData(data) {
@@ -69,7 +88,7 @@ function StockSplits() {
                     <div className="twentyfive3 black-text">Symbol</div>
                     <div className="twentyfive3 black-text">Effective Date</div>
                     <div className="twentyfive3 black-text">Old Rate</div>
-                    <div className="twentyfive3 black-text">Merge Action</div>
+                    <div className="twentyfive3 black-text">Split Action</div>
                     <div className="twentyfive3 black-text">New Rate</div>
                   </div>
                   <div className="stream-hold-all5">
