@@ -12,6 +12,24 @@ function PasswordEdit() {
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
 
+  React.useState(() => {
+    fetch("/api/auth", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      });
+  }, []);
+
   // Render
   return (
     <div className="App">
