@@ -16,7 +16,7 @@ Welcome to NewsRoom, a real-time stock and crypto news platform. This repository
    - Designed a modular and reusable component architecture, promoting maintainability and scalability across the application.
 
 4. **API Integration for Real-Time Data:**
-   - Successfully integrated external APIs, including [News API](https://newsapi.org/), to deliver up-to-the-minute stock and crypto news. Leveraged Redux for state management, optimizing data flow.
+   - Successfully integrated external APIs, including [Alpaca API](https://docs.alpaca.markets/docs/api-references), to deliver up-to-the-minute stock and crypto news. Leveraged Redux for state management, optimizing data flow.
 
 5. **Responsive Design:**
    - Ensured a visually appealing and responsive design with Flexbox and CSS Grid, adapting to various screen sizes for optimal user experience.
