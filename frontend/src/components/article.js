@@ -53,8 +53,10 @@ function ContentArticle() {
             </div>
             <div class="data stream-all">
               <div className="title-all">User Articles</div>
-              <div className="stream-hold-all9">
-                Articles will be listed here.{" "}
+              <div className="stream-hold-all19">
+                <div className="button-holder-add-post">
+                  <button className="button-create">Create Post</button>
+                </div>
               </div>
             </div>
           </div>

@@ -74,6 +74,14 @@ function Side(curr) {
           Favorites
         </a>
       </span>
+      <span>
+        <a
+          href="/content/articles"
+          className={current == 9 ? "current-side" : "notcurrent-side"}
+        >
+          Articles
+        </a>
+      </span>
     </div>
   );
 }
