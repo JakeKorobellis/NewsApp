@@ -2,11 +2,14 @@ import React from "react";
 import Side from "./sidebar";
 import user from "./pictures/user.png";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function UserEdit() {
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     // Auth
@@ -18,7 +21,13 @@ function UserEdit() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data.authData.user));
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data.authData.user);
+        }
+      });
   }, []);
 
   /**

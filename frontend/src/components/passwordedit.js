@@ -1,12 +1,15 @@
 import React from "react";
 import Side from "./sidebar";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function PasswordEdit() {
   /**
    * Need to add user auth
    * Need to add password changing
    */
+
+  const navigate = useNavigate();
 
   // User auth
   const [userData, setUserData] = React.useState([]);
