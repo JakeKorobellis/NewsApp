@@ -3,11 +3,14 @@ import Side from "./sidebar";
 import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get30Prior from "./dates/get30Prior";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function Dividen() {
   /**
    * Get current date
    */
+
+  const navigate = useNavigate();
 
   const curr = getCurrentYYYYMMDD(); // Current date
   const prior = get30Prior(curr); // Previous 30 days
@@ -32,16 +35,35 @@ function Dividen() {
      * Inital fetch of data
      * Need to add user auth
      */
-    fetch(`${url11}Dividend${url12}${prior}${url13}${curr}`, {
+
+    fetch("/api/auth", {
+      method: "GET",
       headers: {
-        "APCA-API-KEY-ID": key,
-        "APCA-API-SECRET-KEY": secret,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((res) => setData(res.reverse()));
-
-    setReady(true);
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      })
+      .then(
+        fetch(`${url11}Dividend${url12}${prior}${url13}${curr}`, {
+          headers: {
+            "APCA-API-KEY-ID": key,
+            "APCA-API-SECRET-KEY": secret,
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            setData(res.reverse());
+          })
+          .then(setReady(true))
+      );
   }, []);
 
   function renderData(data) {
@@ -73,7 +95,7 @@ function Dividen() {
           <div class="data stream-all">
             <div className="title-all">Dividen Payouts</div>
             <div className="stream-hold-all4">
-              {ready && data ? (
+              {ready ? (
                 <>
                   <div className="titles-div">
                     <div className="twentyfive2 black-text">Symbol</div>
