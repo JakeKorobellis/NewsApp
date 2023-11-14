@@ -3,8 +3,11 @@ import Side from "./sidebar";
 import reuse_crpyto from "./helperfunctions/reuse_crypto";
 import reuse_fi from "./helperfunctions/reuse_fi";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function Split() {
+  const navigate = useNavigate();
+
   //Protected Variables
   const api_route = process.env.REACT_APP_API_ROUTE;
   const crypto_first = process.env.REACT_APP_CRYPTO_FIRST;
@@ -23,6 +26,7 @@ function Split() {
   const [curr_fi, set_curr_fi] = React.useState("Latest");
   const [pop_up, setPop_Up] = React.useState(false);
   const [response_add, setResponseAdd] = React.useState("");
+  const [ready, setReady] = React.useState(false);
   const [userData, setUserData] = React.useState("");
   const token = localStorage.getItem("token"); // Need to check if authorized
 
@@ -41,35 +45,42 @@ function Split() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setUserData(data));
-
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "X-API-KEY": new_key,
-      },
-    };
-
-    fetch(api_route, options) //Crypto News Route
-      .then((res) => res.json())
-      .then((res) => setNews(res.result));
-
-    fetch(url, {
-      //stock news
-      headers: {
-        "APCA-API-KEY-ID": key,
-        "APCA-API-SECRET-KEY": secret,
-      },
-    })
-      .then((response) => response.json())
       .then((data) => {
-        // Process the response data here
-        setFi(data.news);
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error("Error:", error);
+        if (data.status == 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+
+          const options = {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+              "X-API-KEY": new_key,
+            },
+          };
+
+          fetch(api_route, options) //Crypto News Route
+            .then((res) => res.json())
+            .then((res) => setNews(res.result));
+
+          fetch(url, {
+            //stock news
+            headers: {
+              "APCA-API-KEY-ID": key,
+              "APCA-API-SECRET-KEY": secret,
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Process the response data here
+              setFi(data.news);
+            })
+            .then(setReady(true))
+            .catch((error) => {
+              // Handle errors here
+              console.error("Error:", error);
+            });
+        }
       });
   }, []);
 
@@ -126,7 +137,6 @@ function Split() {
   }
 
   function popup(data) {
-    console.log(data, 1111);
     return (
       <div className="confrimation">
         <div className="test1">
@@ -162,7 +172,7 @@ function Split() {
             </div>
             <div className="stream-hold-all wider-hold-all">
               <div className="crypto-hold">
-                {news != [] && userData ? (
+                {ready ? (
                   reuse_crpyto(
                     news,
                     handleFavAction,
@@ -185,7 +195,7 @@ function Split() {
                 ""
               )}
               <div className="stocks-hold">
-                {fi != [] && userData ? (
+                {ready ? (
                   reuse_fi(fi, handleFavAction, userData.authData.user._id)
                 ) : (
                   <div className="holder-loader">
