@@ -4,11 +4,14 @@ import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get90Prior from "./dates/get90Prior";
 import DataCleanMerge from "./helperfunctions/data-clean-mergers";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function MandA() {
   /**
    * Mergers and aquistions
    */
+
+  const navigate = useNavigate();
 
   const curr = getCurrentYYYYMMDD(); // Get current date
   const prior = get90Prior(curr); // Get past 90 days
@@ -32,16 +35,33 @@ function MandA() {
     /**
      * Need to add user auth
      */
-    fetch(`${url11}Merger${url12}${prior}${url13}${curr}`, {
+
+    fetch("/api/auth", {
+      method: "GET",
       headers: {
-        "APCA-API-KEY-ID": key,
-        "APCA-API-SECRET-KEY": secret,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((res) => setData(DataCleanMerge(res.reverse())));
-
-    setReady(true);
+      .then((data) => {
+        if (data.status === 403) {
+          navigate("/login");
+        } else {
+          setUserData(data);
+        }
+      })
+      .then(
+        fetch(`${url11}Merger${url12}${prior}${url13}${curr}`, {
+          headers: {
+            "APCA-API-KEY-ID": key,
+            "APCA-API-SECRET-KEY": secret,
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => setData(DataCleanMerge(res.reverse())))
+          .then(setReady(true))
+      );
   }, []);
 
   function renderData(data) {
@@ -72,7 +92,7 @@ function MandA() {
           <div className="data stream-all">
             <div className="title-all">Mergers and Acquisitions</div>
             <div className="stream-hold-all4">
-              {ready && data ? (
+              {ready ? (
                 <>
                   <div className="titles-div">
                     <div className="twentyfive black-text">Date</div>
