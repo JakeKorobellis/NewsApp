@@ -119,7 +119,7 @@ exports.addFav = asynchandler(async (req, res) => {
 
     //No duplicate, update the current users favs by appending to the end
     current_user
-      .updateOne({ fav_news: [...current_user.fav_news, req.body] })
+      .updateOne({ fav_news: [req.body, ...current_user.fav_news] })
       .exec();
     res.json({
       status: 200,
