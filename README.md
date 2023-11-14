@@ -2,6 +2,10 @@
 
 Welcome to NewsRoom, a real-time stock and crypto news platform. This repository contains the codebase for the NewsRoom web application.
 
+## Under Consstrcution 
+This fullstack web application is still being built, currently there is a live front end only demo available [here](https://dem0-news-app.netlify.app/)
+
+
 ## Features
 
 ### Frontend
@@ -50,10 +54,6 @@ Welcome to NewsRoom, a real-time stock and crypto news platform. This repository
 8. **RESTful API Structure:**
    - Ensured a clean and RESTful API structure, promoting clarity and simplicity in the backend code.
 
-## Getting Started
-
-[Instructions for setting up and running the application.]
-
 ## Technologies Used
 
 - Frontend: React, React Router, Redux
@@ -64,4 +64,4 @@ Welcome to NewsRoom, a real-time stock and crypto news platform. This repository
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-Current Demo: [NewsRoom - Demo](https://dem0-news-app.netlify.app/)
+
