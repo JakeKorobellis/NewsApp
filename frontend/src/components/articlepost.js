@@ -11,20 +11,14 @@ function ArticlePost() {
    * Article page
    */
 
+  const route = process.env.REACT_APP_USER_ARTICLE_POST;
+
   const navigate = useNavigate();
 
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
   const [ready, setReady] = React.useState(false);
-
-  const handleChange = () => {
-    console.log();
-  };
-
-  const handleSubmit = () => {
-    console.log();
-  };
 
   React.useEffect(() => {
     /**
@@ -48,6 +42,54 @@ function ArticlePost() {
       })
       .then(setReady(true));
   }, []);
+
+  //State to record Post data
+  const [article, setArticle] = React.useState({
+    user: "",
+    title: "",
+    content: "",
+  });
+
+  const handleChange = (event) => {
+    /**
+     * Updaet stated on each change in form
+     */
+    const { name, value } = event.target;
+    setArticle((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setArticle((prevData) => ({
+      ...prevData,
+      ["user"]: userData.authData.user._id,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    /**
+     * Prevent default and wait for response from backend to proceed
+     * users id is sent on submit only
+     */
+
+    event.preventDefault();
+
+    // Sending to backend to add to DB
+    fetch(route, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(article),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/content/articles");
+        } else {
+          alert("Account already exists!");
+        }
+      });
+  };
 
   // Render
   return (
@@ -73,9 +115,9 @@ function ArticlePost() {
                       <div className="form-inputs2">
                         <label className="resize2">Title</label>
                         <input
-                          type="fname"
-                          id="fname"
-                          name="fname"
+                          type="title"
+                          id="title"
+                          name="title"
                           placeholder="This is the title.."
                           className="inputs-form"
                           onChange={handleChange}
@@ -86,9 +128,9 @@ function ArticlePost() {
                       <div className="form-inputs2">
                         <label className="resize2">Content</label>
                         <textarea
-                          type="lname"
-                          id="lname"
-                          name="lname"
+                          type="content"
+                          id="content"
+                          name="content"
                           placeholder="This is the content..."
                           className="inputs-form2"
                           onChange={handleChange}
@@ -98,7 +140,7 @@ function ArticlePost() {
 
                       <input
                         type="submit"
-                        value="Signup"
+                        value="Submit"
                         className="login-btn"
                       />
                     </form>
