@@ -317,6 +317,7 @@ a{
   gap: 1vw;
   
 }
+
 .stream-hold-all15-2{
   height: 75vh;
   width: 100%;
@@ -374,6 +375,15 @@ a{
   background: #226be8;
   border: 1.5px solid black;
 }
+.stream-hold-all111{
+  height: 70vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
 .success-hold{
   display: flex;
   gap: 5vw;
@@ -382,6 +392,16 @@ a{
 .success{
   font-size: 10vw;
   color: rgb(255, 255, 255);
+}
+.success-btn1{
+  color: black;  font-size: 1.5vw;
+  padding: .5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  background: white;
+  border-radius: 10px;
+  font-family: 'Anton', sans-serif;
+  border: none;  
 }
 .success-btn{
 color: black;  font-size: 1.5vw;

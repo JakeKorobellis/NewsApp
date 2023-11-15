@@ -1,6 +1,7 @@
 import React from "react";
 import Side from "./sidebar";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
 
 function Success() {
   /**
@@ -10,6 +11,28 @@ function Success() {
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  fetch("/api/auth", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status === 403) {
+        navigate("/login");
+      } else {
+        setUserData(data);
+      }
+    });
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
 
   return (
     <div className="App">
@@ -20,9 +43,8 @@ function Success() {
             <Side />
           </div>
           <div class="data stream-all">
-            <div className="stream-hold-all11">
+            <div className="stream-hold-all111">
               <div className="success">Success!</div>
-
               <div className="success-hold">
                 <div>
                   <a href="/content" className="success-btn">
@@ -30,9 +52,12 @@ function Success() {
                   </a>
                 </div>
                 <div>
-                  <a href="/" className="success-btn">
+                  <button
+                    className="success-btn1"
+                    onClick={() => handleLogOut()}
+                  >
                     Logout
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
