@@ -15,6 +15,7 @@ import PasswordEdit from "./components/passwordedit";
 import Success from "./components/success";
 import Fav from "./components/favs";
 import ContentArticle from "./components/article";
+import ArticlePost from "./components/articlepost";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/content/favs" element={<Fav />} />
           <Route path="/content/articles" element={<ContentArticle />} />
+          <Route path="/content/articles/create" element={<ArticlePost />} />
         </Routes>
       </header>
     </div>

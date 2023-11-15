@@ -227,12 +227,23 @@ a{
     gap: 1vw;
 
   }
+.resize2{
+  font-size: 2vw;
+}
+.form2{
+  display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;  
+    width: 100%;
+  }
   .form-inputs{
     display: flex;
     flex-direction: column;
     width: 20vw;
     gap: .5vw;
   }
+  
   .login-title{
     display: flex;
     flex-direction: column;
@@ -273,6 +284,19 @@ a{
   font-family: 'Anton', sans-serif;
   width: 100%;
   font-size: .85vw;
+}
+
+.inputs-form2{
+  height: 40vh;
+  border-radius: 10px;
+  border: none;
+  padding-left: .5vw;
+  font-family: 'Anton', sans-serif;
+  width: 100%;
+  font-size: .85vw;
+}
+.signup-page-split2{
+  width: 100%;
 }
 .login-btn{
   background-color: #2272FF;
@@ -527,9 +551,10 @@ color: black;  font-size: 1.5vw;
   border-radius: 10px;
 }
 
-.stream-hold-all19{
+
+.stream-hold-all191{
   height: 75vh;
-  width: 85%;
+  width: 65%;
   display: flex;
   gap: 1vw;
   flex-direction: column;
@@ -539,7 +564,8 @@ color: black;  font-size: 1.5vw;
   align-items: center;
   border-radius: 10px;
   padding-right: .5vw;
-  padding-top: .5vw;
+  padding-left: .5vw;
+  padding-top: 1vw;
 }
 
 .button-holder-add-post{

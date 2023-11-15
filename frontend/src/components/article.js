@@ -41,6 +41,10 @@ function ContentArticle() {
       .then(setReady(true));
   }, []);
 
+  const handleClick = () => {
+    navigate("/content/articles/create");
+  };
+
   // Render
   return (
     <div className="App">
@@ -55,7 +59,12 @@ function ContentArticle() {
               <div className="title-all">User Articles</div>
               <div className="stream-hold-all19">
                 <div className="button-holder-add-post">
-                  <button className="button-create">Create Post</button>
+                  <button
+                    className="button-create"
+                    onClick={() => handleClick()}
+                  >
+                    Create Post
+                  </button>
                 </div>
               </div>
             </div>
