@@ -1,10 +1,9 @@
 import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
-import user from "./pictures/user.png";
-import reuse from "./helperfunctions/liveNews";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function ContentArticle() {
   /**
@@ -41,7 +40,6 @@ function ContentArticle() {
           setUserData(data);
         }
       })
-      .then(setReady(true))
       .then(
         fetch(securedRoute, {
           method: "GET",
@@ -53,10 +51,11 @@ function ContentArticle() {
           .then((data) => {
             setPosts(data.posts);
           })
-      );
+      )
+      .then(setReady(true));
   }, []);
 
-  const renderPosts = (callback) => {
+  const renderPosts = () => {
     return posts.map((curr) => {
       return (
         <div className="hold-crypto-news2">
@@ -113,9 +112,8 @@ function ContentArticle() {
                 {posts.length > 0 ? (
                   <div className="gap-up">{renderPosts()}</div>
                 ) : (
-                  <div className="no-content-posts">
-                    <h4>There is no content</h4>
-                    <h5>Feel free to contribute!</h5>
+                  <div className="holder-loader">
+                    <LoadingIcon />
                   </div>
                 )}
               </div>
@@ -124,12 +122,7 @@ function ContentArticle() {
         </header>
       ) : (
         <div className="holder-loader">
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <LoadingIcon />
         </div>
       )}
     </div>
