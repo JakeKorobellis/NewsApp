@@ -64,7 +64,12 @@ function ContentArticle() {
             {curr.post}
           </div>
           <div className="hold-right2">
-            <div className="">{curr.user}</div>
+            <div className="">
+              {curr.user.fname[0].toUpperCase() +
+                curr.user.fname.slice(1) +
+                " " +
+                curr.user.lname[0].toUpperCase()}
+            </div>
 
             <div className="small-text-date">
               {convertISOToFormattedDateTime(curr.date)}
@@ -109,7 +114,7 @@ function ContentArticle() {
                   </button>
                 </div>
 
-                {posts.length > 0 ? (
+                {posts ? (
                   <div className="gap-up">{renderPosts()}</div>
                 ) : (
                   <div className="holder-loader">

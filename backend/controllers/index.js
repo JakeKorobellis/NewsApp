@@ -60,12 +60,15 @@ exports.createPost = asynchandler(async (req, res) => {
   }
 });
 
+// Gets all the posts stored in Mongo
 exports.getPosts = asynchandler(async (req, res) => {
   try {
-    const posts = await Post.find({});
+    // Pupolating the user object, according the posts they created
+    const posts = await Post.find({}).populate("user");
     res.json({ status: 200, content: true, posts: posts });
   } catch (err) {
     res.json({ status: 403, content: false, error: err });
+    console.log(err);
   }
 });
 
