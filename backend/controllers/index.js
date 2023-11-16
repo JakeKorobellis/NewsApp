@@ -63,8 +63,13 @@ exports.createPost = asynchandler(async (req, res) => {
 });
 
 exports.getPosts = asynchandler(async (req, res) => {
-  const posts = await Post.find({});
-  console.log(posts);
+  try {
+    const posts = await Post.find({});
+    console.log(posts);
+    res.json({ status: 200, content: true, posts: posts });
+  } catch (err) {
+    res.json({ status: 403, content: false, error: err });
+  }
 });
 
 //Login Post

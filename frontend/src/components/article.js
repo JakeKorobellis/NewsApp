@@ -49,7 +49,7 @@ function ContentArticle() {
           },
         })
           .then((res) => res.json())
-          .then(console.log("success"))
+          .then((data) => console.log(data))
       );
   }, []);
 
