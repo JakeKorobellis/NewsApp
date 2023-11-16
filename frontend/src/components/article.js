@@ -56,8 +56,6 @@ function ContentArticle() {
       );
   }, []);
 
-  console.log(posts);
-
   const renderPosts = (callback) => {
     return posts.map((curr) => {
       return (
