@@ -5,7 +5,6 @@ import user from "./pictures/user.png";
 import reuse from "./helperfunctions/liveNews";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
-import Fav from "./helperfunctions/favs";
 
 function ContentArticle() {
   /**
@@ -67,27 +66,26 @@ function ContentArticle() {
             <strong>{curr.title}</strong> <br />
             {curr.post}
           </div>
-          <div className="hold-right">
+          <div className="hold-right2">
             <div className="">{curr.user}</div>
 
             <div className="small-text-date">
               {convertISOToFormattedDateTime(curr.date)}
             </div>
-            <button
-              className="faviortie-btn"
-              onClick={() =>
-                Fav(
-                  curr.headline,
-                  curr.source,
-                  curr.url,
-                  convertISOToFormattedDateTime(curr.date),
-                  callback,
-                  user
-                )
-              }
-            >
-              Save
-            </button>
+            <div className="button-article-holder">
+              <button
+                className="faviortie-btn"
+                onClick={() => console.log("like")}
+              >
+                Like
+              </button>
+              <button
+                className="faviortie-btn"
+                onClick={() => console.log("like")}
+              >
+                Dislike
+              </button>
+            </div>
           </div>
         </div>
       );
