@@ -13,6 +13,8 @@ function ContentArticle() {
 
   const navigate = useNavigate();
 
+  const securedRoute = process.env.REACT_APP_SECURED_ROUTE;
+
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
@@ -38,7 +40,17 @@ function ContentArticle() {
           setUserData(data);
         }
       })
-      .then(setReady(true));
+      .then(setReady(true))
+      .then(
+        fetch(securedRoute, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then(console.log("success"))
+      );
   }, []);
 
   const handleClick = () => {
