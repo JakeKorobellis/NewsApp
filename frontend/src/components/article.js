@@ -114,7 +114,7 @@ function ContentArticle() {
                   </button>
                 </div>
 
-                {posts ? (
+                {posts /**Need to add conditional so loading icon acturally appears */ ? (
                   <div className="gap-up">{renderPosts()}</div>
                 ) : (
                   <div className="holder-loader">
