@@ -5,6 +5,7 @@ import user from "./pictures/user.png";
 import reuse from "./helperfunctions/liveNews";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function ArticlePost() {
   /**
@@ -152,12 +153,7 @@ function ArticlePost() {
         </header>
       ) : (
         <div className="holder-loader">
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <LoadingIcon />
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import Side from "./sidebar";
 import user from "./pictures/user.png";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function UserEdit() {
   // User auth
@@ -46,12 +47,7 @@ function UserEdit() {
           </div>
           {userData == [] ? (
             <div className="holder-loader">
-              <div class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
+              <LoadingIcon />
             </div>
           ) : (
             <div class="data stream-all">

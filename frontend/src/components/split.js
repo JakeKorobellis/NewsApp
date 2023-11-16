@@ -4,6 +4,7 @@ import reuse_crpyto from "./helperfunctions/reuse_crypto";
 import reuse_fi from "./helperfunctions/reuse_fi";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function Split() {
   const navigate = useNavigate();
@@ -180,12 +181,7 @@ function Split() {
                   )
                 ) : (
                   <div className="holder-loader">
-                    <div class="lds-ring">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+                    <LoadingIcon />
                   </div>
                 )}
               </div>
@@ -199,12 +195,7 @@ function Split() {
                   reuse_fi(fi, handleFavAction, userData.authData.user._id)
                 ) : (
                   <div className="holder-loader">
-                    <div class="lds-ring">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+                    <LoadingIcon />
                   </div>
                 )}
               </div>

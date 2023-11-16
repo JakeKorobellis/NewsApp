@@ -2,6 +2,7 @@ import React from "react";
 import Side from "./sidebar";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function Fav() {
   // User auth
@@ -132,12 +133,7 @@ function Fav() {
                 </div>
               ) : (
                 <div className="holder-loader">
-                  <div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  <LoadingIcon />
                 </div>
               )}
             </div>

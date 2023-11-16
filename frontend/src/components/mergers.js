@@ -5,6 +5,7 @@ import get90Prior from "./dates/get90Prior";
 import DataCleanMerge from "./helperfunctions/data-clean-mergers";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function MandA() {
   /**
@@ -108,12 +109,7 @@ function MandA() {
                 </>
               ) : (
                 <div className="holder-loader">
-                  <div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  <LoadingIcon />
                 </div>
               )}
             </div>

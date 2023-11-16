@@ -5,6 +5,7 @@ import get90Prior from "./dates/get90Prior";
 import DataCleanSplit from "./helperfunctions/data-clean-splits";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function StockSplits() {
   const navigate = useNavigate();
@@ -97,12 +98,7 @@ function StockSplits() {
                 </>
               ) : (
                 <div className="holder-loader">
-                  <div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  <LoadingIcon />
                 </div>
               )}
             </div>

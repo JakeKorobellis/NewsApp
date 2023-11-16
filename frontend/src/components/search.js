@@ -6,6 +6,7 @@ import convert_data from "./chartdata_convert";
 import Chart from "./chartDisplay";
 import formatData from "./helperfunctions/formatData";
 import Header from "./header";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function Search() {
   //Protected Variables
@@ -228,12 +229,7 @@ function Search() {
                   )
                 ) : (
                   <div className="holder-loader">
-                    <div class="lds-ring">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+                    <LoadingIcon />
                   </div>
                 )}
               </div>

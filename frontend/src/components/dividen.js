@@ -4,6 +4,7 @@ import getCurrentYYYYMMDD from "./dates/getCurrentYYYYMMDD";
 import get30Prior from "./dates/get30Prior";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function Dividen() {
   /**
@@ -112,12 +113,7 @@ function Dividen() {
                 </>
               ) : (
                 <div className="holder-loader">
-                  <div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
+                  <LoadingIcon />
                 </div>
               )}
             </div>
