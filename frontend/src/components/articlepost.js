@@ -107,7 +107,7 @@ function ArticlePost() {
                 <div className="signup-page-split2">
                   <div className="form2">
                     <form
-                      action="/signup"
+                      action="/create/post"
                       method="post"
                       className="form"
                       onSubmit={handleSubmit}

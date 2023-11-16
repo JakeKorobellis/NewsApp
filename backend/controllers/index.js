@@ -44,20 +44,22 @@ exports.createPost = asynchandler(async (req, res) => {
   // Find user
   // const hasAccount = await User.findOne({ _id: "admin@admin.com" });
 
-  console.log(req.body);
+  try {
+    // Parse text
+    // Create new instance of post model
+    const post = new Post({
+      user: req.body.user,
+      title: req.body.title,
+      post: req.body.content,
+    });
 
-  // Parse text
-  // Create new instance of post model
-  //const post = new Post({
-  // user: hasAccount,
-  // title: "Uncertaintiy in the market",
-  // post: "This is where the conetent of the post will be held",
-  //});
-
-  // Save
-  //post.save();
-  // Response
-  res.json({ status: 200, text: "Sucess" });
+    // Save
+    post.save();
+    // Response
+    res.json({ status: 200, text: "Sucess" });
+  } catch (err) {
+    res.json({ status: 403, text: "Post failed to save" });
+  }
 });
 
 //Login Post
