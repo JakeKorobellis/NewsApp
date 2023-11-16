@@ -79,12 +79,6 @@ function ContentArticle() {
               >
                 Like
               </button>
-              <button
-                className="faviortie-btn"
-                onClick={() => console.log("like")}
-              >
-                Dislike
-              </button>
             </div>
           </div>
         </div>
