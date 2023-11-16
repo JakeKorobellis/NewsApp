@@ -1,10 +1,8 @@
 const asynchandler = require("express-async-handler");
 require("dotenv").config();
 const User = require("../models/user");
-const News = require("../models/news");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const tokenVerify = require("../middlewear/jwtVerify");
 const Post = require("../models/blog");
 
 //Signup post (Need to update name)
@@ -114,6 +112,7 @@ exports.addFav = asynchandler(async (req, res) => {
   //Validate Request
   if (current_user.fav_news.length > 0) {
     if (current_user.fav_news.length > 30) {
+      // Remove last saved article once limit has been reached
       current_user.fav_news.pop(-1);
     }
 
