@@ -16,7 +16,6 @@ function ArticlePost() {
   const navigate = useNavigate();
 
   // User auth
-  const [posts, setPosts] = React.useState([]);
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
   const [ready, setReady] = React.useState(false);

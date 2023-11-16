@@ -5,6 +5,7 @@ import user from "./pictures/user.png";
 import reuse from "./helperfunctions/liveNews";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import Fav from "./helperfunctions/favs";
 
 function ContentArticle() {
   /**
@@ -19,6 +20,7 @@ function ContentArticle() {
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
   const [ready, setReady] = React.useState(false);
+  const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
     /**
@@ -49,9 +51,48 @@ function ContentArticle() {
           },
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            setPosts(data.posts);
+          })
       );
   }, []);
+
+  console.log(posts);
+
+  const renderPosts = (callback) => {
+    return posts.map((curr) => {
+      return (
+        <div className="hold-crypto-news2">
+          <div className="fifty-five2">
+            <strong>{curr.title}</strong> <br />
+            {curr.post}
+          </div>
+          <div className="hold-right">
+            <div className="">{curr.user}</div>
+
+            <div className="small-text-date">
+              {convertISOToFormattedDateTime(curr.date)}
+            </div>
+            <button
+              className="faviortie-btn"
+              onClick={() =>
+                Fav(
+                  curr.headline,
+                  curr.source,
+                  curr.url,
+                  convertISOToFormattedDateTime(curr.date),
+                  callback,
+                  user
+                )
+              }
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      );
+    });
+  };
 
   const handleClick = () => {
     navigate("/content/articles/create");
@@ -69,7 +110,7 @@ function ContentArticle() {
             </div>
             <div class="data stream-all">
               <div className="title-all">User Articles</div>
-              <div className="stream-hold-all19">
+              <div className="stream-hold-all192">
                 <div className="button-holder-add-post">
                   <button
                     className="button-create"
@@ -78,6 +119,15 @@ function ContentArticle() {
                     Create Post
                   </button>
                 </div>
+
+                {posts.length > 0 ? (
+                  <div className="gap-up">{renderPosts()}</div>
+                ) : (
+                  <div className="no-content-posts">
+                    <h4>There is no content</h4>
+                    <h5>Feel free to contribute!</h5>
+                  </div>
+                )}
               </div>
             </div>
           </div>
