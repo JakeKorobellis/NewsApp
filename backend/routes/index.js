@@ -20,5 +20,7 @@ router.post("/add/fav", controller.addFav);
 router.post("/remove/fav", controller.removeFav);
 // Create a post
 router.post("/create/post", controller.createPost);
+// Get posts
+router.get("/posts/get", controller.getPosts);
 
 module.exports = router;

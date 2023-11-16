@@ -62,6 +62,11 @@ exports.createPost = asynchandler(async (req, res) => {
   }
 });
 
+exports.getPosts = asynchandler(async (req, res) => {
+  const posts = await Post.find({});
+  console.log(posts);
+});
+
 //Login Post
 exports.loginPost = asynchandler(async (req, res) => {
   //Searching for users account via email
