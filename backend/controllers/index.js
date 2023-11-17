@@ -73,6 +73,10 @@ exports.getPosts = asynchandler(async (req, res) => {
   }
 });
 
+exports.userUpdate = asynchandler(async (req, res) => {
+  console.log(req.body);
+});
+
 //Login Post
 exports.loginPost = asynchandler(async (req, res) => {
   //Searching for users account via email

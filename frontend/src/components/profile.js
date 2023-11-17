@@ -7,9 +7,14 @@ import LoadingIcon from "./helperfunctions/spnningIcon";
 
 function UserEdit() {
   // User auth
+  const route = process.env.REACT_APP_USER_EDIT;
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
-
+  const [changes, setChanges] = React.useState({
+    email: "",
+    fname: "",
+    lname: "",
+  });
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -26,10 +31,48 @@ function UserEdit() {
         if (data.status === 403) {
           navigate("/login");
         } else {
+          // Store users data
           setUserData(data.authData.user);
+          // Set the current state to the users personal value s
+          setChanges({
+            ["fname"]: data.authData.user.fname,
+            ["email"]: data.authData.user.email,
+            ["lname"]: data.authData.user.lname,
+          });
         }
       });
   }, []);
+
+  console.log(changes);
+
+  const handleChanges = (event) => {
+    const { name, value } = event.target;
+    setChanges((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Submit");
+    // Sending to backend to add to DB
+    fetch(route, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(changes),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/useredit");
+        } else {
+          alert("Error!");
+        }
+      });
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -64,26 +107,29 @@ function UserEdit() {
                       action="/useredit/update"
                       method="post"
                       className="form"
+                      onClick={handleSubmit}
                     >
                       <div className="form-inputs">
                         <label className="resize">First Name:</label>
                         <input
-                          type="fname"
+                          type="text"
                           id="fname"
                           name="fname"
                           className="inputs-form"
-                          value={userData.fname}
+                          value={changes.fname}
+                          onChange={handleChanges}
                           required
                         />
                       </div>
                       <div className="form-inputs">
                         <label className="resize">Last Name:</label>
                         <input
-                          type="lname"
+                          type="text"
                           id="lname"
                           name="lname"
                           className="inputs-form"
-                          value={userData.lname}
+                          value={changes.lname}
+                          onChange={handleChanges}
                           required
                         />
                       </div>
@@ -94,24 +140,24 @@ function UserEdit() {
                           id="email"
                           name="email"
                           className="inputs-form"
-                          value={userData.email}
+                          value={changes.email}
+                          onChange={handleChanges}
                           required
                         />
                       </div>
                       <a href="/useredit/password" className="login-btn center">
                         Update password
                       </a>
+                      <div className="form margin-top">
+                        <input
+                          type="submit"
+                          value="Submit Profile Changes"
+                          className="login-btn"
+                        />
+                      </div>
                     </form>
                   </div>
-                  <div className="form margin-top">
-                    <a href="/success" className="form">
-                      <input
-                        type="submit"
-                        value="Submit Profile Changes"
-                        className="login-btn"
-                      />
-                    </a>
-                  </div>
+
                   <a
                     href="/login"
                     className="login-btn center-2"

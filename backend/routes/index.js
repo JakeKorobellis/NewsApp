@@ -22,5 +22,7 @@ router.post("/remove/fav", controller.removeFav);
 router.post("/create/post", controller.createPost);
 // Get posts
 router.get("/posts/get", controller.getPosts);
+// Update user basic info
+router.post("/useredit/update", controller.userUpdate);
 
 module.exports = router;
