@@ -354,6 +354,7 @@ a{
   padding-bottom: 1vw;
   padding-left: 2vw;
   padding-top: 1vw;
+  padding-right: 2vw;
   border-radius: 10px;
 }
 .center-no-favs{
@@ -514,8 +515,8 @@ color: black;  font-size: 1.5vw;
 }
 
 .stream-hold-all-2{
-  height: 70vh;
- width: 90%;
+  height: 65vh;
+ width: 85%;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -943,9 +944,8 @@ height: 10%;
 .confrimation{
   background: rgba(0, 0, 0, 0.605);
   color: white;
-  position: absolute;
   width: 30vw;
-  height: 15vw;
+  height: 12.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
