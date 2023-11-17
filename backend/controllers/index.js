@@ -65,6 +65,7 @@ exports.getPosts = asynchandler(async (req, res) => {
   try {
     // Pupolating the user object, according the posts they created
     const posts = await Post.find({}).populate("user");
+    posts.reverse();
     res.json({ status: 200, content: true, posts: posts });
   } catch (err) {
     res.json({ status: 403, content: false, error: err });
