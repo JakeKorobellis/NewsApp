@@ -377,6 +377,19 @@ a{
   margin-top: 1vw;
   margin-bottom: 1vw;
 }
+.center-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(231, 16, 16);
+  color: white;
+  margin-top: 2vw;
+  margin-bottom: 1vw;
+  border: 2px solid black;
+}
+.center-2:hover{
+  background: rgb(183, 22, 22);
+}
 .center:hover{
   background: rgb(200, 200, 200);
 }

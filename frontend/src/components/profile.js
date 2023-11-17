@@ -31,6 +31,10 @@ function UserEdit() {
       });
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
+
   /**
    * Still need to add updating data
    * Password vonfrimation etc
@@ -108,6 +112,13 @@ function UserEdit() {
                       />
                     </a>
                   </div>
+                  <a
+                    href="/login"
+                    className="login-btn center-2"
+                    onClick={() => handleLogout()}
+                  >
+                    Logout
+                  </a>
                 </div>
               </div>
             </div>
