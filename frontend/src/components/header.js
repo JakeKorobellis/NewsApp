@@ -33,6 +33,11 @@ function Header() {
           <div className="rotate-title-dece font-marquee">News2 </div>
           <div className="rotate-title-dece font-marquee">news3: </div>
           <div className="rotate-title-dece font-marquee">news4: </div>
+          <div className="rotate-title-dece font-marquee">Prices:</div>
+          <div className="rotate-title-dece font-marquee">SPY</div>
+          <div className="rotate-title-dece font-marquee">QQQ</div>
+          <div className="rotate-title-dece font-marquee">ETH</div>
+          <div className="rotate-title-dece font-marquee">BTC</div>
         </Marquee>
       </div>
       <div className="fifityvw2">
