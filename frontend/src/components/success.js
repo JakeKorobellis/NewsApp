@@ -9,25 +9,7 @@ function Success() {
    */
 
   // User auth
-  const [userData, setUserData] = React.useState([]);
-  const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
-  fetch("/api/auth", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.status === 403) {
-        navigate("/login");
-      } else {
-        setUserData(data);
-      }
-    });
 
   const handleLogOut = () => {
     localStorage.clear();
@@ -37,18 +19,21 @@ function Success() {
   return (
     <div className="App">
       <header className="App-header">
-        <div class="parent">
-          <Header />
-          <div class="sidebar">
-            <Side />
-          </div>
-          <div class="data stream-all">
-            <div className="stream-hold-all111">
-              <div className="success">Success!</div>
-              <div className="success-hold">
-                <div>
-                  <h4>Please log back in!</h4>
-                </div>
+        <div class="data stream-all">
+          <div className="stream-hold-all111">
+            <div className="success">Your profile has been updated!</div>
+            <div className="success-hold">
+              <div>
+                <h4>Please log back in!</h4>
+              </div>
+              <div>
+                <a
+                  onClick={() => handleLogOut}
+                  href="/login"
+                  className="login-btn center"
+                >
+                  Logout
+                </a>
               </div>
             </div>
           </div>

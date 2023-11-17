@@ -424,11 +424,12 @@ a{
 }
 .success-hold{
   display: flex;
-  gap: 5vw;
+  flex-direction: column;
+  gap: 2vw;
 }
 
 .success{
-  font-size: 10vw;
+  font-size: 3vw;
   color: rgb(255, 255, 255);
 }
 .success-btn1{
