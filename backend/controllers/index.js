@@ -74,9 +74,16 @@ exports.getPosts = asynchandler(async (req, res) => {
 });
 
 exports.userUpdate = asynchandler(async (req, res) => {
+  /**
+   *
+   *
+   * Need to clean clean input fields before sending to DB
+   *
+   *
+   */
+
   // Assuming req.body contains the updated values for email, fname, and lname
-  console.log(req.body);
-  const { email, fname, lname, _id } = req.body;
+  const { email, fname, lname } = req.body;
 
   // Find the user by email and update the specified fields
   const updatedUser = await User.findOneAndUpdate(
