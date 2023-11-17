@@ -74,7 +74,24 @@ exports.getPosts = asynchandler(async (req, res) => {
 });
 
 exports.userUpdate = asynchandler(async (req, res) => {
+  // Assuming req.body contains the updated values for email, fname, and lname
   console.log(req.body);
+  const { email, fname, lname, _id } = req.body;
+
+  // Find the user by email and update the specified fields
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.body._id },
+    { $set: { email, fname, lname } },
+    { new: true } // This option returns the modified document rather than the original
+  );
+
+  // Check if the user was found and updated
+  if (updatedUser) {
+    console.log(updatedUser);
+    res.json({ status: 200, account: updatedUser });
+  } else {
+    res.json({ status: 403, account: false });
+  }
 });
 
 //Login Post

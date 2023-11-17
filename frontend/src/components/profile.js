@@ -14,6 +14,7 @@ function UserEdit() {
     email: "",
     fname: "",
     lname: "",
+    _id: "",
   });
   const navigate = useNavigate();
 
@@ -38,12 +39,11 @@ function UserEdit() {
             ["fname"]: data.authData.user.fname,
             ["email"]: data.authData.user.email,
             ["lname"]: data.authData.user.lname,
+            ["_id"]: data.authData.user._id,
           });
         }
       });
   }, []);
-
-  console.log(changes);
 
   const handleChanges = (event) => {
     const { name, value } = event.target;
@@ -55,7 +55,7 @@ function UserEdit() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submit");
+
     // Sending to backend to add to DB
     fetch(route, {
       method: "POST",
@@ -67,7 +67,13 @@ function UserEdit() {
       .then((res) => res.json())
       .then((res) => {
         if (res.status === 200) {
-          navigate("/useredit");
+          /**
+           * Need to figure out how to update state right after change
+           * Issue is the users old info is displaying if the pages
+           * refreshes
+           */
+          handleLogout();
+          navigate("/success");
         } else {
           alert("Error!");
         }
@@ -76,6 +82,64 @@ function UserEdit() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+  };
+
+  const renderForm = () => {
+    return (
+      <form
+        action="/useredit/update"
+        method="post"
+        className="form"
+        onSubmit={handleSubmit}
+      >
+        <div className="form-inputs">
+          <label className="resize">First Name:</label>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            className="inputs-form"
+            value={changes.fname}
+            onChange={handleChanges}
+            required
+          />
+        </div>
+        <div className="form-inputs">
+          <label className="resize">Last Name:</label>
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            className="inputs-form"
+            value={changes.lname}
+            onChange={handleChanges}
+            required
+          />
+        </div>
+        <div className="form-inputs">
+          <label className="resize">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="inputs-form"
+            value={changes.email}
+            onChange={handleChanges}
+            required
+          />
+        </div>
+        <a href="/useredit/password" className="login-btn center">
+          Update password
+        </a>
+        <div className="form margin-top">
+          <input
+            type="submit"
+            value="Submit Profile Changes"
+            className="login-btn"
+          />
+        </div>
+      </form>
+    );
   };
 
   /**
@@ -102,61 +166,7 @@ function UserEdit() {
               <div>Current profile values are populated.</div>
               <div className="stream-hold-all10">
                 <div className="signup-page-split">
-                  <div className="form">
-                    <form
-                      action="/useredit/update"
-                      method="post"
-                      className="form"
-                      onClick={handleSubmit}
-                    >
-                      <div className="form-inputs">
-                        <label className="resize">First Name:</label>
-                        <input
-                          type="text"
-                          id="fname"
-                          name="fname"
-                          className="inputs-form"
-                          value={changes.fname}
-                          onChange={handleChanges}
-                          required
-                        />
-                      </div>
-                      <div className="form-inputs">
-                        <label className="resize">Last Name:</label>
-                        <input
-                          type="text"
-                          id="lname"
-                          name="lname"
-                          className="inputs-form"
-                          value={changes.lname}
-                          onChange={handleChanges}
-                          required
-                        />
-                      </div>
-                      <div className="form-inputs">
-                        <label className="resize">Email:</label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          className="inputs-form"
-                          value={changes.email}
-                          onChange={handleChanges}
-                          required
-                        />
-                      </div>
-                      <a href="/useredit/password" className="login-btn center">
-                        Update password
-                      </a>
-                      <div className="form margin-top">
-                        <input
-                          type="submit"
-                          value="Submit Profile Changes"
-                          className="login-btn"
-                        />
-                      </div>
-                    </form>
-                  </div>
+                  <div className="form">{renderForm()}</div>
 
                   <a
                     href="/login"

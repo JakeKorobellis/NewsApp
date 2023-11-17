@@ -15,7 +15,7 @@ function Fav() {
   // Setting data
   const [news, setNews] = React.useState([]);
   const [ready, setReady] = React.useState(false);
-  console.log(userData);
+
   React.useEffect(() => {
     //Fetch current user data
     fetch("/api/auth", {

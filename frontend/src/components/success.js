@@ -47,17 +47,7 @@ function Success() {
               <div className="success">Success!</div>
               <div className="success-hold">
                 <div>
-                  <a href="/content" className="success-btn">
-                    Home
-                  </a>
-                </div>
-                <div>
-                  <button
-                    className="success-btn1"
-                    onClick={() => handleLogOut()}
-                  >
-                    Logout
-                  </button>
+                  <h4>Please log back in!</h4>
                 </div>
               </div>
             </div>
