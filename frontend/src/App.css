@@ -442,6 +442,12 @@ a{
   font-family: 'Anton', sans-serif;
   border: none;  
 }
+.rotate-title-dece{
+  margin-left: 1vw;
+}
+.font-marquee{
+  font-size: 1.25vw;
+}
 .success-btn{
 color: black;  font-size: 1.5vw;
   padding: .5vw;
