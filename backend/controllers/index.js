@@ -232,3 +232,8 @@ exports.getNews = asynchandler(async (req, res) => {
     authData: current_user,
   });
 });
+
+// Handle password change
+exports.handlePassword = asynchandler(async (req, res) => {
+  console.log(req.body);
+});

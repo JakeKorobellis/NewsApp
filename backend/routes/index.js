@@ -24,5 +24,7 @@ router.post("/create/post", controller.createPost);
 router.get("/posts/get", controller.getPosts);
 // Update user basic info
 router.post("/useredit/update", controller.userUpdate);
+// Update password
+router.post("/useredit/password/update", controller.handlePassword);
 
 module.exports = router;

@@ -10,7 +10,7 @@ function PasswordEdit() {
    */
 
   const navigate = useNavigate();
-
+  const route = process.env.REACT_APP_USER_PASSWORD_ROUTE;
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
@@ -18,6 +18,7 @@ function PasswordEdit() {
     password: "",
     npassword: "",
     cpassword: "",
+    _id: "",
   });
 
   React.useEffect(() => {
@@ -35,7 +36,13 @@ function PasswordEdit() {
         } else {
           setUserData(data);
         }
-      });
+      })
+      .then(
+        setPasswordState({
+          ...passwordState,
+          _id: userData.authData.user._id,
+        })
+      );
   }, []);
 
   const handleSubmit = (event) => {
@@ -50,6 +57,23 @@ function PasswordEdit() {
       alert("New Password Does Not Mathc");
       return;
     }
+
+    // Sending to backend to add to DB
+    fetch(route, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(passwordState),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/login");
+        } else {
+          alert("Account already exists!");
+        }
+      });
 
     console.log("Post Request");
   };
@@ -81,12 +105,7 @@ function PasswordEdit() {
             <div className="stream-hold-all10">
               <div className="signup-page-split">
                 <div className="form">
-                  <form
-                    action="/useredit/password/update"
-                    method="post"
-                    className="form"
-                    onSubmit={handleSubmit}
-                  >
+                  <form method="post" className="form" onSubmit={handleSubmit}>
                     <div className="form-inputs">
                       <label className="resize">Current Password:</label>
                       <input
