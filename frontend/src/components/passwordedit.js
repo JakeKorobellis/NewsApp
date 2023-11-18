@@ -12,7 +12,6 @@ function PasswordEdit() {
   const navigate = useNavigate();
   const route = process.env.REACT_APP_USER_PASSWORD_ROUTE;
   // User auth
-  const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
   const [passwordState, setPasswordState] = React.useState({
     password: "",
@@ -34,7 +33,6 @@ function PasswordEdit() {
         if (data.status === 403) {
           navigate("/login");
         } else {
-          setUserData(data);
           setPasswordState({
             ...passwordState,
             _id: data.authData.user._id,
@@ -48,7 +46,6 @@ function PasswordEdit() {
      * Handle submit of changing password
      */
     event.preventDefault();
-    console.log("Submit");
 
     // Check new password confirmation before request
     if (passwordState.npassword != passwordState.cpassword) {
@@ -69,11 +66,9 @@ function PasswordEdit() {
         if (res.status === 200) {
           navigate("/login");
         } else {
-          alert("Account already exists!");
+          alert("Current password is incorrect!");
         }
       });
-
-    console.log("Post Request");
   };
 
   const handleChange = (event) => {
