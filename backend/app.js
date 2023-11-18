@@ -1,23 +1,23 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express, { json } from "express";
+import { set, connect } from "mongoose";
 require("dotenv").config();
-const router = require("./routes/index");
+import router from "./routes/index";
 var app = express();
 
-app.use(express.json());
+app.use(json());
 app.use("/", router);
 
 app.get("/api", (req, res) => {
   res.json({ test: true });
 });
 
-mongoose.set("strictQuery", false);
+set("strictQuery", false);
 
 const DB = process.env.DBLINK;
 
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(DB);
+  await connect(DB);
   console.log("MongoDB is connected");
 }
 app.listen(5000, () => console.log("App is listening on port 5000"));

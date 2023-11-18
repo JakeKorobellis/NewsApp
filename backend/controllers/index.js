@@ -94,7 +94,6 @@ exports.userUpdate = asynchandler(async (req, res) => {
 
   // Check if the user was found and updated
   if (updatedUser) {
-    console.log(updatedUser);
     res.json({ status: 200, account: updatedUser });
   } else {
     res.json({ status: 403, account: false });
