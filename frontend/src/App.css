@@ -225,7 +225,15 @@ a{
     height: 75%;
     justify-content: center;
     gap: 1vw;
+  }
 
+  .form2{
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
   }
 .resize2{
   font-size: 2vw;
@@ -459,6 +467,16 @@ a{
 .font-marquee{
   font-size: 1.25vw;
 }
+.form-password-confirmation{
+  font-size: .75vw;
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .success-btn{
 color: black;  font-size: 1.5vw;
   padding: .5vw;
