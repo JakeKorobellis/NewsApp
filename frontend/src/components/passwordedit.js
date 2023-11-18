@@ -35,14 +35,12 @@ function PasswordEdit() {
           navigate("/login");
         } else {
           setUserData(data);
+          setPasswordState({
+            ...passwordState,
+            _id: data.authData.user._id,
+          });
         }
-      })
-      .then(
-        setPasswordState({
-          ...passwordState,
-          _id: userData.authData.user._id,
-        })
-      );
+      });
   }, []);
 
   const handleSubmit = (event) => {
