@@ -452,7 +452,10 @@ a{
   margin-left: 1vw;
   color: #226be8;
 }
-
+.resize-password-edit{
+  font-size: 2vw;
+  margin-bottom: .5vw;
+}
 .font-marquee{
   font-size: 1.25vw;
 }

@@ -14,8 +14,13 @@ function PasswordEdit() {
   // User auth
   const [userData, setUserData] = React.useState([]);
   const token = localStorage.getItem("token");
+  const [passwordState, setPasswordState] = React.useState({
+    password: "",
+    npassword: "",
+    cpassword: "",
+  });
 
-  React.useState(() => {
+  React.useEffect(() => {
     fetch("/api/auth", {
       method: "GET",
       headers: {
@@ -33,6 +38,31 @@ function PasswordEdit() {
       });
   }, []);
 
+  const handleSubmit = (event) => {
+    /**
+     * Handle submit of changing password
+     */
+    event.preventDefault();
+    console.log("Submit");
+
+    // Check new password confirmation before request
+    if (passwordState.npassword != passwordState.cpassword) {
+      alert("New Password Does Not Mathc");
+      return;
+    }
+
+    console.log("Post Request");
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setPasswordState((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   // Render
   return (
     <div className="App">
@@ -44,7 +74,7 @@ function PasswordEdit() {
           </div>
           <div class="data stream-all">
             <div className="title-all">Update Password</div>
-            <div>
+            <div className="resize-password-edit">
               Please confrim your current password, then input the one you would
               like!
             </div>
@@ -55,6 +85,7 @@ function PasswordEdit() {
                     action="/useredit/password/update"
                     method="post"
                     className="form"
+                    onSubmit={handleSubmit}
                   >
                     <div className="form-inputs">
                       <label className="resize">Current Password:</label>
@@ -64,6 +95,7 @@ function PasswordEdit() {
                         name="password"
                         className="inputs-form"
                         placeholder="**********"
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -72,9 +104,10 @@ function PasswordEdit() {
                       <input
                         type="password"
                         id="npassword"
-                        name="password"
+                        name="npassword"
                         className="inputs-form"
                         placeholder="**********"
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -82,24 +115,23 @@ function PasswordEdit() {
                       <label className="resize">Confrim New Password:</label>
                       <input
                         type="password"
-                        id="password"
+                        id="cpassword"
                         name="cpassword"
                         className="inputs-form"
                         placeholder="**********"
+                        onChange={handleChange}
                         required
                       />
                     </div>
+                    <div className="form margin-top">
+                      {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
+                      <input
+                        type="submit"
+                        value="Submit Password Changes"
+                        className="login-btn"
+                      />
+                    </div>
                   </form>
-                </div>
-                <div className="form margin-top">
-                  {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
-                  <a href="/success" className="form">
-                    <input
-                      type="submit"
-                      value="Submit Password Changes"
-                      className="login-btn"
-                    />
-                  </a>
                 </div>
               </div>
             </div>
