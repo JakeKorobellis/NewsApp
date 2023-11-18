@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PasswordCheck from "./helperfunctions/passwordCheck";
 
 function Signup() {
   const navigate = useNavigate();
@@ -25,6 +26,15 @@ function Signup() {
   // Submitting form data
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const passwordStatus = PasswordCheck(user.password);
+
+    if (!passwordStatus) {
+      alert(
+        "Please make sure your password contains one digit, one lowercase letter, one uppercase letter, and one special character"
+      );
+      return;
+    }
 
     // Sending to backend to add to DB
     fetch(route, {
@@ -117,6 +127,10 @@ function Signup() {
                 onChange={handleChange}
                 required
               />
+              <div className="form-password-confirmation">
+                Must contain at least one number, one uppercase and lowercase
+                letter, one special character, and at least 8 or more characters
+              </div>
             </div>
             <input type="submit" value="Signup" className="login-btn" />
           </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import Side from "./sidebar";
 import convertISOToFormattedDateTime from "./time_convert-2";
-import user from "./pictures/user.png";
+import LoadingIcon from "./helperfunctions/spnningIcon";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 
@@ -138,7 +138,7 @@ function Active() {
             <Side curr={4} />
           </div>
 
-          {gainers.length > 1 && losers.length > 1 ? (
+          {gainers && losers ? (
             <div class="data stream-all">
               <div className="title-all">What's Hot</div>
               <div className="stream-hold-all-3">
@@ -183,12 +183,7 @@ function Active() {
                     </div>
                   ) : (
                     <div className="holder-loader">
-                      <div class="lds-ring">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                      </div>
+                      <LoadingIcon />
                     </div>
                   )}
                 </div>

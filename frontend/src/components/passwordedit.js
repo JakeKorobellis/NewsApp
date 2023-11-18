@@ -2,6 +2,7 @@ import React from "react";
 import Side from "./sidebar";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import PasswordCheck from "./helperfunctions/passwordCheck";
 
 function PasswordEdit() {
   /**
@@ -46,6 +47,15 @@ function PasswordEdit() {
      * Handle submit of changing password
      */
     event.preventDefault();
+
+    const passwordStatus = PasswordCheck(passwordState.npassword);
+
+    if (!passwordStatus) {
+      alert(
+        "Please make sure your password contains one digit, one lowercase letter, one uppercase letter, and one special character"
+      );
+      return;
+    }
 
     // Check new password confirmation before request
     if (passwordState.npassword != passwordState.cpassword) {
@@ -98,7 +108,7 @@ function PasswordEdit() {
             <div className="stream-hold-all10">
               <div className="signup-page-split">
                 <div className="form">
-                  <form method="post" className="form" onSubmit={handleSubmit}>
+                  <form method="post" className="form2" onSubmit={handleSubmit}>
                     <div className="form-inputs">
                       <label className="resize">Current Password:</label>
                       <input
@@ -111,6 +121,7 @@ function PasswordEdit() {
                         required
                       />
                     </div>
+
                     <div className="form-inputs">
                       <label className="resize">New Password:</label>
                       <input
@@ -120,9 +131,11 @@ function PasswordEdit() {
                         className="inputs-form"
                         placeholder="**********"
                         onChange={handleChange}
+                        title="Must contain at least one number, one uppercase and lowercase letter, one special character, and at least 8 or more characters"
                         required
                       />
                     </div>
+
                     <div className="form-inputs">
                       <label className="resize">Confrim New Password:</label>
                       <input
@@ -134,6 +147,11 @@ function PasswordEdit() {
                         onChange={handleChange}
                         required
                       />
+                      <div className="form-password-confirmation">
+                        Must contain at least one number, one uppercase and
+                        lowercase letter, one special character, and at least 8
+                        or more characters
+                      </div>
                     </div>
                     <div className="form margin-top">
                       {/* a href needs to be removed for backend and input needs to be moved into the form for the POST request to go off*/}
