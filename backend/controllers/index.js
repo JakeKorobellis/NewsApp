@@ -235,5 +235,40 @@ exports.getNews = asynchandler(async (req, res) => {
 
 // Handle password change
 exports.handlePassword = asynchandler(async (req, res) => {
-  console.log(req.body);
+  // Find users account
+  const account = await User.findOne({ _id: req.body._id });
+
+  if (account == null) {
+    // If no account is found
+    res.json({ status: 403, account: false });
+  } else {
+    // Compare passwords
+    const result = await bcrypt.compare(req.body.password, account.password);
+
+    if (result) {
+      // If the result is true, salth and hash and update users password
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(req.body.npassword, salt);
+
+      // Update the password
+      const updatedAccount = await account.updateOne(
+        { $set: { password: hash } },
+        { new: true } // This option returns the modified document rather than the original
+      );
+
+      // Check if the update was successful
+      if (updatedAccount) {
+        res.json({ status: 200, account: true });
+      } else {
+        res.json({
+          status: 500,
+          account: false,
+          error: "Failed to update password",
+        });
+      }
+    } else {
+      // Error - send error message
+      res.json({ status: 403, account: false, error: "Invalid password" });
+    }
+  }
 });
