@@ -427,7 +427,9 @@ a{
   flex-direction: column;
   gap: 2vw;
 }
-
+.display-flex-{
+  display: flex;
+}
 .success{
   font-size: 3vw;
   color: rgb(255, 255, 255);
@@ -444,7 +446,13 @@ a{
 }
 .rotate-title-dece{
   margin-left: 1vw;
+  color: grey;
 }
+.rotate-title{
+  margin-left: 1vw;
+  color: #226be8;
+}
+
 .font-marquee{
   font-size: 1.25vw;
 }

@@ -7,12 +7,94 @@ function Header() {
    * header component
    */
 
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState(null);
+  const [crypto, setCrypto] = React.useState(null);
+  //
 
-  const url1 = process.env.REACT_APP_URL1;
-  const url2 = process.env.REACT_APP_URL2;
+  const url1 = process.env.REACT_APP_KEY_0;
   const key = process.env.REACT_APP_KEY;
   const secret = process.env.REACT_APP_SECRET;
+  const url2 = process.env.REACT_APP_KEY_2;
+  const symbols1 = process.env.REACT_APP_KEY_3;
+  const symbols2 = process.env.REACT_APP_KEY_4;
+
+  React.useEffect(() => {
+    //Type is False, stock
+    fetch(url1 + symbols1, {
+      headers: {
+        "APCA-API-KEY-ID": key,
+        "APCA-API-SECRET-KEY": secret,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      })
+      .then(
+        fetch(url2 + symbols2, {
+          headers: {
+            "APCA-API-KEY-ID": key,
+            "APCA-API-SECRET-KEY": secret,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setCrypto(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          })
+      );
+  }, []);
+
+  console.log(crypto);
+
+  const renderStocks = () => {
+    return (
+      <div className="display-flex-">
+        <div className="rotate-title-dece font-marquee">
+          $SPY: {data.SPY.dailyBar.c}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $QQQ: {data.QQQ.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $BTC: {crypto.orderbooks["BTC/USD"].a[0].p}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $ETH: {crypto.orderbooks["ETH/USD"].a[0].p}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $DOGE: {crypto.orderbooks["DOGE/USD"].a[0].p}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $XLF: {data.XLF.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $VNQ: {data.VNQ.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $EEM: {data.EEM.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $ELV: {data.ELV.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $ELY: {data.ELY.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $XLU: {data.XLU.dailyBar.c}{" "}
+        </div>
+        <div className="rotate-title-dece font-marquee">
+          $BOTZ: {data.BOTZ.dailyBar.c}{" "}
+        </div>
+      </div>
+    );
+  };
+  console.log(data);
 
   return (
     <div class="header">
@@ -37,15 +119,7 @@ function Header() {
           speed={20}
         >
           <div className="rotate-title font-marquee">In the market:</div>
-          <div className="rotate-title-dece font-marquee">News1 </div>
-          <div className="rotate-title-dece font-marquee">News2 </div>
-          <div className="rotate-title-dece font-marquee">news3: </div>
-          <div className="rotate-title-dece font-marquee">news4: </div>
-          <div className="rotate-title-dece font-marquee">Prices:</div>
-          <div className="rotate-title-dece font-marquee">SPY</div>
-          <div className="rotate-title-dece font-marquee">QQQ</div>
-          <div className="rotate-title-dece font-marquee">ETH</div>
-          <div className="rotate-title-dece font-marquee">BTC</div>
+          {crypto != null ? renderStocks() : "Loading"}
         </Marquee>
       </div>
       <div className="fifityvw2">
