@@ -6,6 +6,14 @@ function Header() {
   /**
    * header component
    */
+
+  const [data, setData] = React.useState([]);
+
+  const url1 = process.env.REACT_APP_URL1;
+  const url2 = process.env.REACT_APP_URL2;
+  const key = process.env.REACT_APP_KEY;
+  const secret = process.env.REACT_APP_SECRET;
+
   return (
     <div class="header">
       <div className="fifityvw ">
