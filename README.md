@@ -3,7 +3,7 @@
 Welcome to NewsRoom, a real-time stock and crypto news platform. This repository contains the codebase for the NewsRoom web application.
 
 ## Under Construction 
-This fullstack web application is still being built
+This application is still being built
 
 Full Stack Demo [here](https://newsroom-live.netlify.app/)
 
