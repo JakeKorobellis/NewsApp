@@ -22,8 +22,8 @@ Full Stack Demo [here](https://newsroom-live.netlify.app/)
    - Designed a modular and reusable component architecture, promoting maintainability and scalability across the application.
 
 4. **API Integration for Real-Time Data:**
-   - Successfully integrated external APIs, including [Alpaca API](https://docs.alpaca.markets/docs/api-references), [Dumb Stock API](https://dumbstockapi.com/), and [Coin Stats API](https://openapi.coinstats.app/) to deliver up-to-the-minute stock and crypto news. Leveraged Redux for state management, optimizing data flow.
-
+   - Successfully integrated external APIs, including [Alpaca API](https://docs.alpaca.markets/docs/api-references), [Dumb Stock API](https://dumbstockapi.com/), and [Coin Stats API](https://openapi.coinstats.app/) to deliver up-to-the-minute stock and crypto news.
+     
 5. **Responsive Design:**
    - Ensured a visually appealing and responsive design with Flexbox and CSS Grid, adapting to various screen sizes for optimal user experience.
 
@@ -58,7 +58,7 @@ Full Stack Demo [here](https://newsroom-live.netlify.app/)
 
 ## Technologies Used
 
-- Frontend: React, React Router, Redux
+- Frontend: React, React Router
 - Backend: Node.js, Express, MongoDB
 - External APIs: News API
 - Authentication: JSON Web Tokens (JWT), bcrypt
